@@ -1,0 +1,33 @@
+B 2 C o m p i l a t i o n
+B 140 Include File Summary
+B 164 E x e c u t i o n
+I 165 TIMESTEP_HOUR
+I 483 ENERGY_TYPE
+B 490 Equation Listing    SOLVE H2forEU_LCOH Using NLP From line 137
+D 491 e_Objective
+D 497 e_TotalCost
+D 502 e_TotalProductionH2
+D 2697 e_GenerationEle
+D 2708 e_GenerationLimitEle
+B 2721 Column Listing      SOLVE H2forEU_LCOH Using NLP From line 137
+E 2722 v_LCOH
+E 2730 v_CapacityRes
+E 7243 v_TotalCost
+E 7251 v_TotalProductionH2
+E 7259 v_GenerationEle
+B 7283 Model Statistics    SOLVE H2forEU_LCOH Using NLP From line 137
+B 7301 Solution Report     SOLVE H2forEU_LCOH Using NLP From line 137
+F 7341 e_Objective
+F 7342 e_TotalCost
+F 7343 e_TotalProductionH2
+F 7349 e_GenerationEle
+F 16114 e_GenerationLimitEle
+G 24874 v_LCOH
+G 24878 v_CapacityRes
+G 24884 v_TotalCost
+G 24888 v_TotalProductionH2
+G 24889 v_GenerationEle
+B 33662 E x e c u t i o n
+I 33663 v_CapacityRes
+I 33669 v_GenerationEle
+I 33940 v_TotalCost

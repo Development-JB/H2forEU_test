@@ -1,0 +1,58 @@
+--- Job H2forEU_LCOH_data.gms Start 11/01/20 00:54:51 25.1.3 r4e34d435fbd WEX-WEI x86 64bit/MS Windows
+GAMS 25.1.3   Copyright (C) 1987-2018 GAMS Development. All rights reserved
+Licensee: CS 635 Spring 2014                             G140121/0001AO-GEN
+          Prof. Michael Ferris, University of Wisconsin-Madison      DC2937
+          License for teaching and research at degree granting institutions
+--- Starting compilation
+--- H2forEU_LCOH_data.gms(2) 2 Mb 4 Errors
+*** Error 120 in C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\H2forEU_LCOH_data.gms
+    Unknown identifier entered as set
+*** Error 120 in C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\H2forEU_LCOH_data.gms
+    Unknown identifier entered as set
+*** Error 120 in C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\H2forEU_LCOH_data.gms
+    Unknown identifier entered as set
+*** Error 120 in C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\H2forEU_LCOH_data.gms
+    Unknown identifier entered as set
+--- H2forEU_LCOH_data.gms(3) 2 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/p_res_profile.gdx
+--- H2forEU_LCOH_data.gms(8) 4 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/p_timestep_weighting.gdx
+--- H2forEU_LCOH_data.gms(9) 4 Mb 7 Errors
+*** Error 361 in C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\H2forEU_LCOH_data.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 362 in C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\H2forEU_LCOH_data.gms
+    Values for domain 2 are unknown - no checking possible
+*** Error 363 in C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\H2forEU_LCOH_data.gms
+    Values for domain 3 are unknown - no checking possible
+--- H2forEU_LCOH_data.gms(12) 4 Mb 9 Errors
+*** Error 120 in C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\H2forEU_LCOH_data.gms
+    Unknown identifier entered as set
+*** Error 120 in C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\H2forEU_LCOH_data.gms
+    Unknown identifier entered as set
+--- H2forEU_LCOH_data.gms(13) 4 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/p_wacc.gdx
+--- H2forEU_LCOH_data.gms(17) 4 Mb 10 Errors
+*** Error 120 in C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\H2forEU_LCOH_data.gms
+    Unknown identifier entered as set
+--- H2forEU_LCOH_data.gms(18) 4 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/p_capex.gdx
+--- H2forEU_LCOH_data.gms(23) 4 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/p_opex.gdx
+--- H2forEU_LCOH_data.gms(24) 4 Mb 12 Errors
+*** Error 361 in C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\H2forEU_LCOH_data.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 362 in C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\H2forEU_LCOH_data.gms
+    Values for domain 2 are unknown - no checking possible
+--- H2forEU_LCOH_data.gms(28) 4 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/p_lifetime.gdx
+--- H2forEU_LCOH_data.gms(29) 4 Mb 14 Errors
+*** Error 361 in C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\H2forEU_LCOH_data.gms
+    Values for domain 1 are unknown - no checking possible
+*** Error 362 in C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\H2forEU_LCOH_data.gms
+    Values for domain 2 are unknown - no checking possible
+--- H2forEU_LCOH_data.gms(34) 4 Mb 15 Errors
+*** Error 120 in C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\H2forEU_LCOH_data.gms
+    Unknown identifier entered as set
+--- H2forEU_LCOH_data.gms(34) 4 Mb 15 Errors
+*** Status: Compilation error(s)
+--- Job H2forEU_LCOH_data.gms Stop 11/01/20 00:54:51 elapsed 0:00:00.062

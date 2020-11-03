@@ -1,0 +1,25 @@
+
+$gdxin gdx/YEAR.gdx
+SET YEAR;
+$load YEAR
+*display YEAR
+
+$gdxin gdx/TIMESTEP.gdx
+SET TIMESTEP;
+$load TIMESTEP
+*display TIMESTEP
+
+$gdxin gdx/TECHNOLOGY.gdx
+SET TECHNOLOGY;
+$load TECHNOLOGY
+*display TECHNOLOGY
+
+$gdxin gdx/ENERGY_TYPE.gdx
+SET ENERGY_TYPE(TECHNOLOGY);
+$load ENERGY_TYPE
+*display ENERGY_TYPE
+
+$gdxin gdx/ELECTROLYSER.gdx
+SET ELECTROLYSER(TECHNOLOGY);
+$load ELECTROLYSER
+*display ELECTROLYSER

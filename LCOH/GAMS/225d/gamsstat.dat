@@ -1,0 +1,111 @@
+=CCONOPT 3         28.2.0 r750fa45 Released Aug 19, 2019 WEI x86 64bit/MS Window
+=0CONOPT 3         28.2.0 r750fa45 Released Aug 19, 2019 WEI x86 64bit/MS Window
+=1
+ 
+ 
+    C O N O P T 3   version 3.17K
+    Copyright (C)   ARKI Consulting and Development A/S
+                    Bagsvaerdvej 246 A
+                    DK-2880 Bagsvaerd, Denmark
+ 
+=2
+    1  INPUT                                                                  (DEFAULT)
+    2  BRANCH * MAJERR MINERR JACERR                                          (DEFAULT)
+    3  OPTIMIZE                                                               (DEFAULT)
+    4  BRANCH * * * * * * MAJERR                                              (DEFAULT)
+    5  OUTPUT                                                                 (DEFAULT)
+    6  EXIT                                                                   (DEFAULT)
+    7  MAJERR MESSAGE MAJOR ERROR - TERMINATE                                 (DEFAULT)
+    8  EXIT                                                                   (DEFAULT)
+    9  MINERR MESSAGE MINOR ERROR - TERMINATE                                 (DEFAULT)
+   10  EXIT                                                                   (DEFAULT)
+   11  JACERR MESSAGE FUNCTION OR DERIVATIVE ERROR                            (DEFAULT)
+   12  OUTPUT                                                                 (DEFAULT)
+   13  EXIT                                                                   (DEFAULT)
+ 
+  ***  Line    1  INPUT
+ 
+  ***  Line    0  SET       LSAZRW   = TRUE
+ 
+  ***  Line    0  SET       LFEERR   =           0
+ 
+  ***  Line    0  SET       LFITER   =  1000000000
+ 
+  ***  Line    0  SET       RVTIME   =      1000.000000
+=1
+ 
+    The model has 204 variables and 202 constraints
+    with 503 Jacobian elements, 2 of which are nonlinear.
+    The Hessian of the Lagrangian has 1 elements on the diagonal,
+    1 elements below the diagonal, and 2 nonlinear variables.
+=2
+ 
+  ***  Line    2  BRANCH with Lbranch =  1
+ 
+  ***  Line    3  OPTIMIZE
+ 
+Search for a first feasible solution
+ 
+ 
+   Iter Phase Ninf   Infeasibility   RGmax    NSB   Step InItr MX OK
+      0   0        4.3105821999E+05 (Input point)
+=1
+ 
+                   Pre-triangular equations:   0
+                   Post-triangular equations:  4
+ 
+=2
+      1   0        0.0000000000E+00 (After pre-processing)
+      2   0        0.0000000000E+00 (After scaling)
+ 
+ ** Feasible solution. Value of objective =    431051.925901
+ 
+Search for an optimal solution.
+ 
+ 
+   Iter Phase Ninf     Objective     RGmax    NSB   Step InItr MX OK
+      3   3        2.5348681101E+05 1.8E+10     1 7.0E+02    1 F  T
+      4   3        1.4505045416E+01 6.1E+09     1 1.7E-10      F  T
+      5   3        1.4505045416E+01 1.0E+01     1 0.0E+00      T  T
+      6   3        1.4399780046E+01 1.0E+01     1 1.0E-03      T  T
+      7   3        1.4295162739E+01 1.0E+01     1 1.0E-03      T  T
+      8   3        1.4190983296E+01 1.0E+01     1 1.0E-03      T  T
+      9   3        1.4086971844E+01 1.1E+01     1 1.0E-03      T  T
+     10   3        1.3983575770E+01 1.1E+01     1 1.0E-03      T  T
+     11   3        1.3676561982E+01 9.8E+00     3 1.0E+00    3 T  T
+     12   3        1.3081415814E+01 9.2E+00     6 1.0E+00    6 T  T
+     13   3        1.2253011347E+01 8.2E+00     9 1.0E+00    9 T  T
+     14   3        1.1260124579E+01 6.7E+00    12 1.0E+00   12 T  T
+     15   3        1.0235163841E+01 4.3E+00    15 1.0E+00   15 T  T
+     16   3        9.7325299801E+00 4.9E-01    15 1.0E+00   15 T  T
+     17   3        9.7325299801E+00 0.0E+00     0
+=1
+ 
+ ** Optimal solution. There are no superbasic variables.
+ 
+=2
+ 
+  ***  Line    4  BRANCH with Lbranch =  1
+ 
+  ***  Line    5  OUTPUT
+ 
+  ***  Line    6  EXIT
+=1
+ 
+ CONOPT time Total                            0.016 seconds
+   of which: Function evaluations             0.000 =  0.0%
+             1st Derivative evaluations       0.000 =  0.0%
+ 
+=2
+ 
+ Work length =      75110 double words  =    0.57 Mbytes
+    Estimate =      75110 double words  =    0.57 Mbytes
+    Max used =      30975 double words  =    0.24 Mbytes
+ 
+ Timing for Function Evaluations:
+ 
+ Statistics for FDEval-Fnc Calls:        20. Time:      0.000 T/C:    0.0000E+00
+ Statistics for FDEval-Drv Calls:        13. Time:      0.000 T/C:    0.0000E+00
+ Statistics for 2DDirLag   Calls:         0. Time:      0.000 T/C:    0.0000E+00
+ Statistics for 2DLagr     Calls:         0. Time:      0.000 T/C:    0.0000E+00
+ 

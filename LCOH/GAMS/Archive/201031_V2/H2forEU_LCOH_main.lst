@@ -1,0 +1,122 @@
+GAMS 25.1.3  r4e34d435fbd Released Oct 30, 2018 WEX-WEI x86 64bit/MS Windows - 10/31/12 20:31:40 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   1  **********************************
+   2  *** MODEL SETTINGS
+   3  **********************************
+   4   
+GAMS 25.1.3  r4e34d435fbd Released Oct 30, 2018 WEX-WEI x86 64bit/MS Windows - 10/31/12 20:31:40 Page 2
+REDUCED OUTPUT
+C o m p i l a t i o n
+
+
+   7   
+   8  /* Turn off the listing of the input file */
+GAMS 25.1.3  r4e34d435fbd Released Oct 30, 2018 WEX-WEI x86 64bit/MS Windows - 10/31/12 20:31:40 Page 3
+REDUCED OUTPUT
+Include File Summary
+
+
+   SEQ   GLOBAL TYPE      PARENT   LOCAL  FILENAME
+
+     1        1 INPUT          0       0  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\H2forEU_LCOH_main.gms
+     2       24 INCLUDE        1      24  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\H2forEU_LCOH_setup.gms
+     3       26 GDXIN          2       2  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/YEAR.gdx
+     4       31 GDXIN          2       7  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/TIMESTEP.gdx
+     5       36 GDXIN          2      12  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/TECHNOLOGY.gdx
+     6       41 GDXIN          2      17  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/ENERGY_TYPE.gdx
+     7       46 GDXIN          2      22  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/ELECTROLYSER.gdx
+     8       50 INCLUDE        1      25  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\H2forEU_LCOH_data.gms
+     9       53 GDXIN          8       3  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/p_res_profile.gdx
+    10       58 GDXIN          8       8  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/p_timestep_weighting.gdx
+    11       63 GDXIN          8      13  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/p_wacc.gdx
+    12       68 GDXIN          8      18  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/p_capex.gdx
+    13       73 GDXIN          8      23  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/p_opex.gdx
+    14       78 GDXIN          8      28  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/p_lifetime.gdx
+    15       86 INCLUDE        1      27  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\H2forEU_LCOH_model.gms
+    16      166 INCLUDE        1      35  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\H2forEU_LCOH_output.gms
+
+
+COMPILATION TIME     =        0.031 SECONDS      4 MB  25.1.3 r4e34d435fbd WEX-WEI
+GAMS 25.1.3  r4e34d435fbd Released Oct 30, 2018 WEX-WEI x86 64bit/MS Windows - 10/31/12 20:31:40 Page 4
+REDUCED OUTPUT
+Model Statistics    SOLVE H2forEU_LCOH Using NLP From line 160
+
+
+MODEL STATISTICS
+
+BLOCKS OF EQUATIONS           5     SINGLE EQUATIONS        6,663
+BLOCKS OF VARIABLES           5     SINGLE VARIABLES        3,336
+NON ZERO ELEMENTS        16,531     NON LINEAR N-Z              2
+DERIVATIVE POOL              20     CONSTANT POOL              16
+CODE LENGTH                   7
+
+
+GENERATION TIME      =        0.047 SECONDS      6 MB  25.1.3 r4e34d435fbd WEX-WEI
+
+
+EXECUTION TIME       =        0.047 SECONDS      6 MB  25.1.3 r4e34d435fbd WEX-WEI
+GAMS 25.1.3  r4e34d435fbd Released Oct 30, 2018 WEX-WEI x86 64bit/MS Windows - 10/31/12 20:31:40 Page 5
+REDUCED OUTPUT
+Solution Report     SOLVE H2forEU_LCOH Using NLP From line 160
+
+
+               S O L V E      S U M M A R Y
+
+     MODEL   H2forEU_LCOH        OBJECTIVE  v_LCOH
+     TYPE    NLP                 DIRECTION  MINIMIZE
+     SOLVER  CONOPT              FROM LINE  160
+
+**** SOLVER STATUS     1 Normal Completion         
+**** MODEL STATUS      2 Locally Optimal           
+**** OBJECTIVE VALUE            24342.4332
+
+ RESOURCE USAGE, LIMIT          0.016      1000.000
+ ITERATION COUNT, LIMIT         5    2000000000
+ EVALUATION ERRORS              0             0
+CONOPT 3         28.2.0 r750fa45 Released Aug 19, 2019 WEI x86 64bit/MS Window
+ 
+ 
+    C O N O P T 3   version 3.17K
+    Copyright (C)   ARKI Consulting and Development A/S
+                    Bagsvaerdvej 246 A
+                    DK-2880 Bagsvaerd, Denmark
+ 
+ 
+                   Pre-triangular equations:   2
+                   Post-triangular equations:  3
+                   Definitional equations:     3329
+ 
+ 
+ ** Optimal solution. There are no superbasic variables.
+ 
+ 
+ CONOPT time Total                            0.018 seconds
+   of which: Function evaluations             0.000 =  0.0%
+             1st Derivative evaluations       0.000 =  0.0%
+ 
+
+
+**** REPORT SUMMARY :        0     NONOPT
+                             0 INFEASIBLE
+                             0  UNBOUNDED
+                             0     ERRORS
+GAMS 25.1.3  r4e34d435fbd Released Oct 30, 2018 WEX-WEI x86 64bit/MS Windows - 10/31/12 20:31:40 Page 6
+REDUCED OUTPUT
+E x e c u t i o n
+
+
+EXECUTION TIME       =        0.016 SECONDS      4 MB  25.1.3 r4e34d435fbd WEX-WEI
+
+
+USER: CS 635 Spring 2014                             G140121/0001AO-GEN
+      Prof. Michael Ferris, University of Wisconsin-Madison      DC2937
+      License for teaching and research at degree granting institutions
+
+
+**** FILE SUMMARY
+
+Input      C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\H2forEU_LCOH_main.gms
+Output     C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\H2forEU_LCOH_main.lst

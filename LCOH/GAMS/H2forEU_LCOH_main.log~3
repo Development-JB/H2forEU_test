@@ -1,0 +1,110 @@
+--- Job H2forEU_LCOH_main.gms Start 11/01/20 18:16:06 25.1.3 r4e34d435fbd WEX-WEI x86 64bit/MS Windows
+GAMS 25.1.3   Copyright (C) 1987-2018 GAMS Development. All rights reserved
+Licensee: CS 635 Spring 2014                             G140121/0001AO-GEN
+          Prof. Michael Ferris, University of Wisconsin-Madison      DC2937
+          License for teaching and research at degree granting institutions
+--- Starting compilation
+--- H2forEU_LCOH_main.gms(24) 2 Mb
+--- . H2forEU_LCOH_setup.gms(1) 2 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/ITERATION.gdx
+--- . H2forEU_LCOH_setup.gms(8) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/KEY_SCENARIO.gdx
+--- . H2forEU_LCOH_setup.gms(13) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/YEAR.gdx
+--- . H2forEU_LCOH_setup.gms(18) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/TIMESTEP.gdx
+--- . H2forEU_LCOH_setup.gms(23) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/COUNTRY.gdx
+--- . H2forEU_LCOH_setup.gms(28) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/CELL.gdx
+--- . H2forEU_LCOH_setup.gms(33) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/SYSTEMS.gdx
+--- . H2forEU_LCOH_setup.gms(38) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/TECHNOLOGY.gdx
+--- . H2forEU_LCOH_setup.gms(43) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/ENERGY_TYPE.gdx
+--- . H2forEU_LCOH_setup.gms(48) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/ELECTROLYSER.gdx
+--- . H2forEU_LCOH_setup.gms(57) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/LINK_ITERATION_KEY.gdx
+--- . H2forEU_LCOH_setup.gms(62) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/LINK_KEY_TIMESTEP.gdx
+--- . H2forEU_LCOH_setup.gms(67) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/LINK_KEY_COUNTRY.gdx
+--- . H2forEU_LCOH_setup.gms(72) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/LINK_KEY_CELL.gdx
+--- . H2forEU_LCOH_setup.gms(77) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/LINK_KEY_SYSTEM.gdx
+--- . H2forEU_LCOH_setup.gms(82) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/LINK_KEY_ENERGY_TYPE.gdx
+--- . H2forEU_LCOH_setup.gms(87) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/LINK_KEY_TECHNOLOGY.gdx
+--- . H2forEU_LCOH_setup.gms(92) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/LINK_KEY_YEAR.gdx
+--- . H2forEU_LCOH_setup.gms(97) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/LINK_KEY_ELECTROLYSER.gdx
+--- . H2forEU_LCOH_setup.gms(104) 3 Mb
+--- H2forEU_LCOH_main.gms(25) 3 Mb
+--- . H2forEU_LCOH_data.gms(3) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/p_res_profile.gdx
+--- . H2forEU_LCOH_data.gms(8) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/p_timestep_weighting.gdx
+--- . H2forEU_LCOH_data.gms(13) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/p_wacc.gdx
+--- . H2forEU_LCOH_data.gms(18) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/p_capex.gdx
+--- . H2forEU_LCOH_data.gms(23) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/p_opex.gdx
+--- . H2forEU_LCOH_data.gms(28) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/p_lifetime.gdx
+--- . H2forEU_LCOH_data.gms(33) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/p_efficiency.gdx
+--- . H2forEU_LCOH_data.gms(40) 3 Mb
+--- H2forEU_LCOH_main.gms(27) 3 Mb
+--- . H2forEU_LCOH_model.gms(88) 3 Mb
+--- H2forEU_LCOH_main.gms(49) 3 Mb
+--- . H2forEU_LCOH_output.gms(4) 3 Mb
+--- H2forEU_LCOH_main.gms(50) 3 Mb
+--- Starting execution: elapsed 0:00:00.020
+--- H2forEU_LCOH_main.gms(261) 4 Mb
+--- Generating NLP model H2forEU_LCOH
+--- H2forEU_LCOH_main.gms(269) 6 Mb
+--- LOOPS ITERATION = 1
+---   154 rows  156 columns  383 non-zeroes
+---   7 nl-code  2 nl-non-zeroes
+--- H2forEU_LCOH_main.gms(269) 4 Mb
+--- Executing CONOPT: elapsed 0:00:00.044
+CONOPT 3         28.2.0 r750fa45 Released Aug 19, 2019 WEI x86 64bit/MS Window
+ 
+ 
+    C O N O P T 3   version 3.17K
+    Copyright (C)   ARKI Consulting and Development A/S
+                    Bagsvaerdvej 246 A
+                    DK-2880 Bagsvaerd, Denmark
+ 
+ 
+   Iter Phase Ninf   Infeasibility   RGmax    NSB   Step InItr MX OK
+      0   0        1.3084069495E+05 (Input point)
+ 
+                   Pre-triangular equations:   0
+                   Post-triangular equations:  4
+ 
+      1   0        0.0000000000E+00 (After pre-processing)
+      2   0        0.0000000000E+00 (After scaling)
+ 
+ ** Feasible solution. Value of objective =    130840.694946
+ 
+   Iter Phase Ninf     Objective     RGmax    NSB   Step InItr MX OK
+     11   3        2.7392336626E+00 6.1E-01     3 1.0E+00    3 T  T
+     14   3        2.6998776638E+00 0.0E+00     0
+ 
+ ** Optimal solution. There are no superbasic variables.
+ 
+--- Restarting execution
+--- H2forEU_LCOH_main.gms(269) 2 Mb
+--- Reading solution for model H2forEU_LCOH
+--- Executing after solve: elapsed 0:00:01.094
+--- H2forEU_LCOH_main.gms(282) 3 Mb
+--- GDX File C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/00_results.gdx
+*** Status: Normal completion
+--- Job H2forEU_LCOH_main.gms Stop 11/01/20 18:16:07 elapsed 0:00:01.108

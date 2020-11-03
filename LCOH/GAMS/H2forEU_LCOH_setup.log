@@ -1,0 +1,23 @@
+--- Job H2forEU_LCOH_setup.gms Start 10/31/20 19:09:35 25.1.3 r4e34d435fbd WEX-WEI x86 64bit/MS Windows
+GAMS 25.1.3   Copyright (C) 1987-2018 GAMS Development. All rights reserved
+Licensee: CS 635 Spring 2014                             G140121/0001AO-GEN
+          Prof. Michael Ferris, University of Wisconsin-Madison      DC2937
+          License for teaching and research at degree granting institutions
+--- Starting compilation
+--- H2forEU_LCOH_setup.gms(1) 2 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/TIMESTEP_HOUR.gdx
+--- H2forEU_LCOH_setup.gms(6) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/TECHNOLOGY.gdx
+--- H2forEU_LCOH_setup.gms(11) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/ENERGY_TYPE.gdx
+--- H2forEU_LCOH_setup.gms(16) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/ELECTROLYSER.gdx
+--- H2forEU_LCOH_setup.gms(21) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/COUNTRY.gdx
+--- H2forEU_LCOH_setup.gms(26) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\LCOH\GAMS\gdx/YEAR.gdx
+--- H2forEU_LCOH_setup.gms(29) 3 Mb
+--- Starting execution: elapsed 0:00:00.043
+--- H2forEU_LCOH_setup.gms(29) 4 Mb
+*** Status: Normal completion
+--- Job H2forEU_LCOH_setup.gms Stop 10/31/20 19:09:36 elapsed 0:00:00.069
