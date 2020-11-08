@@ -1,9 +1,0 @@
-B 2 C o m p i l a t i o n
-B 36 Include File Summary
-B 53 E x e c u t i o n
-I 54 TIMESTEP_HOUR
-I 372 TECHNOLOGY
-I 377 ENERGY_TYPE
-I 382 ELECTROLYSER
-I 387 COUNTRY
-I 392 YEAR

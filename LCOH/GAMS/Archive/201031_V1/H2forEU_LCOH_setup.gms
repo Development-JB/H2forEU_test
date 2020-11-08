@@ -1,9 +1,0 @@
-$gdxin gdx/TIMESTEP_HOUR.gdx
-SET TIMESTEP_HOUR;
-$load TIMESTEP_HOUR
-display TIMESTEP_HOUR
-
-$gdxin gdx/ENERGY_TYPE.gdx
-SET ENERGY_TYPE;
-$load ENERGY_TYPE
-display ENERGY_TYPE
