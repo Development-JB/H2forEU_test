@@ -1,0 +1,71 @@
+B 2 C o m p i l a t i o n
+B 534 Include File Summary
+B 591 E x e c u t i o n
+I 592 ENERGY_TYPE
+I 598 COUNTRY
+I 603 YEAR
+I 608 p_production_limit_node
+I 616 H2_SYSTEM
+I 623 p_production_capacities
+I 635 p_production_limit_node
+I 643 i_YEAR
+I 648 p_production_limit_node
+B 658 Equation Listing    SOLVE H2forEU_SupplyChain Using LP From line 487
+D 659 e_Objective
+D 665 e_CostTotal
+D 670 e_CostProduction
+D 679 e_CostDummy
+D 684 e_CostTransport
+D 689 e_CostTransportNational
+D 698 e_CostTransportInternational
+D 707 e_CostTransportConversion
+D 714 e_Demand
+D 721 e_LinkNodeProductionPath
+D 730 e_LinkH2SystemNodeProduction
+D 741 e_ProductionLimitNode
+D 752 e_ProductionLimitCountry
+D 763 e_TransportLimitImport
+D 772 e_TransportLimitInternational
+B 783 Column Listing      SOLVE H2forEU_SupplyChain Using LP From line 487
+E 784 v_CostSupply
+E 792 v_CostTotal
+E 800 v_CostTransport
+E 808 v_CostProduction
+E 816 v_CostTotalDummy
+E 824 v_Path
+E 858 v_ProductionNode
+E 871 v_ProductionH2System
+E 898 v_ProductionDummy
+E 906 v_CostTransportNational
+E 914 v_CostTransportInternational
+E 922 v_CostTransportConversion
+B 932 Model Statistics    SOLVE H2forEU_SupplyChain Using LP From line 487
+B 953 Solution Report     SOLVE H2forEU_SupplyChain Using LP From line 487
+F 982 e_Objective
+F 988 e_CostTotal
+F 994 e_CostProduction
+F 1000 e_CostDummy
+F 1006 e_CostTransport
+F 1012 e_CostTransportNational
+F 1018 e_CostTransportInternational
+F 1024 e_CostTransportConversion
+F 1030 e_Demand
+F 1036 e_LinkNodeProductionPath
+F 1043 e_LinkH2SystemNodeProduction
+F 1050 e_ProductionLimitNode
+F 1059 e_ProductionLimitCountry
+F 1066 e_TransportLimitImport
+F 1074 e_TransportLimitInternational
+G 1077 v_CostSupply
+G 1081 v_CostTotal
+G 1087 v_CostTransport
+G 1093 v_CostProduction
+G 1099 v_CostTotalDummy
+G 1105 v_Path
+G 1116 v_ProductionNode
+G 1123 v_ProductionH2System
+G 1134 v_ProductionDummy
+G 1140 v_CostTransportNational
+G 1146 v_CostTransportInternational
+G 1152 v_CostTransportConversion
+B 1165 E x e c u t i o n
