@@ -14,15 +14,15 @@ def run_optimization(i_sensitivity, i_country,i_system,i_electrolyser,i_year,arr
     #print(df_data_input_temp)
 
     if i_system == 'Hybrid':
-        [lcoh_optimum, pv_optimium, onshore_optimium] = LCOH_solver.fct_optimize_system_2d(df_data_input_temp, arr_pv, arr_onshore)
+        [lcoh_optimum, pv_optimium, onshore_optimium, vol_optimum] = LCOH_solver.fct_optimize_system_2d(df_data_input_temp, arr_pv, arr_onshore)
     elif i_system == 'PV':
-        [lcoh_optimum, pv_optimium] = LCOH_solver.fct_optimize_system_1d(df_data_input_temp, arr_pv)
+        [lcoh_optimum, pv_optimium, vol_optimum] = LCOH_solver.fct_optimize_system_1d(df_data_input_temp, arr_pv)
         onshore_optimium = 0
     elif i_system == 'Onshore':
-        [lcoh_optimum, onshore_optimium] = LCOH_solver.fct_optimize_system_1d(df_data_input_temp, arr_onshore)
+        [lcoh_optimum, onshore_optimium, vol_optimum] = LCOH_solver.fct_optimize_system_1d(df_data_input_temp, arr_onshore)
         pv_optimium = 0
 
-    return lcoh_optimum, pv_optimium, onshore_optimium
+    return lcoh_optimum, pv_optimium, onshore_optimium, vol_optimum
 
 
 

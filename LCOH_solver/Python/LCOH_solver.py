@@ -134,9 +134,9 @@ def fct_fill_lcoh_vector(i_init, df_data_input, arr_res, x_range_temp, arr_opt =
 
     for i_x in lst_pos_x:
         if (i_init == 0) & ~(i_x == 0) & ~(i_x == lst_pos_x[-1]):
-            arr_opt[i_x] = LCOH_tools.fct_lcoh_1d(df_data_input, arr_res, x_range_temp[i_x])
+            [arr_opt[i_x], vol_optimum] = LCOH_tools.fct_lcoh_1d(df_data_input, arr_res, x_range_temp[i_x])
         else:
-            arr_opt[i_x] = LCOH_tools.fct_lcoh_1d(df_data_input, arr_res, x_range_temp[i_x])
+            [arr_opt[i_x], vol_optimum] = LCOH_tools.fct_lcoh_1d(df_data_input, arr_res, x_range_temp[i_x])
 
     #print(arr_opt)
     #print(arr_opt)
@@ -160,9 +160,9 @@ def fct_fill_lcoh_matrix(i_init, df_data_input, arr_pv, arr_onshore, x_range_tem
         for i_x in lst_pos_x:
 
             if (i_init == 0) & ~((i_x == 0) & (i_y == 0)) & ~((i_x == lst_pos_x[-1]) & (i_y == 0)) & ~((i_x == lst_pos_x[-1]) & (i_y == lst_pos_y[-1])) & ~((i_x == 0) & (i_y == lst_pos_y[-1])):
-                arr_opt[i_y, i_x] = LCOH_tools.fct_lcoh_2d(df_data_input, arr_pv, arr_onshore, x_range_temp[i_x], y_range_temp[i_y])
+                [arr_opt[i_y, i_x], vol_optimum] = LCOH_tools.fct_lcoh_2d(df_data_input, arr_pv, arr_onshore, x_range_temp[i_x], y_range_temp[i_y])
             else:
-                arr_opt[i_y, i_x] = LCOH_tools.fct_lcoh_2d(df_data_input, arr_pv, arr_onshore, x_range_temp[i_x], y_range_temp[i_y])
+                [arr_opt[i_y, i_x], vol_optimum] = LCOH_tools.fct_lcoh_2d(df_data_input, arr_pv, arr_onshore, x_range_temp[i_x], y_range_temp[i_y])
 
     return arr_opt
 
@@ -189,11 +189,13 @@ def fct_optimize_system_2d(df_data_input, arr_pv, arr_onshore):
         difference = min((x_range_temp[-1]-x_range_temp[0]),(y_range_temp[-1]-y_range_temp[0]))
 
     pos_min = np.unravel_index(arr_opt_2d.argmin(), arr_opt_2d.shape)
-    lcoh_optimum = arr_opt_2d[pos_min[0],pos_min[1]]
+    #lcoh_optimum = arr_opt_2d[pos_min[0],pos_min[1]]
     x_optimium = x_range_temp[pos_min[1]]
     y_optimium = y_range_temp[pos_min[0]]
 
-    return lcoh_optimum, x_optimium, y_optimium
+    [lcoh_optimum, vol_optimum] =LCOH_tools.fct_lcoh_2d(df_data_input,arr_pv, arr_onshore,x_optimium,y_optimium)
+
+    return lcoh_optimum, x_optimium, y_optimium, vol_optimum
 
 
 def fct_optimize_system_1d(df_data_input, arr_res):
@@ -218,9 +220,12 @@ def fct_optimize_system_1d(df_data_input, arr_res):
 
 
     pos_min = np.argmin(arr_opt)
-    lcoh_optimum = arr_opt[pos_min]
+    #lcoh_optimum = arr_opt[pos_min]
     x_optimium = x_range_temp[pos_min]
 
-    return lcoh_optimum, x_optimium
+    [lcoh_optimum, vol_optimum] =LCOH_tools.fct_lcoh_1d(df_data_input, arr_res, x_optimium)
+
+
+    return lcoh_optimum, x_optimium, vol_optimum
 
 

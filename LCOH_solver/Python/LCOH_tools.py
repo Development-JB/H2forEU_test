@@ -40,7 +40,7 @@ def fct_calculated_annualized_cost(var_capex, var_opex, var_lifetime, var_wacc):
     return var_annualized_cost
 
 
-def fct_lcoh_2d(df_data_input, arr_pv, arr_onshore, x_temp, y_temp):
+def fct_lcoh_2d_BACKUP(df_data_input, arr_pv, arr_onshore, x_temp, y_temp):
 
     total_cost = 0
     arr_res = np.empty(shape=[1,8784])
@@ -105,7 +105,7 @@ def fct_lcoh_2d(df_data_input, arr_pv, arr_onshore, x_temp, y_temp):
     #if lcoh > 20:
     #    lcoh = 20
 
-    return lcoh
+    return lcoh, total_hydrogen
 
 
 def fct_lcoh_1d(df_data_input, arr_res, x_temp):
@@ -137,7 +137,7 @@ def fct_lcoh_1d(df_data_input, arr_res, x_temp):
     #if lcoh > 20:
     #    lcoh = np.nan
 
-    return lcoh
+    return lcoh, total_hydrogen
 
 
 def fct_create_check_matrix(df_data_input_check, arr_pv, arr_onhsore, x_range_check, y_range_check):

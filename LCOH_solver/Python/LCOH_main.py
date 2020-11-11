@@ -13,13 +13,13 @@ time_start = time.time()
 
 
 df_result = pd.DataFrame([])
-for i_country in LCOH_settings.lst_country[:]:
+for i_country in LCOH_settings.lst_country[:1]:
     #print(i_country)
 
     lst_cell_country = [x for x in LCOH_settings.lst_cell if i_country in x]
     df_result_country = pd.DataFrame([])
 
-    for i_cell in lst_cell_country[:]:
+    for i_cell in lst_cell_country[:1]:
         print(i_cell)
 
         df_profile_pv_temp = pd.read_csv(LCOH_settings.path_folder_res_profiles + "\\" + i_cell + "_PV_" + str(LCOH_settings.val_reference_year) + ".csv")
@@ -39,9 +39,9 @@ for i_country in LCOH_settings.lst_country[:]:
                     for i_year in LCOH_settings.lst_year[:]:
                         #print(i_year)
 
-                        [lcoh_optimum, x_optimum, y_optimum] = LCOH_call_function.run_optimization(i_sensitivity, i_country,i_system,i_electrolyser,i_year, arr_pv_temp, arr_onshore_temp)
-                        df_result_temp = pd.DataFrame([[i_sensitivity, i_country,i_cell, i_system, i_electrolyser, i_year, x_optimum, y_optimum, lcoh_optimum]],
-                                                      columns=['Sensitivity','Country','Cell','System','Electrolyser','Year','PV','Onshore', 'Lcoh'])
+                        [lcoh_optimum, x_optimum, y_optimum, vol_optimum] = LCOH_call_function.run_optimization(i_sensitivity, i_country,i_system,i_electrolyser,i_year, arr_pv_temp, arr_onshore_temp)
+                        df_result_temp = pd.DataFrame([[i_sensitivity, i_country,i_cell, i_system, i_electrolyser, i_year, x_optimum, y_optimum, lcoh_optimum, vol_optimum]],
+                                                      columns=['Sensitivity','Country','Cell','System','Electrolyser','Year','PV','Onshore', 'Lcoh', 'H2_volume'])
 
                         df_result_country = df_result_country.append(df_result_temp)
                         df_result = df_result.append(df_result_temp)
