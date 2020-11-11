@@ -165,6 +165,44 @@ def SOURCE():
     return gdx_name, gdx_dimensions, gdx_data
 
 
+def SOURCE_VRES():
+
+    # Import packages
+    import pandas as pd
+
+    # Import files
+    import H2forEU_settings
+
+    df_gdx = H2forEU_settings.df_source_vres
+    df_gdx = df_gdx[df_gdx['Source_vres'].astype(str) != 'nan']
+    df_gdx.columns = ['SOURCE_VRES']
+
+    gdx_name = 'SOURCE_VRES'
+    gdx_dimensions = df_gdx.columns.tolist()
+    gdx_data = df_gdx
+
+    return gdx_name, gdx_dimensions, gdx_data
+
+
+def SOURCE_NON_VRES():
+
+    # Import packages
+    import pandas as pd
+
+    # Import files
+    import H2forEU_settings
+
+    df_gdx = H2forEU_settings.df_source
+    df_gdx = df_gdx[(df_gdx['Source'].astype(str) != 'nan') & (~df_gdx['Source'].isin(H2forEU_settings.lst_source_vres))]
+    df_gdx.columns = ['SOURCE_NON_VRES']
+
+    gdx_name = 'SOURCE_NON_VRES'
+    gdx_dimensions = df_gdx.columns.tolist()
+    gdx_data = df_gdx
+
+    return gdx_name, gdx_dimensions, gdx_data
+
+
 def ENERGY_TYPE():
 
     # Import packages
@@ -250,6 +288,24 @@ def LINK_H2_SYSTEM_TECHNOLOGY():
     df_gdx.columns = ['H2_SYSTEM','TECHNOLOGY']
 
     gdx_name = 'LINK_H2_SYSTEM_TECHNOLOGY'
+    gdx_dimensions = df_gdx.columns.tolist()
+    gdx_data = df_gdx
+
+    return gdx_name, gdx_dimensions, gdx_data
+
+
+def LINK_H2_SYSTEM_SOURCE():
+
+    # Import packages
+    import pandas as pd
+
+    # Import files
+    import H2forEU_settings
+
+    df_gdx = H2forEU_settings.df_h2_system[['H2_system','Source']]
+    df_gdx.columns = ['H2_SYSTEM','SOURCE']
+
+    gdx_name = 'LINK_H2_SYSTEM_SOURCE'
     gdx_dimensions = df_gdx.columns.tolist()
     gdx_data = df_gdx
 
@@ -580,7 +636,7 @@ def p_production_limit_country():
     # Import files
     import H2forEU_settings
 
-    df_gdx = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Production_limit_country')
+    df_gdx = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Prod_limit_country')
     df_gdx = df_gdx.drop(['Unit'], axis=1)
     df_gdx = df_gdx.set_index(['Country','Energy_type'])
     df_gdx = df_gdx.interpolate(axis=1)
@@ -607,7 +663,7 @@ def p_production_limit_node():
     # Import files
     import H2forEU_settings
 
-    df_gdx = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Production_limit_node')
+    df_gdx = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Prod_limit_node')
     df_gdx = df_gdx.drop(['Unit'], axis=1)
     df_gdx = df_gdx.set_index(['Node_production','Energy_type'])
     df_gdx = df_gdx.interpolate(axis=1)
@@ -628,6 +684,72 @@ def p_production_limit_node():
     return gdx_name, gdx_dimensions, gdx_data
 
 
+def p_production_area_available_node():
+
+    # Import packages
+    import pandas as pd
+
+    # Import files
+    import H2forEU_settings
+
+    df_gdx = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Prod_area_avail_node')
+    df_gdx = df_gdx[df_gdx['Node_production'].isin(H2forEU_settings.lst_node_production)]
+
+    df_gdx = df_gdx[['Node_production','Area_available']]
+    df_gdx.columns = ['NODE_PRODUCTION','Value']
+
+    gdx_name = 'p_production_area_available_node'
+    gdx_dimensions = df_gdx.columns[: -1].tolist()
+    gdx_data = df_gdx
+
+    return gdx_name, gdx_dimensions, gdx_data
+
+
+def p_production_energy_density():
+
+    # Import packages
+    import pandas as pd
+
+    # Import files
+    import H2forEU_settings
+
+    df_gdx = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Prod_data_land_utilisation')
+    df_gdx = df_gdx[df_gdx['Category']=='Energy_density']
+    df_gdx = df_gdx.drop(['Unit', 'Category'], axis=1)
+    df_gdx = df_gdx[df_gdx['Energy_type'].isin(H2forEU_settings.lst_energy_type)]
+
+    df_gdx = df_gdx[['Energy_type','Value']]
+    df_gdx.columns = ['ENERGY_TYPE','Value']
+
+    gdx_name = 'p_production_energy_density'
+    gdx_dimensions = df_gdx.columns[: -1].tolist()
+    gdx_data = df_gdx
+
+    return gdx_name, gdx_dimensions, gdx_data
+
+def p_production_land_dedication():
+
+    # Import packages
+    import pandas as pd
+
+    # Import files
+    import H2forEU_settings
+
+    df_gdx = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Prod_data_land_utilisation')
+    df_gdx = df_gdx[df_gdx['Category']=='Land_dedication']
+    df_gdx = df_gdx.drop(['Unit', 'Category'], axis=1)
+    df_gdx = df_gdx[df_gdx['Energy_type'].isin(H2forEU_settings.lst_energy_type)]
+
+    df_gdx = df_gdx[['Energy_type','Value']]
+    df_gdx.columns = ['ENERGY_TYPE','Value']
+
+    gdx_name = 'p_production_land_dedication'
+    gdx_dimensions = df_gdx.columns[: -1].tolist()
+    gdx_data = df_gdx
+
+    return gdx_name, gdx_dimensions, gdx_data
+
+
 def p_production_volume():
 
     # Import packages
@@ -636,8 +758,8 @@ def p_production_volume():
     # Import files
     import H2forEU_settings
 
-    df_production_vres = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Production_data_vres')
-    df_production_other = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Production_data_other')
+    df_production_vres = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Prod_data_vres')
+    df_production_other = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Prod_data_other')
     df_gdx = df_production_other.append(df_production_vres)
     df_gdx = df_gdx[df_gdx['Year'].isin(H2forEU_settings.lst_year)]
     df_gdx['H2_system'] = df_gdx['Node_production']+'-'+df_gdx['Source']+'-'+df_gdx['Technology']
@@ -660,8 +782,8 @@ def p_production_cost():
     # Import files
     import H2forEU_settings
 
-    df_production_vres = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Production_data_vres')
-    df_production_other = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Production_data_other')
+    df_production_vres = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Prod_data_vres')
+    df_production_other = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Prod_data_other')
     df_gdx = df_production_other.append(df_production_vres)
     df_gdx = df_gdx[df_gdx['Year'].isin(H2forEU_settings.lst_year)]
     df_gdx['H2_system'] = df_gdx['Node_production']+'-'+df_gdx['Source']+'-'+df_gdx['Technology']
@@ -684,8 +806,8 @@ def p_production_capacities():
     # Import files
     import H2forEU_settings
 
-    df_production_vres = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Production_data_vres')
-    df_production_other = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Production_data_other')
+    df_production_vres = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Prod_data_vres')
+    df_production_other = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Prod_data_other')
     df_gdx = df_production_other.append(df_production_vres)
     df_gdx = df_gdx[df_gdx['Year'].isin(H2forEU_settings.lst_year)]
     df_gdx['H2_system'] = df_gdx['Node_production']+'-'+df_gdx['Source']+'-'+df_gdx['Technology']
@@ -710,7 +832,7 @@ def p_transport_national_cost_fixed():
     # Import files
     import H2forEU_settings
 
-    df_gdx = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Transport_national_cost')
+    df_gdx = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Trans_national_cost')
     df_gdx = df_gdx.drop(['Unit'], axis=1)
     df_gdx = df_gdx[df_gdx['Transport_national_cost_parameter']=='Fixed']
     df_gdx = df_gdx.drop(['Transport_national_cost_parameter'], axis=1)
@@ -739,7 +861,7 @@ def p_transport_national_cost_variable():
     # Import files
     import H2forEU_settings
 
-    df_gdx = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Transport_national_cost')
+    df_gdx = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Trans_national_cost')
     df_gdx = df_gdx.drop(['Unit'], axis=1)
     df_gdx = df_gdx[df_gdx['Transport_national_cost_parameter']=='Variable']
     df_gdx = df_gdx.drop(['Transport_national_cost_parameter'], axis=1)
@@ -814,7 +936,7 @@ def p_transport_international_cost_fixed():
     # Import files
     import H2forEU_settings
 
-    df_gdx = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Transport_international_cost')
+    df_gdx = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Trans_international_cost')
     df_gdx = df_gdx.drop(['Unit'], axis=1)
     df_gdx = df_gdx[df_gdx['Transport_international_cost_parameter']=='Fixed']
     df_gdx = df_gdx.drop(['Transport_international_cost_parameter'], axis=1)
@@ -843,7 +965,7 @@ def p_transport_international_cost_variable():
     # Import files
     import H2forEU_settings
 
-    df_gdx = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Transport_international_cost')
+    df_gdx = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Trans_international_cost')
     df_gdx = df_gdx.drop(['Unit'], axis=1)
     df_gdx = df_gdx[df_gdx['Transport_international_cost_parameter']=='Variable']
     df_gdx = df_gdx.drop(['Transport_international_cost_parameter'], axis=1)
@@ -889,7 +1011,7 @@ def p_transport_international_capacity():
     # Import files
     import H2forEU_settings
 
-    df_gdx = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Transport_international_capacity')
+    df_gdx = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Trans_international_capacity')
     df_gdx = df_gdx.drop(['Unit'], axis=1)
     df_gdx = df_gdx.set_index(['Node_export','Node_import','Transport_international'])
     df_gdx = df_gdx.interpolate(axis=1)
@@ -916,7 +1038,7 @@ def p_transport_international_import_capacity():
     # Import files
     import H2forEU_settings
 
-    df_gdx = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Transport_international_capacity_import')
+    df_gdx = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Trans_international_capacity_import')
     df_gdx = df_gdx.drop(['Unit'], axis=1)
     df_gdx = df_gdx.set_index(['Node_export','Transport_international'])
     df_gdx = df_gdx.interpolate(axis=1)
@@ -942,7 +1064,7 @@ def p_transport_conversion_cost():
     # Import files
     import H2forEU_settings
 
-    df_gdx = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Transport_conversion_cost')
+    df_gdx = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Trans_conversion_cost')
     df_gdx = df_gdx.drop(['Unit','Transport_conversion_cost_parameter'], axis=1)
     df_gdx = df_gdx.set_index(['Transport_conversion'])
     df_gdx = df_gdx.interpolate(axis=1)

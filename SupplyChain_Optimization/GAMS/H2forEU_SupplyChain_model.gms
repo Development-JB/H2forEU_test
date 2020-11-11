@@ -43,7 +43,8 @@ e_LinkNodeProductionPath(YEAR, NODE_PRODUCTION)
 e_LinkH2SystemNodeProduction(YEAR, NODE_PRODUCTION)
 
 *e_Production(YEAR, NODE_PRODUCTION)
-e_ProductionLimitNode(YEAR, NODE_PRODUCTION, ENERGY_TYPE)
+e_ProductionLimitVolumesNode(YEAR, NODE_PRODUCTION, ENERGY_TYPE)
+e_ProductionLimitAreaNode(YEAR, NODE_PRODUCTION)
 e_ProductionLimitCountry(YEAR, COUNTRY, ENERGY_TYPE)
 
 *e_Transport(YEAR)
@@ -159,11 +160,18 @@ e_TransportLimitInternational(i_YEAR(YEAR), NODE_EXPORT, NODE_IMPORT, TRANSPORT_
 ;
 
 *** Production constraints
-e_ProductionLimitNode(i_YEAR(YEAR), NODE_PRODUCTION, ENERGY_TYPE)..
+e_ProductionLimitVolumesNode(i_YEAR(YEAR), NODE_PRODUCTION, ENERGY_TYPE)..
     p_production_limit_node(YEAR, NODE_PRODUCTION, ENERGY_TYPE)
     =g=
-    sum((H2_SYSTEM)$(LINK_H2_SYSTEM_NODE_PRODUCTION(H2_SYSTEM,NODE_PRODUCTION) and LINK_H2_SYSTEM_ENERGY_TYPE(H2_SYSTEM,ENERGY_TYPE)), v_ProductionH2System(YEAR, H2_SYSTEM)*p_production_capacities(YEAR, H2_SYSTEM, ENERGY_TYPE)) 
+    sum((H2_SYSTEM, SOURCE_NON_VRES)$(LINK_H2_SYSTEM_SOURCE(H2_SYSTEM, SOURCE_NON_VRES) and LINK_H2_SYSTEM_NODE_PRODUCTION(H2_SYSTEM,NODE_PRODUCTION) and LINK_H2_SYSTEM_ENERGY_TYPE(H2_SYSTEM,ENERGY_TYPE)), v_ProductionH2System(YEAR, H2_SYSTEM)*p_production_capacities(YEAR, H2_SYSTEM, ENERGY_TYPE)) 
 ;
+
+e_ProductionLimitAreaNode(i_YEAR(YEAR), NODE_PRODUCTION)..
+    p_production_area_available_node(NODE_PRODUCTION)
+    =g=
+    sum((H2_SYSTEM, ENERGY_TYPE, SOURCE_VRES)$(LINK_H2_SYSTEM_SOURCE(H2_SYSTEM, SOURCE_VRES)and LINK_H2_SYSTEM_NODE_PRODUCTION(H2_SYSTEM,NODE_PRODUCTION) and LINK_H2_SYSTEM_ENERGY_TYPE(H2_SYSTEM,ENERGY_TYPE)), v_ProductionH2System(YEAR, H2_SYSTEM)*p_production_capacities(YEAR, H2_SYSTEM, ENERGY_TYPE)*p_production_energy_density(ENERGY_TYPE)*p_production_land_dedication(ENERGY_TYPE)) 
+;
+
 
 e_ProductionLimitCountry(i_YEAR(YEAR), COUNTRY, ENERGY_TYPE)..
     p_production_limit_country(YEAR, COUNTRY, ENERGY_TYPE)
@@ -190,7 +198,8 @@ model H2forEU_SupplyChain /
                 e_Demand,
                 e_LinkNodeProductionPath,
                 e_LinkH2SystemNodeProduction,
-                e_ProductionLimitNode,
+                e_ProductionLimitVolumesNode,
+                e_ProductionLimitAreaNode,
                 e_ProductionLimitCountry,
                 e_TransportLimitImport,
                 e_TransportLimitInternational

@@ -1,4 +1,4 @@
-GAMS 25.1.3  r4e34d435fbd Released Oct 30, 2018 WEX-WEI x86 64bit/MS Windows - 11/10/20 01:12:06 Page 1
+GAMS 25.1.3  r4e34d435fbd Released Oct 30, 2018 WEX-WEI x86 64bit/MS Windows - 11/11/20 15:59:07 Page 1
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -167,75 +167,88 @@ GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Opti
  164  display p_production_limit_node
  165   
  166   
- 167   
- 168  Parameter p_production_volume(YEAR, H2_SYSTEM);
-GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_volume.gdx
---- LOAD  p_production_volume = 1:p_production_volume
+ 167  Parameter p_production_energy_density(ENERGY_TYPE);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_energy_density.gdx
+--- LOAD  p_production_energy_density = 1:p_production_energy_density
+ 171  display p_production_energy_density
  172   
  173   
- 174  Parameter p_production_capacities(YEAR, H2_SYSTEM, ENERGY_TYPE);
+ 174  Parameter p_production_land_dedication(ENERGY_TYPE);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_land_dedication.gdx
+--- LOAD  p_production_land_dedication = 1:p_production_land_dedication
+ 178  display p_production_land_dedication
+ 179   
+ 180   
+ 181  Parameter p_production_volume(YEAR, H2_SYSTEM);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_volume.gdx
+--- LOAD  p_production_volume = 1:p_production_volume
+ 185   
+ 186   
+ 187  display H2_SYSTEM
+ 188  Parameter p_production_capacities(YEAR, H2_SYSTEM, ENERGY_TYPE);
 GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_capacities.gdx
 --- LOAD  p_production_capacities = 1:p_production_capacities
- 178   
- 179   
- 180  Parameter p_production_cost(YEAR, H2_SYSTEM);
+ 192  display p_production_capacities
+ 193   
+ 194   
+ 195  Parameter p_production_cost(YEAR, H2_SYSTEM);
 GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_cost.gdx
 --- LOAD  p_production_cost = 1:p_production_cost
- 184   
- 185   
- 186  Parameter p_transport_national_cost_fixed(YEAR, TRANSPORT_NATIONAL);
+ 199   
+ 200   
+ 201  Parameter p_transport_national_cost_fixed(YEAR, TRANSPORT_NATIONAL);
 GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_national_cost_fixed.gdx
 --- LOAD  p_transport_national_cost_fixed = 1:p_transport_national_cost_fixed
- 190   
- 191   
- 192  Parameter p_transport_national_cost_variable(YEAR, TRANSPORT_NATIONAL);
+ 205   
+ 206   
+ 207  Parameter p_transport_national_cost_variable(YEAR, TRANSPORT_NATIONAL);
 GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_national_cost_variable.gdx
 --- LOAD  p_transport_national_cost_variable = 1:p_transport_national_cost_variable
- 196   
- 197   
- 198  Parameter p_transport_national_distance(NODE_PRODUCTION, NODE_EXPORT,TRANSPORT_NATIONAL);
+ 211   
+ 212   
+ 213  Parameter p_transport_national_distance(NODE_PRODUCTION, NODE_EXPORT,TRANSPORT_NATIONAL);
 GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_national_distance.gdx
 --- LOAD  p_transport_national_distance = 1:p_transport_national_distance
- 202   
- 203   
- 204  Parameter p_transport_international_cost_fixed(YEAR, TRANSPORT_INTERNATIONAL);
+ 217   
+ 218   
+ 219  Parameter p_transport_international_cost_fixed(YEAR, TRANSPORT_INTERNATIONAL);
 GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_cost_fixed.gdx
 --- LOAD  p_transport_international_cost_fixed = 1:p_transport_international_cost_fixed
- 208   
- 209   
- 210  Parameter p_transport_international_cost_variable(YEAR, TRANSPORT_INTERNATIONAL);
+ 223   
+ 224   
+ 225  Parameter p_transport_international_cost_variable(YEAR, TRANSPORT_INTERNATIONAL);
 GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_cost_variable.gdx
 --- LOAD  p_transport_international_cost_variable = 1:p_transport_international_cost_variable
- 214   
- 215   
- 216  Parameter p_transport_international_capacity(YEAR, NODE_EXPORT, NODE_IMPORT, TRANSPORT_INTERNATIONAL);
+ 229   
+ 230   
+ 231  Parameter p_transport_international_capacity(YEAR, NODE_EXPORT, NODE_IMPORT, TRANSPORT_INTERNATIONAL);
 GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_capacity.gdx
 --- LOAD  p_transport_international_capacity = 1:p_transport_international_capacity
- 220   
- 221   
- 222  Parameter p_transport_international_import_capacity(YEAR, NODE_IMPORT, TRANSPORT_INTERNATIONAL);
+ 235   
+ 236   
+ 237  Parameter p_transport_international_import_capacity(YEAR, NODE_IMPORT, TRANSPORT_INTERNATIONAL);
 GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_import_capacity.gdx
 --- LOAD  p_transport_international_import_capacity = 1:p_transport_international_import_capacity
- 226   
- 227   
- 228  Parameter p_transport_international_distance(NODE_EXPORT, NODE_IMPORT, TRANSPORT_INTERNATIONAL);
-GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_distance.gdx
---- LOAD  p_transport_international_distance = 1:p_transport_international_distance
- 232   
- 233   
- 234  Parameter p_transport_conversion_cost(YEAR, TRANSPORT_CONVERSION);
-GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_conversion_cost.gdx
---- LOAD  p_transport_conversion_cost = 1:p_transport_conversion_cost
- 238   
- 239   
- 240   
  241   
  242   
- 243   
- 244   
- 245   
- 246  *Parameter r_capacity(KEY_SCENARIO, TECHNOLOGY);
-GAMS 25.1.3  r4e34d435fbd Released Oct 30, 2018 WEX-WEI x86 64bit/MS Windows - 11/10/20 01:12:06 Page 2
+ 243  Parameter p_transport_international_distance(NODE_EXPORT, NODE_IMPORT, TRANSPORT_INTERNATIONAL);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_distance.gdx
+--- LOAD  p_transport_international_distance = 1:p_transport_international_distance
+ 247   
+ 248   
+ 249  Parameter p_transport_conversion_cost(YEAR, TRANSPORT_CONVERSION);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_conversion_cost.gdx
+--- LOAD  p_transport_conversion_cost = 1:p_transport_conversion_cost
+ 253   
+ 254   
+ 255   
+ 256   
+ 257   
+ 258   
+ 259   
+ 260   
+ 261  *Parameter r_capacity(KEY_SCENARIO, TECHNOLOGY);
+GAMS 25.1.3  r4e34d435fbd Released Oct 30, 2018 WEX-WEI x86 64bit/MS Windows - 11/11/20 15:59:07 Page 2
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Include File Summary
 
@@ -274,22 +287,24 @@ Include File Summary
     30      141 GDXIN          2     140  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_H2_SYSTEM_NODE_PRODUCTION.gdx
     31      155 GDXIN          1       8  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_limit_country.gdx
     32      161 GDXIN          1      14  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_limit_node.gdx
-    33      169 GDXIN          1      22  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_volume.gdx
-    34      175 GDXIN          1      28  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_capacities.gdx
-    35      181 GDXIN          1      34  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_cost.gdx
-    36      187 GDXIN          1      40  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_national_cost_fixed.gdx
-    37      193 GDXIN          1      46  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_national_cost_variable.gdx
-    38      199 GDXIN          1      52  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_national_distance.gdx
-    39      205 GDXIN          1      58  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_cost_fixed.gdx
-    40      211 GDXIN          1      64  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_cost_variable.gdx
-    41      217 GDXIN          1      70  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_capacity.gdx
-    42      223 GDXIN          1      76  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_import_capacity.gdx
-    43      229 GDXIN          1      82  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_distance.gdx
-    44      235 GDXIN          1      88  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_conversion_cost.gdx
+    33      168 GDXIN          1      21  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_energy_density.gdx
+    34      175 GDXIN          1      28  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_land_dedication.gdx
+    35      182 GDXIN          1      35  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_volume.gdx
+    36      189 GDXIN          1      42  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_capacities.gdx
+    37      196 GDXIN          1      49  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_cost.gdx
+    38      202 GDXIN          1      55  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_national_cost_fixed.gdx
+    39      208 GDXIN          1      61  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_national_cost_variable.gdx
+    40      214 GDXIN          1      67  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_national_distance.gdx
+    41      220 GDXIN          1      73  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_cost_fixed.gdx
+    42      226 GDXIN          1      79  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_cost_variable.gdx
+    43      232 GDXIN          1      85  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_capacity.gdx
+    44      238 GDXIN          1      91  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_import_capacity.gdx
+    45      244 GDXIN          1      97  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_distance.gdx
+    46      250 GDXIN          1     103  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_conversion_cost.gdx
 
 
-COMPILATION TIME     =        0.016 SECONDS      3 MB  25.1.3 r4e34d435fbd WEX-WEI
-GAMS 25.1.3  r4e34d435fbd Released Oct 30, 2018 WEX-WEI x86 64bit/MS Windows - 11/10/20 01:12:06 Page 3
+COMPILATION TIME     =        0.234 SECONDS      3 MB  25.1.3 r4e34d435fbd WEX-WEI
+GAMS 25.1.3  r4e34d435fbd Released Oct 30, 2018 WEX-WEI x86 64bit/MS Windows - 11/11/20 15:59:07 Page 3
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 E x e c u t i o n
 
@@ -313,7 +328,37 @@ MAR,    ESP
 
                          PV     Onshore
 
+2020.MAR_C00018    7000.000    5000.000
 2020.MAR_C00017    7000.000    5000.000
+
+
+----    171 PARAMETER p_production_energy_density  
+
+PV      170.000,    Onshore   5.000
+
+
+----    178 PARAMETER p_production_land_dedication  
+
+PV      0.030,    Onshore 1.000
+
+
+----    187 SET H2_SYSTEM  
+
+MAR_C00018-Hybrid-Alkaline_electrolyser ,    MAR_C00018-Hybrid-PEM_electrolyser      ,    MAR_C00018-PV-Alkaline_electrolyser     ,    MAR_C00018-PV-PEM_electrolyser          ,    MAR_C00018-Onshore-Alkaline_electrolyser
+MAR_C00018-Onshore-PEM_electrolyser     ,    MAR_C00017-Hybrid-Alkaline_electrolyser ,    MAR_C00017-Hybrid-PEM_electrolyser      ,    MAR_C00017-PV-Alkaline_electrolyser     ,    MAR_C00017-PV-PEM_electrolyser          
+MAR_C00017-Onshore-Alkaline_electrolyser,    MAR_C00017-Onshore-PEM_electrolyser     
+
+
+----    192 PARAMETER p_production_capacities  
+
+                                                       PV     Onshore
+
+2020.MAR_C00018-Hybrid-Alkaline_electrolyser        0.600       1.500
+2020.MAR_C00018-PV-Alkaline_electrolyser            1.500
+2020.MAR_C00018-Onshore-Alkaline_electrolyser                   1.500
+2020.MAR_C00017-Hybrid-Alkaline_electrolyser        0.600       1.500
+2020.MAR_C00017-PV-Alkaline_electrolyser            1.500
+2020.MAR_C00017-Onshore-Alkaline_electrolyser                   1.500
 
 
 

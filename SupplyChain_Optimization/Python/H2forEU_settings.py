@@ -48,6 +48,10 @@ df_source = df_set[['Source']]
 df_source = df_source[df_source['Source'].astype(str) != 'nan']
 lst_source = df_source['Source'].tolist()
 
+df_source_vres = df_set[['Source_vres']]
+df_source_vres = df_source_vres[df_source_vres['Source_vres'].astype(str) != 'nan']
+lst_source_vres = df_source_vres['Source_vres'].tolist()
+
 df_technology = df_set[['Technology']]
 df_technology = df_technology[df_technology['Technology'].astype(str) != 'nan']
 lst_technology = df_technology['Technology'].tolist()
@@ -73,40 +77,38 @@ df_transport_conversion = df_transport_conversion[df_transport_conversion['Trans
 lst_transport_conversion = df_transport_conversion['Transport_conversion'].tolist()
 
 
-#df_link_node_production_export = pd.read_excel(val_path_settings, sheet_name='LINK_NODE_PRODUCTION_EXPORT')
-df_link_node_production_export = pd.read_excel(val_path_data_general, sheet_name='Transport_national_distance')
+df_link_node_production_export = pd.read_excel(val_path_data_general, sheet_name='Trans_national_distance')
 df_link_node_production_export = df_link_node_production_export[['Node_production', 'Node_export']][df_link_node_production_export['Transport_national_distance']<= var_transport_national_distance_threshold]
 df_link_node_production_export = df_link_node_production_export[df_link_node_production_export['Node_production'].isin(lst_node_production)]
 df_link_node_production_export = df_link_node_production_export[df_link_node_production_export['Node_export'].isin(lst_node_export)]
 
-#df_link_node_export_import = pd.read_excel(val_path_settings, sheet_name='LINK_NODE_EXPORT_IMPORT')
-df_link_node_export_import = pd.read_excel(val_path_data_general, sheet_name='Transport_international_distance')
+df_link_node_export_import = pd.read_excel(val_path_data_general, sheet_name='Trans_international_distance')
 df_link_node_export_import = df_link_node_export_import[['Node_export', 'Node_import']]
 df_link_node_export_import = df_link_node_export_import[df_link_node_export_import['Node_import'].isin(lst_node_import)]
 df_link_node_export_import = df_link_node_export_import[df_link_node_export_import['Node_export'].isin(lst_node_export)]
 
-df_link_transport_national_mode = pd.read_excel(val_path_settings, sheet_name='Link_transport_national_mode')
+df_link_transport_national_mode = pd.read_excel(val_path_settings, sheet_name='Link_trans_national_mode')
 df_link_transport_national_mode = df_link_transport_national_mode[['Transport_national', 'Transport_national_mode']]
 df_link_transport_national_mode = df_link_transport_national_mode[df_link_transport_national_mode['Transport_national'].isin(lst_transport_national)]
 df_link_transport_national_mode = df_link_transport_national_mode[df_link_transport_national_mode['Transport_national_mode'].isin(lst_transport_national_mode)]
 
-df_link_transport_international_mode = pd.read_excel(val_path_settings, sheet_name='Link_transport_international_mode')
+df_link_transport_international_mode = pd.read_excel(val_path_settings, sheet_name='Link_trans_international_mode')
 df_link_transport_international_mode = df_link_transport_international_mode[['Transport_international', 'Transport_international_mode']]
 df_link_transport_international_mode = df_link_transport_international_mode[df_link_transport_international_mode['Transport_international'].isin(lst_transport_international)]
 df_link_transport_international_mode = df_link_transport_international_mode[df_link_transport_international_mode['Transport_international_mode'].isin(lst_transport_international_mode)]
 
 
-df_transport_national_distance = pd.read_excel(val_path_data_general, sheet_name='Transport_national_distance')
+df_transport_national_distance = pd.read_excel(val_path_data_general, sheet_name='Trans_national_distance')
 df_transport_national_distance = df_transport_national_distance[df_transport_national_distance['Node_production'].isin(lst_node_production)]
 df_transport_national_distance = df_transport_national_distance[df_transport_national_distance['Node_export'].isin(lst_node_export)]
 df_transport_national_distance = df_transport_national_distance[df_transport_national_distance['Transport_national_mode'].isin(lst_transport_national_mode)]
 
-df_transport_international_distance = pd.read_excel(val_path_data_general, sheet_name='Transport_international_distance')
+df_transport_international_distance = pd.read_excel(val_path_data_general, sheet_name='Trans_international_distance')
 df_transport_international_distance = df_transport_international_distance[df_transport_international_distance['Node_import'].isin(lst_node_import)]
 df_transport_international_distance = df_transport_international_distance[df_transport_international_distance['Node_export'].isin(lst_node_export)]
 df_transport_international_distance = df_transport_international_distance[df_transport_international_distance['Transport_international_mode'].isin(lst_transport_international_mode)]
 
-df_link_transport_conversion = pd.read_excel(val_path_settings, sheet_name='Link_transport_conversion')
+df_link_transport_conversion = pd.read_excel(val_path_settings, sheet_name='Link_trans_conversion')
 df_link_transport_conversion = df_link_transport_conversion[df_link_transport_conversion['Transport_national'].isin(lst_transport_national)]
 df_link_transport_conversion = df_link_transport_conversion[df_link_transport_conversion['Transport_international'].isin(lst_transport_international)]
 

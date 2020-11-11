@@ -7,15 +7,35 @@ display YEAR
 Parameter p_production_limit_country(YEAR, COUNTRY, ENERGY_TYPE);
 $gdxin gdx/p_production_limit_country.gdx
 $load p_production_limit_country = p_production_limit_country
-$gdxin
+*$gdxin
 
 
 Parameter p_production_limit_node(YEAR, NODE_PRODUCTION, ENERGY_TYPE);
 $gdxin gdx/p_production_limit_node.gdx
 $load p_production_limit_node = p_production_limit_node
 $gdxin
-display p_production_limit_node
+*display p_production_limit_node
 
+
+Parameter p_production_area_available_node(NODE_PRODUCTION);
+$gdxin gdx/p_production_area_available_node.gdx
+$load p_production_area_available_node = p_production_area_available_node
+$gdxin
+*display p_production_area_available_node
+
+
+Parameter p_production_energy_density(ENERGY_TYPE);
+$gdxin gdx/p_production_energy_density.gdx
+$load p_production_energy_density = p_production_energy_density
+$gdxin
+*display p_production_energy_density
+
+
+Parameter p_production_land_dedication(ENERGY_TYPE);
+$gdxin gdx/p_production_land_dedication.gdx
+$load p_production_land_dedication = p_production_land_dedication
+$gdxin
+*display p_production_land_dedication
 
 
 Parameter p_production_volume(YEAR, H2_SYSTEM);

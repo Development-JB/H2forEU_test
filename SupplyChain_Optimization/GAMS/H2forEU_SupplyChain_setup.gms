@@ -55,6 +55,16 @@ SET SOURCE;
 $load SOURCE
 *display SOURCE
 
+$gdxin gdx/SOURCE_VRES.gdx
+SET SOURCE_VRES(SOURCE);
+$load SOURCE_VRES
+*display SOURCE_VRES
+
+$gdxin gdx/SOURCE_NON_VRES.gdx
+SET SOURCE_NON_VRES(SOURCE);
+$load SOURCE_NON_VRES
+*display SOURCE_NON_VRES
+
 $gdxin gdx/TECHNOLOGY.gdx
 SET TECHNOLOGY;
 $load TECHNOLOGY
@@ -127,6 +137,11 @@ SET LINK_H2_SYSTEM_ENERGY_TYPE(H2_SYSTEM,ENERGY_TYPE);
 $load LINK_H2_SYSTEM_ENERGY_TYPE
 *display LINK_H2_SYSTEM_ENERGY_TYPE
 
+$gdxin gdx/LINK_H2_SYSTEM_SOURCE.gdx
+SET LINK_H2_SYSTEM_SOURCE(H2_SYSTEM,SOURCE);
+$load LINK_H2_SYSTEM_SOURCE
+*display LINK_H2_SYSTEM_SOURCE
+
 $gdxin gdx/LINK_H2_SYSTEM_TECHNOLOGY.gdx
 SET LINK_H2_SYSTEM_TECHNOLOGY(H2_SYSTEM,TECHNOLOGY);
 $load LINK_H2_SYSTEM_TECHNOLOGY
@@ -144,4 +159,21 @@ $load LINK_H2_SYSTEM_NODE_PRODUCTION
 
 
 *** Temporal
-SET i_YEAR(YEAR)
+SET i_YEAR(YEAR);
+
+
+Parameter
+r_CostTotal(YEAR)
+r_CostTransport(YEAR)
+r_CostTransportNational(YEAR)
+r_CostTransportInternational(YEAR)
+r_CostTransportConversion(YEAR)
+
+r_CostProduction(YEAR)
+r_CostTotalDummy(YEAR)
+r_Path(YEAR, PATH)
+r_ProductionNode(YEAR, NODE_PRODUCTION)
+r_ProductionH2System(YEAR, H2_SYSTEM)
+r_ProductionDummy(YEAR, NODE_IMPORT)
+;
+

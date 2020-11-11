@@ -1,71 +1,72 @@
 B 2 C o m p i l a t i o n
-B 534 Include File Summary
-B 591 E x e c u t i o n
-I 592 ENERGY_TYPE
-I 598 COUNTRY
-I 603 YEAR
-I 608 p_production_limit_node
-I 616 H2_SYSTEM
-I 623 p_production_capacities
-I 635 p_production_limit_node
-I 643 i_YEAR
-I 648 p_production_limit_node
-B 658 Equation Listing    SOLVE H2forEU_SupplyChain Using LP From line 487
-D 659 e_Objective
-D 665 e_CostTotal
-D 670 e_CostProduction
-D 679 e_CostDummy
-D 684 e_CostTransport
-D 689 e_CostTransportNational
-D 698 e_CostTransportInternational
-D 707 e_CostTransportConversion
-D 714 e_Demand
-D 721 e_LinkNodeProductionPath
-D 730 e_LinkH2SystemNodeProduction
-D 741 e_ProductionLimitNode
-D 752 e_ProductionLimitCountry
-D 763 e_TransportLimitImport
-D 772 e_TransportLimitInternational
-B 783 Column Listing      SOLVE H2forEU_SupplyChain Using LP From line 487
-E 784 v_CostSupply
-E 792 v_CostTotal
-E 800 v_CostTransport
-E 808 v_CostProduction
-E 816 v_CostTotalDummy
-E 824 v_Path
-E 858 v_ProductionNode
-E 871 v_ProductionH2System
-E 898 v_ProductionDummy
-E 906 v_CostTransportNational
-E 914 v_CostTransportInternational
-E 922 v_CostTransportConversion
-B 932 Model Statistics    SOLVE H2forEU_SupplyChain Using LP From line 487
-B 953 Solution Report     SOLVE H2forEU_SupplyChain Using LP From line 487
-F 982 e_Objective
-F 988 e_CostTotal
-F 994 e_CostProduction
-F 1000 e_CostDummy
-F 1006 e_CostTransport
-F 1012 e_CostTransportNational
-F 1018 e_CostTransportInternational
-F 1024 e_CostTransportConversion
-F 1030 e_Demand
-F 1036 e_LinkNodeProductionPath
-F 1043 e_LinkH2SystemNodeProduction
-F 1050 e_ProductionLimitNode
-F 1059 e_ProductionLimitCountry
-F 1066 e_TransportLimitImport
-F 1074 e_TransportLimitInternational
-G 1077 v_CostSupply
-G 1081 v_CostTotal
-G 1087 v_CostTransport
-G 1093 v_CostProduction
-G 1099 v_CostTotalDummy
-G 1105 v_Path
-G 1116 v_ProductionNode
-G 1123 v_ProductionH2System
-G 1134 v_ProductionDummy
-G 1140 v_CostTransportNational
-G 1146 v_CostTransportInternational
-G 1152 v_CostTransportConversion
-B 1165 E x e c u t i o n
+B 574 Include File Summary
+B 637 E x e c u t i o n
+I 638 ENERGY_TYPE
+I 644 COUNTRY
+I 649 YEAR
+I 654 H2_SYSTEM
+I 661 p_production_capacities
+I 673 p_production_limit_node
+I 681 i_YEAR
+I 686 p_production_limit_node
+B 696 Equation Listing    SOLVE H2forEU_SupplyChain Using LP From line 548
+D 697 e_Objective
+D 703 e_CostTotal
+D 708 e_CostProduction
+D 717 e_CostDummy
+D 722 e_CostTransport
+D 727 e_CostTransportNational
+D 736 e_CostTransportInternational
+D 745 e_CostTransportConversion
+D 752 e_Demand
+D 759 e_LinkNodeProductionPath
+D 768 e_LinkH2SystemNodeProduction
+D 779 e_ProductionLimitVolumesNode
+D 784 e_ProductionLimitAreaNode
+D 795 e_ProductionLimitCountry
+D 806 e_TransportLimitImport
+D 815 e_TransportLimitInternational
+B 826 Column Listing      SOLVE H2forEU_SupplyChain Using LP From line 548
+E 827 v_CostSupply
+E 835 v_CostTotal
+E 843 v_CostTransport
+E 851 v_CostProduction
+E 859 v_CostTotalDummy
+E 867 v_Path
+E 901 v_ProductionNode
+E 914 v_ProductionH2System
+E 940 v_ProductionDummy
+E 948 v_CostTransportNational
+E 956 v_CostTransportInternational
+E 964 v_CostTransportConversion
+B 974 Model Statistics    SOLVE H2forEU_SupplyChain Using LP From line 548
+B 995 Solution Report     SOLVE H2forEU_SupplyChain Using LP From line 548
+F 1024 e_Objective
+F 1030 e_CostTotal
+F 1036 e_CostProduction
+F 1042 e_CostDummy
+F 1048 e_CostTransport
+F 1054 e_CostTransportNational
+F 1060 e_CostTransportInternational
+F 1066 e_CostTransportConversion
+F 1072 e_Demand
+F 1078 e_LinkNodeProductionPath
+F 1085 e_LinkH2SystemNodeProduction
+F 1092 e_ProductionLimitVolumesNode
+F 1097 e_ProductionLimitAreaNode
+F 1104 e_ProductionLimitCountry
+F 1111 e_TransportLimitImport
+F 1119 e_TransportLimitInternational
+G 1122 v_CostSupply
+G 1126 v_CostTotal
+G 1132 v_CostTransport
+G 1138 v_CostProduction
+G 1144 v_CostTotalDummy
+G 1150 v_Path
+G 1161 v_ProductionNode
+G 1168 v_ProductionH2System
+G 1179 v_ProductionDummy
+G 1185 v_CostTransportNational
+G 1191 v_CostTransportInternational
+G 1197 v_CostTransportConversion
+B 1210 E x e c u t i o n
