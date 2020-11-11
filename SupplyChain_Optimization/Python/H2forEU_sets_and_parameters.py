@@ -636,7 +636,9 @@ def p_production_volume():
     # Import files
     import H2forEU_settings
 
-    df_gdx = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Production_data')
+    df_production_vres = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Production_data_vres')
+    df_production_other = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Production_data_other')
+    df_gdx = df_production_other.append(df_production_vres)
     df_gdx = df_gdx[df_gdx['Year'].isin(H2forEU_settings.lst_year)]
     df_gdx['H2_system'] = df_gdx['Node_production']+'-'+df_gdx['Source']+'-'+df_gdx['Technology']
 
@@ -658,7 +660,9 @@ def p_production_cost():
     # Import files
     import H2forEU_settings
 
-    df_gdx = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Production_data')
+    df_production_vres = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Production_data_vres')
+    df_production_other = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Production_data_other')
+    df_gdx = df_production_other.append(df_production_vres)
     df_gdx = df_gdx[df_gdx['Year'].isin(H2forEU_settings.lst_year)]
     df_gdx['H2_system'] = df_gdx['Node_production']+'-'+df_gdx['Source']+'-'+df_gdx['Technology']
 
@@ -680,7 +684,9 @@ def p_production_capacities():
     # Import files
     import H2forEU_settings
 
-    df_gdx = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Production_data')
+    df_production_vres = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Production_data_vres')
+    df_production_other = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Production_data_other')
+    df_gdx = df_production_other.append(df_production_vres)
     df_gdx = df_gdx[df_gdx['Year'].isin(H2forEU_settings.lst_year)]
     df_gdx['H2_system'] = df_gdx['Node_production']+'-'+df_gdx['Source']+'-'+df_gdx['Technology']
     df_gdx = df_gdx[['H2_system','Year']+H2forEU_settings.lst_energy_type]
