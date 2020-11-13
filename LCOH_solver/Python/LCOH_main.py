@@ -39,6 +39,7 @@ for i_country in LCOH_settings.lst_country[:1]:
                     for i_year in LCOH_settings.lst_year[:]:
                         #print(i_year)
 
+
                         [lcoh_optimum, x_optimum, y_optimum, vol_optimum] = LCOH_call_function.run_optimization(i_sensitivity, i_country,i_system,i_electrolyser,i_year, arr_pv_temp, arr_onshore_temp)
                         df_result_temp = pd.DataFrame([[i_sensitivity, i_country,i_cell, i_system, i_electrolyser, i_year, x_optimum, y_optimum, lcoh_optimum, vol_optimum]],
                                                       columns=['Sensitivity','Country','Cell','System','Electrolyser','Year','PV','Onshore', 'Lcoh', 'H2_volume'])
