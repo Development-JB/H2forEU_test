@@ -1,5 +1,6 @@
-import geopandas as gpd
+
 import pandas as pd
+import numpy as np
 import json
 
 
@@ -46,3 +47,37 @@ def fct_load_system_result():
     df_lcoh = df_lcoh.drop(['Nuts2_code2016','Nuts2_code2013'], axis=1)
 
     return df_lcoh
+
+
+def fct_load_res_information():
+
+    df_res_information = pd.read_csv("C:\\Users\\Johannes\\Documents\\PhD\\06Research\\Paper2\\Data\\06TreatedPreparedData\\RES_profiles\\EU_NUTS2\\201115_Summary_cells.csv")
+    df_nuts2_codes_fr = pd.read_csv("C:\\Users\\Johannes\\Documents\\PhD\\06Research\\Paper2\\Data\\06TreatedPreparedData\\NUTS2_France\\NUTS2_codes_FR.csv")
+    df_res_information['Nuts2_code2013'] = df_res_information['Id_cell'].str[4:]
+    df_res_information = pd.merge(df_res_information, df_nuts2_codes_fr, how='left', on=['Nuts2_code2013'])
+    df_res_information['NUTS_ID'] = df_res_information['Nuts2_code2016'].combine_first(df_res_information['Nuts2_code2013'])
+    df_res_information = df_res_information.drop(['Nuts2_code2016','Nuts2_code2013'], axis=1)
+
+    df_colorscale_load_factor = pd.DataFrame(range(0,1000+1,1), columns=['Load_factor'])
+    df_colorscale_load_factor['Red'] = np.nan
+    df_colorscale_load_factor['Green'] = np.nan
+    df_colorscale_load_factor['Blue'] = np.nan
+    df_colorscale_load_factor['Load_factor'] = df_colorscale_load_factor['Load_factor']/1000
+    df_colorscale_load_factor = df_colorscale_load_factor.set_index(['Load_factor'])
+    df_colorscale_load_factor.loc[0,'Red'] = 255
+    df_colorscale_load_factor.loc[0,'Green'] = 255
+    df_colorscale_load_factor.loc[0,'Blue'] = 255
+    df_colorscale_load_factor.loc[0.12,'Red'] = 255
+    df_colorscale_load_factor.loc[0.12,'Green'] = 255
+    df_colorscale_load_factor.loc[0.12,'Blue'] = 255
+    df_colorscale_load_factor.loc[0.3,'Red'] = 0
+    df_colorscale_load_factor.loc[0.3,'Green'] = 0
+    df_colorscale_load_factor.loc[0.3,'Blue'] = 0
+    df_colorscale_load_factor.loc[1,'Red'] = 0
+    df_colorscale_load_factor.loc[1,'Green'] = 0
+    df_colorscale_load_factor.loc[1,'Blue'] = 0
+
+    df_colorscale_load_factor = df_colorscale_load_factor.interpolate(axis=0).round(2)
+    df_colorscale_load_factor['Rgb'] = 'rgb('+df_colorscale_load_factor['Red'].astype(str)+','+df_colorscale_load_factor['Green'].astype(str)+','+df_colorscale_load_factor['Blue'].astype(str)+')'
+
+    return df_res_information, df_colorscale_load_factor

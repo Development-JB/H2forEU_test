@@ -11,6 +11,7 @@ from app import app
 lst_dashboards = [
                     'page_lcoh',
                     'page_system',
+                    'page_res_profiles',
                     'marco_dummy'
                    ]
 
@@ -26,6 +27,7 @@ app.layout = html.Div([
     dbc.Nav([
                 dbc.NavItem(dbc.NavLink('LCOH', href='/apps/page_lcoh')),
                 dbc.NavItem(dbc.NavLink('RES system', href='/apps/page_system')),
+                dbc.NavItem(dbc.NavLink('RES profiles', href='/apps/page_res_profiles')),
             ]),
 
     html.Div(id='page-content', children=[]),
@@ -43,6 +45,8 @@ def display_page\
        return page_lcoh.layout
    elif ('page_system' in lst_dashboards) and (pathname == '/apps/page_system'):
        return page_system.layout
+   elif ('page_res_profiles' in lst_dashboards) and (pathname == '/apps/page_res_profiles'):
+       return page_res_profiles.layout
    else:
        return "404 Page Error! Please choose a link"
 
