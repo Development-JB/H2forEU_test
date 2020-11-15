@@ -1,0 +1,376 @@
+GAMS 25.1.3  r4e34d435fbd Released Oct 30, 2018 WEX-WEI x86 64bit/MS Windows - 11/11/20 15:59:07 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+INCLUDE    C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\H2forEU_SupplyChain_setup.gms
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/ITERATION.gdx
+   3  SET ITERATION;
+--- LOAD  ITERATION = 1:ITERATION
+   5  *display ITERATION
+   6   
+   7  *SET ITERATION /1/
+   8   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/YEAR.gdx
+  10  SET YEAR;
+--- LOAD  YEAR = 1:YEAR
+  12  *display YEAR
+  13   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/COUNTRY.gdx
+  15  SET COUNTRY;
+--- LOAD  COUNTRY = 1:COUNTRY
+  17  *display COUNTRY
+  18   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/NODE_PRODUCTION.gdx
+  20  SET NODE_PRODUCTION;
+--- LOAD  NODE_PRODUCTION = 1:NODE_PRODUCTION
+  22  *display NODE_PRODUCTION
+  23   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/NODE_EXPORT.gdx
+  25  SET NODE_EXPORT;
+--- LOAD  NODE_EXPORT = 1:NODE_EXPORT
+  27  *display NODE_EXPORT
+  28   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/NODE_IMPORT.gdx
+  30  SET NODE_IMPORT;
+--- LOAD  NODE_IMPORT = 1:NODE_IMPORT
+  32  *display NODE_IMPORT
+  33   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/PATH.gdx
+  35  SET PATH;
+--- LOAD  PATH = 1:PATH
+  37  *display PATH
+  38   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/TRANSPORT_NATIONAL.gdx
+  40  SET TRANSPORT_NATIONAL;
+--- LOAD  TRANSPORT_NATIONAL = 1:TRANSPORT_NATIONAL
+  42  *display TRANSPORT_NATIONAL
+  43   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/TRANSPORT_INTERNATIONAL.gdx
+  45  SET TRANSPORT_INTERNATIONAL;
+--- LOAD  TRANSPORT_INTERNATIONAL = 1:TRANSPORT_INTERNATIONAL
+  47  *display TRANSPORT_INTERNATIONAL
+  48   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/TRANSPORT_CONVERSION.gdx
+  50  SET TRANSPORT_CONVERSION;
+--- LOAD  TRANSPORT_CONVERSION = 1:TRANSPORT_CONVERSION
+  52  *display TRANSPORT_CONVERSION
+  53   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/SOURCE.gdx
+  55  SET SOURCE;
+--- LOAD  SOURCE = 1:SOURCE
+  57  *display SOURCE
+  58   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/TECHNOLOGY.gdx
+  60  SET TECHNOLOGY;
+--- LOAD  TECHNOLOGY = 1:TECHNOLOGY
+  62  *display TECHNOLOGY
+  63   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/ENERGY_TYPE.gdx
+  65  SET ENERGY_TYPE;
+--- LOAD  ENERGY_TYPE = 1:ENERGY_TYPE
+  67  *display ENERGY_TYPE
+  68   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/H2_SYSTEM.gdx
+  70  SET H2_SYSTEM;
+--- LOAD  H2_SYSTEM = 1:H2_SYSTEM
+  72  *display H2_SYSTEM
+  73   
+  74   
+  75  ***** LINKS
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_ITERATION_YEAR.gdx
+  77  SET LINK_ITERATION_YEAR(ITERATION,YEAR);
+--- LOAD  LINK_ITERATION_YEAR = 1:LINK_ITERATION_YEAR
+  79  *display LINK_ITERATION_YEAR
+  80   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_SOURCE_ENERGY_TYPE.gdx
+  82  SET LINK_SOURCE_ENERGY_TYPE(SOURCE,ENERGY_TYPE);
+--- LOAD  LINK_SOURCE_ENERGY_TYPE = 1:LINK_SOURCE_ENERGY_TYPE
+  84  *display LINK_SOURCE_ENERGY_TYPE
+  85   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_SOURCE_TECHNOLOGY.gdx
+  87  SET LINK_SOURCE_TECHNOLOGY(SOURCE,TECHNOLOGY);
+--- LOAD  LINK_SOURCE_TECHNOLOGY = 1:LINK_SOURCE_TECHNOLOGY
+  89  *display LINK_SOURCE_TECHNOLOGY
+  90   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_COUNTRY_NODE_PRODUCTION.gdx
+  92  SET LINK_COUNTRY_NODE_PRODUCTION(COUNTRY,NODE_PRODUCTION);
+--- LOAD  LINK_COUNTRY_NODE_PRODUCTION = 1:LINK_COUNTRY_NODE_PRODUCTION
+  94  *display LINK_COUNTRY_NODE_PRODUCTION
+  95   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_NODE_PRODUCTION.gdx
+  97  SET LINK_PATH_NODE_PRODUCTION(PATH,NODE_PRODUCTION);
+--- LOAD  LINK_PATH_NODE_PRODUCTION = 1:LINK_PATH_NODE_PRODUCTION
+  99  *display LINK_PATH_NODE_PRODUCTION
+ 100   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_NODE_EXPORT.gdx
+ 102  SET LINK_PATH_NODE_EXPORT(PATH,NODE_EXPORT);
+--- LOAD  LINK_PATH_NODE_EXPORT = 1:LINK_PATH_NODE_EXPORT
+ 104  *display LINK_PATH_NODE_EXPORT
+ 105   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_NODE_IMPORT.gdx
+ 107  SET LINK_PATH_NODE_IMPORT(PATH,NODE_IMPORT);
+--- LOAD  LINK_PATH_NODE_IMPORT = 1:LINK_PATH_NODE_IMPORT
+ 109  *display LINK_PATH_NODE_IMPORT
+ 110   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_TRANSPORT_NATIONAL.gdx
+ 112  SET LINK_PATH_TRANSPORT_NATIONAL(PATH,TRANSPORT_NATIONAL);
+--- LOAD  LINK_PATH_TRANSPORT_NATIONAL = 1:LINK_PATH_TRANSPORT_NATIONAL
+ 114  *display LINK_PATH_TRANSPORT_NATIONAL
+ 115   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_TRANSPORT_INTERNATIONAL.gdx
+ 117  SET LINK_PATH_TRANSPORT_INTERNATIONAL(PATH,TRANSPORT_INTERNATIONAL);
+--- LOAD  LINK_PATH_TRANSPORT_INTERNATIONAL = 1:LINK_PATH_TRANSPORT_INTERNATIONAL
+ 119  *display LINK_PATH_TRANSPORT_INTERNATIONAL
+ 120   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_CONVERSION.gdx
+ 122  SET LINK_PATH_CONVERSION(PATH,TRANSPORT_CONVERSION);
+--- LOAD  LINK_PATH_CONVERSION = 1:LINK_PATH_CONVERSION
+ 124  *display LINK_PATH_CONVERSION
+ 125   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_H2_SYSTEM_ENERGY_TYPE.gdx
+ 127  SET LINK_H2_SYSTEM_ENERGY_TYPE(H2_SYSTEM,ENERGY_TYPE);
+--- LOAD  LINK_H2_SYSTEM_ENERGY_TYPE = 1:LINK_H2_SYSTEM_ENERGY_TYPE
+ 129  *display LINK_H2_SYSTEM_ENERGY_TYPE
+ 130   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_H2_SYSTEM_TECHNOLOGY.gdx
+ 132  SET LINK_H2_SYSTEM_TECHNOLOGY(H2_SYSTEM,TECHNOLOGY);
+--- LOAD  LINK_H2_SYSTEM_TECHNOLOGY = 1:LINK_H2_SYSTEM_TECHNOLOGY
+ 134  *display LINK_H2_SYSTEM_TECHNOLOGY
+ 135   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_H2_SYSTEM_COUNTRY.gdx
+ 137  SET LINK_H2_SYSTEM_COUNTRY(H2_SYSTEM,COUNTRY);
+--- LOAD  LINK_H2_SYSTEM_COUNTRY = 1:LINK_H2_SYSTEM_COUNTRY
+ 139  *display LINK_H2_SYSTEM_COUNTRY
+ 140   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_H2_SYSTEM_NODE_PRODUCTION.gdx
+ 142  SET LINK_H2_SYSTEM_NODE_PRODUCTION(H2_SYSTEM,NODE_PRODUCTION);
+--- LOAD  LINK_H2_SYSTEM_NODE_PRODUCTION = 1:LINK_H2_SYSTEM_NODE_PRODUCTION
+ 144  *display LINK_H2_SYSTEM_NODE_PRODUCTION
+ 145   
+ 146   
+ 147  *** Temporal
+ 148  SET i_YEAR(YEAR)
+ 149   
+ 150   
+ 151  display ENERGY_TYPE
+ 152  display COUNTRY
+ 153  display YEAR
+ 154  Parameter p_production_limit_country(YEAR, COUNTRY, ENERGY_TYPE);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_limit_country.gdx
+--- LOAD  p_production_limit_country = 1:p_production_limit_country
+ 158   
+ 159   
+ 160  Parameter p_production_limit_node(YEAR, NODE_PRODUCTION, ENERGY_TYPE);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_limit_node.gdx
+--- LOAD  p_production_limit_node = 1:p_production_limit_node
+ 164  display p_production_limit_node
+ 165   
+ 166   
+ 167  Parameter p_production_energy_density(ENERGY_TYPE);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_energy_density.gdx
+--- LOAD  p_production_energy_density = 1:p_production_energy_density
+ 171  display p_production_energy_density
+ 172   
+ 173   
+ 174  Parameter p_production_land_dedication(ENERGY_TYPE);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_land_dedication.gdx
+--- LOAD  p_production_land_dedication = 1:p_production_land_dedication
+ 178  display p_production_land_dedication
+ 179   
+ 180   
+ 181  Parameter p_production_volume(YEAR, H2_SYSTEM);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_volume.gdx
+--- LOAD  p_production_volume = 1:p_production_volume
+ 185   
+ 186   
+ 187  display H2_SYSTEM
+ 188  Parameter p_production_capacities(YEAR, H2_SYSTEM, ENERGY_TYPE);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_capacities.gdx
+--- LOAD  p_production_capacities = 1:p_production_capacities
+ 192  display p_production_capacities
+ 193   
+ 194   
+ 195  Parameter p_production_cost(YEAR, H2_SYSTEM);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_cost.gdx
+--- LOAD  p_production_cost = 1:p_production_cost
+ 199   
+ 200   
+ 201  Parameter p_transport_national_cost_fixed(YEAR, TRANSPORT_NATIONAL);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_national_cost_fixed.gdx
+--- LOAD  p_transport_national_cost_fixed = 1:p_transport_national_cost_fixed
+ 205   
+ 206   
+ 207  Parameter p_transport_national_cost_variable(YEAR, TRANSPORT_NATIONAL);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_national_cost_variable.gdx
+--- LOAD  p_transport_national_cost_variable = 1:p_transport_national_cost_variable
+ 211   
+ 212   
+ 213  Parameter p_transport_national_distance(NODE_PRODUCTION, NODE_EXPORT,TRANSPORT_NATIONAL);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_national_distance.gdx
+--- LOAD  p_transport_national_distance = 1:p_transport_national_distance
+ 217   
+ 218   
+ 219  Parameter p_transport_international_cost_fixed(YEAR, TRANSPORT_INTERNATIONAL);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_cost_fixed.gdx
+--- LOAD  p_transport_international_cost_fixed = 1:p_transport_international_cost_fixed
+ 223   
+ 224   
+ 225  Parameter p_transport_international_cost_variable(YEAR, TRANSPORT_INTERNATIONAL);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_cost_variable.gdx
+--- LOAD  p_transport_international_cost_variable = 1:p_transport_international_cost_variable
+ 229   
+ 230   
+ 231  Parameter p_transport_international_capacity(YEAR, NODE_EXPORT, NODE_IMPORT, TRANSPORT_INTERNATIONAL);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_capacity.gdx
+--- LOAD  p_transport_international_capacity = 1:p_transport_international_capacity
+ 235   
+ 236   
+ 237  Parameter p_transport_international_import_capacity(YEAR, NODE_IMPORT, TRANSPORT_INTERNATIONAL);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_import_capacity.gdx
+--- LOAD  p_transport_international_import_capacity = 1:p_transport_international_import_capacity
+ 241   
+ 242   
+ 243  Parameter p_transport_international_distance(NODE_EXPORT, NODE_IMPORT, TRANSPORT_INTERNATIONAL);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_distance.gdx
+--- LOAD  p_transport_international_distance = 1:p_transport_international_distance
+ 247   
+ 248   
+ 249  Parameter p_transport_conversion_cost(YEAR, TRANSPORT_CONVERSION);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_conversion_cost.gdx
+--- LOAD  p_transport_conversion_cost = 1:p_transport_conversion_cost
+ 253   
+ 254   
+ 255   
+ 256   
+ 257   
+ 258   
+ 259   
+ 260   
+ 261  *Parameter r_capacity(KEY_SCENARIO, TECHNOLOGY);
+GAMS 25.1.3  r4e34d435fbd Released Oct 30, 2018 WEX-WEI x86 64bit/MS Windows - 11/11/20 15:59:07 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Include File Summary
+
+
+   SEQ   GLOBAL TYPE      PARENT   LOCAL  FILENAME
+
+     1        1 INPUT          0       0  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\H2forEU_SupplyChain_data.gms
+     2        1 INCLUDE        1       1  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\H2forEU_SupplyChain_setup.gms
+     3        2 GDXIN          2       1  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/ITERATION.gdx
+     4        9 GDXIN          2       8  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/YEAR.gdx
+     5       14 GDXIN          2      13  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/COUNTRY.gdx
+     6       19 GDXIN          2      18  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/NODE_PRODUCTION.gdx
+     7       24 GDXIN          2      23  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/NODE_EXPORT.gdx
+     8       29 GDXIN          2      28  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/NODE_IMPORT.gdx
+     9       34 GDXIN          2      33  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/PATH.gdx
+    10       39 GDXIN          2      38  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/TRANSPORT_NATIONAL.gdx
+    11       44 GDXIN          2      43  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/TRANSPORT_INTERNATIONAL.gdx
+    12       49 GDXIN          2      48  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/TRANSPORT_CONVERSION.gdx
+    13       54 GDXIN          2      53  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/SOURCE.gdx
+    14       59 GDXIN          2      58  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/TECHNOLOGY.gdx
+    15       64 GDXIN          2      63  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/ENERGY_TYPE.gdx
+    16       69 GDXIN          2      68  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/H2_SYSTEM.gdx
+    17       76 GDXIN          2      75  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_ITERATION_YEAR.gdx
+    18       81 GDXIN          2      80  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_SOURCE_ENERGY_TYPE.gdx
+    19       86 GDXIN          2      85  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_SOURCE_TECHNOLOGY.gdx
+    20       91 GDXIN          2      90  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_COUNTRY_NODE_PRODUCTION.gdx
+    21       96 GDXIN          2      95  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_NODE_PRODUCTION.gdx
+    22      101 GDXIN          2     100  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_NODE_EXPORT.gdx
+    23      106 GDXIN          2     105  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_NODE_IMPORT.gdx
+    24      111 GDXIN          2     110  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_TRANSPORT_NATIONAL.gdx
+    25      116 GDXIN          2     115  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_TRANSPORT_INTERNATIONAL.gdx
+    26      121 GDXIN          2     120  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_CONVERSION.gdx
+    27      126 GDXIN          2     125  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_H2_SYSTEM_ENERGY_TYPE.gdx
+    28      131 GDXIN          2     130  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_H2_SYSTEM_TECHNOLOGY.gdx
+    29      136 GDXIN          2     135  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_H2_SYSTEM_COUNTRY.gdx
+    30      141 GDXIN          2     140  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_H2_SYSTEM_NODE_PRODUCTION.gdx
+    31      155 GDXIN          1       8  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_limit_country.gdx
+    32      161 GDXIN          1      14  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_limit_node.gdx
+    33      168 GDXIN          1      21  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_energy_density.gdx
+    34      175 GDXIN          1      28  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_land_dedication.gdx
+    35      182 GDXIN          1      35  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_volume.gdx
+    36      189 GDXIN          1      42  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_capacities.gdx
+    37      196 GDXIN          1      49  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_cost.gdx
+    38      202 GDXIN          1      55  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_national_cost_fixed.gdx
+    39      208 GDXIN          1      61  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_national_cost_variable.gdx
+    40      214 GDXIN          1      67  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_national_distance.gdx
+    41      220 GDXIN          1      73  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_cost_fixed.gdx
+    42      226 GDXIN          1      79  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_cost_variable.gdx
+    43      232 GDXIN          1      85  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_capacity.gdx
+    44      238 GDXIN          1      91  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_import_capacity.gdx
+    45      244 GDXIN          1      97  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_distance.gdx
+    46      250 GDXIN          1     103  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_conversion_cost.gdx
+
+
+COMPILATION TIME     =        0.234 SECONDS      3 MB  25.1.3 r4e34d435fbd WEX-WEI
+GAMS 25.1.3  r4e34d435fbd Released Oct 30, 2018 WEX-WEI x86 64bit/MS Windows - 11/11/20 15:59:07 Page 3
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+E x e c u t i o n
+
+
+----    151 SET ENERGY_TYPE  
+
+Gas    ,    Biomass,    PV     ,    Onshore
+
+
+----    152 SET COUNTRY  
+
+MAR,    ESP
+
+
+----    153 SET YEAR  
+
+2020
+
+
+----    164 PARAMETER p_production_limit_node  
+
+                         PV     Onshore
+
+2020.MAR_C00018    7000.000    5000.000
+2020.MAR_C00017    7000.000    5000.000
+
+
+----    171 PARAMETER p_production_energy_density  
+
+PV      170.000,    Onshore   5.000
+
+
+----    178 PARAMETER p_production_land_dedication  
+
+PV      0.030,    Onshore 1.000
+
+
+----    187 SET H2_SYSTEM  
+
+MAR_C00018-Hybrid-Alkaline_electrolyser ,    MAR_C00018-Hybrid-PEM_electrolyser      ,    MAR_C00018-PV-Alkaline_electrolyser     ,    MAR_C00018-PV-PEM_electrolyser          ,    MAR_C00018-Onshore-Alkaline_electrolyser
+MAR_C00018-Onshore-PEM_electrolyser     ,    MAR_C00017-Hybrid-Alkaline_electrolyser ,    MAR_C00017-Hybrid-PEM_electrolyser      ,    MAR_C00017-PV-Alkaline_electrolyser     ,    MAR_C00017-PV-PEM_electrolyser          
+MAR_C00017-Onshore-Alkaline_electrolyser,    MAR_C00017-Onshore-PEM_electrolyser     
+
+
+----    192 PARAMETER p_production_capacities  
+
+                                                       PV     Onshore
+
+2020.MAR_C00018-Hybrid-Alkaline_electrolyser        0.600       1.500
+2020.MAR_C00018-PV-Alkaline_electrolyser            1.500
+2020.MAR_C00018-Onshore-Alkaline_electrolyser                   1.500
+2020.MAR_C00017-Hybrid-Alkaline_electrolyser        0.600       1.500
+2020.MAR_C00017-PV-Alkaline_electrolyser            1.500
+2020.MAR_C00017-Onshore-Alkaline_electrolyser                   1.500
+
+
+
+EXECUTION TIME       =        0.000 SECONDS      4 MB  25.1.3 r4e34d435fbd WEX-WEI
+
+
+USER: CS 635 Spring 2014                             G140121/0001AO-GEN
+      Prof. Michael Ferris, University of Wisconsin-Madison      DC2937
+      License for teaching and research at degree granting institutions
+
+
+**** FILE SUMMARY
+
+Input      C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\H2forEU_SupplyChain_data.gms
+Output     C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\H2forEU_SupplyChain_data.lst

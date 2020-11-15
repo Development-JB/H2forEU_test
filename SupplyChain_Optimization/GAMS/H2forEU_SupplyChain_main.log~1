@@ -1,0 +1,164 @@
+--- Job H2forEU_SupplyChain_main.gms Start 11/12/20 00:00:02 25.1.3 r4e34d435fbd WEX-WEI x86 64bit/MS Windows
+GAMS 25.1.3   Copyright (C) 1987-2018 GAMS Development. All rights reserved
+Licensee: CS 635 Spring 2014                             G140121/0001AO-GEN
+          Prof. Michael Ferris, University of Wisconsin-Madison      DC2937
+          License for teaching and research at degree granting institutions
+--- Starting compilation
+--- H2forEU_SupplyChain_main.gms(25) 2 Mb
+--- . H2forEU_SupplyChain_setup.gms(1) 2 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/ITERATION.gdx
+--- . H2forEU_SupplyChain_setup.gms(8) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/YEAR.gdx
+--- . H2forEU_SupplyChain_setup.gms(13) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/COUNTRY.gdx
+--- . H2forEU_SupplyChain_setup.gms(18) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/NODE_PRODUCTION.gdx
+--- . H2forEU_SupplyChain_setup.gms(23) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/NODE_EXPORT.gdx
+--- . H2forEU_SupplyChain_setup.gms(28) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/NODE_IMPORT.gdx
+--- . H2forEU_SupplyChain_setup.gms(33) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/PATH.gdx
+--- . H2forEU_SupplyChain_setup.gms(38) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/TRANSPORT_NATIONAL.gdx
+--- . H2forEU_SupplyChain_setup.gms(43) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/TRANSPORT_INTERNATIONAL.gdx
+--- . H2forEU_SupplyChain_setup.gms(48) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/TRANSPORT_CONVERSION.gdx
+--- . H2forEU_SupplyChain_setup.gms(53) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/SOURCE.gdx
+--- . H2forEU_SupplyChain_setup.gms(58) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/SOURCE_VRES.gdx
+--- . H2forEU_SupplyChain_setup.gms(63) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/SOURCE_NON_VRES.gdx
+--- . H2forEU_SupplyChain_setup.gms(68) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/TECHNOLOGY.gdx
+--- . H2forEU_SupplyChain_setup.gms(73) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/ENERGY_TYPE.gdx
+--- . H2forEU_SupplyChain_setup.gms(78) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/H2_SYSTEM.gdx
+--- . H2forEU_SupplyChain_setup.gms(85) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_ITERATION_YEAR.gdx
+--- . H2forEU_SupplyChain_setup.gms(90) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_SOURCE_ENERGY_TYPE.gdx
+--- . H2forEU_SupplyChain_setup.gms(95) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_SOURCE_TECHNOLOGY.gdx
+--- . H2forEU_SupplyChain_setup.gms(100) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_COUNTRY_NODE_PRODUCTION.gdx
+--- . H2forEU_SupplyChain_setup.gms(105) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_NODE_PRODUCTION.gdx
+--- . H2forEU_SupplyChain_setup.gms(110) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_NODE_EXPORT.gdx
+--- . H2forEU_SupplyChain_setup.gms(115) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_NODE_IMPORT.gdx
+--- . H2forEU_SupplyChain_setup.gms(120) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_TRANSPORT_NATIONAL.gdx
+--- . H2forEU_SupplyChain_setup.gms(125) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_TRANSPORT_INTERNATIONAL.gdx
+--- . H2forEU_SupplyChain_setup.gms(130) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_CONVERSION.gdx
+--- . H2forEU_SupplyChain_setup.gms(135) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_H2_SYSTEM_ENERGY_TYPE.gdx
+--- . H2forEU_SupplyChain_setup.gms(140) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_H2_SYSTEM_SOURCE.gdx
+--- . H2forEU_SupplyChain_setup.gms(145) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_H2_SYSTEM_TECHNOLOGY.gdx
+--- . H2forEU_SupplyChain_setup.gms(150) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_H2_SYSTEM_COUNTRY.gdx
+--- . H2forEU_SupplyChain_setup.gms(155) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_H2_SYSTEM_NODE_PRODUCTION.gdx
+--- . H2forEU_SupplyChain_setup.gms(191) 3 Mb
+--- H2forEU_SupplyChain_main.gms(26) 3 Mb
+--- . H2forEU_SupplyChain_data.gms(8) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_limit_country.gdx
+--- . H2forEU_SupplyChain_data.gms(14) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_limit_node.gdx
+--- . H2forEU_SupplyChain_data.gms(21) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_area_available_node.gdx
+--- . H2forEU_SupplyChain_data.gms(28) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_energy_density.gdx
+--- . H2forEU_SupplyChain_data.gms(35) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_land_dedication.gdx
+--- . H2forEU_SupplyChain_data.gms(42) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_volume.gdx
+--- . H2forEU_SupplyChain_data.gms(49) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_capacities.gdx
+--- . H2forEU_SupplyChain_data.gms(56) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_cost.gdx
+--- . H2forEU_SupplyChain_data.gms(62) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_national_cost_fixed.gdx
+--- . H2forEU_SupplyChain_data.gms(68) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_national_cost_variable.gdx
+--- . H2forEU_SupplyChain_data.gms(74) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_national_distance.gdx
+--- . H2forEU_SupplyChain_data.gms(80) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_cost_fixed.gdx
+--- . H2forEU_SupplyChain_data.gms(86) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_cost_variable.gdx
+--- . H2forEU_SupplyChain_data.gms(92) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_capacity.gdx
+--- . H2forEU_SupplyChain_data.gms(98) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_import_capacity.gdx
+--- . H2forEU_SupplyChain_data.gms(104) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_distance.gdx
+--- . H2forEU_SupplyChain_data.gms(110) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_conversion_cost.gdx
+--- . H2forEU_SupplyChain_data.gms(113) 3 Mb
+--- H2forEU_SupplyChain_main.gms(28) 3 Mb
+--- . H2forEU_SupplyChain_model.gms(206) 3 Mb
+--- H2forEU_SupplyChain_main.gms(223) 3 Mb
+--- . H2forEU_SupplyChain_output.gms(16) 3 Mb
+--- H2forEU_SupplyChain_main.gms(224) 3 Mb
+--- Starting execution: elapsed 0:00:00.037
+--- H2forEU_SupplyChain_main.gms(543) 4 Mb
+--- Generating LP model H2forEU_SupplyChain
+--- H2forEU_SupplyChain_main.gms(552) 4 Mb
+--- LOOPS ITERATION = 1
+---   23 rows  23 columns  89 non-zeroes
+--- Executing CPLEX: elapsed 0:00:00.074
+
+IBM ILOG CPLEX   28.2.0 r750fa45 Released Aug 19, 2019 WEI x86 64bit/MS Window
+Cplex 12.9.0.0
+
+Reading data...
+Starting Cplex...
+Space for names approximately 0.00 Mb
+Use option 'names no' to turn use of names off
+CPXPARAM_Advance                                 0
+CPXPARAM_Simplex_Display                         2
+CPXPARAM_Threads                                 1
+CPXPARAM_Parallel                                1
+CPXPARAM_Simplex_Limits_Iterations               2000000000
+CPXPARAM_TimeLimit                               1000
+CPXPARAM_Tune_TimeLimit                          200
+Tried aggregator 1 time.
+LP Presolve eliminated 13 rows and 10 columns.
+Aggregator did 2 substitutions.
+Reduced LP has 8 rows, 11 columns, and 29 nonzeros.
+Presolve time = 0.00 sec. (0.03 ticks)
+
+Iteration      Dual Objective            In Variable           Out Variable
+     1           29419.439700v_Path(2020.MAR_C00018-e_Demand(2020.ESP artif
+     2           30348.643500v_Path(2020.MAR_C00017-e_LinkH2SystemNod artif
+     3           92419.439700v_ProductionH2System(20e_LinkH2SystemNod artif
+     4           93260.650716v_ProductionH2System(20e_ProductionLimit slack
+     5          113098.497776v_ProductionH2System(20e_ProductionLimit slack
+     6          113818.244243v_ProductionH2System(20v_ProductionH2System(20
+     7          363207.570916v_ProductionH2System(20v_ProductionH2System(20
+     8          363891.416327v_ProductionH2System(20v_ProductionH2System(20
+     9      5117676586.105549v_ProductionDummy(2020.e_ProductionLimit slack
+    10      5133361835.744445e_ProductionLimit slackv_ProductionH2System(20
+LP status(1): optimal
+Cplex Time: 0.02sec (det. 0.05 ticks)
+
+Optimal solution found.
+Objective :  5133361835.744427
+
+--- Restarting execution
+--- H2forEU_SupplyChain_main.gms(552) 2 Mb
+--- Reading solution for model H2forEU_SupplyChain
+--- Executing after solve: elapsed 0:00:01.064
+--- H2forEU_SupplyChain_main.gms(735) 3 Mb
+--- GDX File C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/00_results.gdx
+*** Status: Normal completion
+--- Job H2forEU_SupplyChain_main.gms Stop 11/12/20 00:00:03 elapsed 0:00:01.086

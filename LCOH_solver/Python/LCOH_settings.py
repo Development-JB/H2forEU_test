@@ -12,7 +12,7 @@ import LCOH_config_general
 ### Settings
 date_today = date.today().strftime('%y%m%d')
 
-tolerance = 0.001
+tolerance = 0.0001
 
 ### Optimization
 x_min = 0
@@ -31,13 +31,21 @@ y_range_init = np.linspace(y_min, y_max,dim_y)
 
 ### Plotting
 # Steps of crosscheck plot
-check_steps = 10
+check_steps = 15
 
 ### General
 val_reference_year = 2016
 #val_turbine_type = 'Vestas_V112'
 #val_turbine_type = 'Vestas_V80'
 val_turbine_type = 'Enercon_E101'
+
+val_energy_density_pv = 170
+val_land_dedication_pv = 0.03
+val_energy_density_onshore = 5
+val_land_dedication_onshore = 1
+val_h2_selling_price = 20
+
+
 
 path_folder_res_profiles = "C:\\Users\\Johannes\\Documents\\PhD\\06Research\\Paper2\\Data\\06TreatedPreparedData\\RES_profiles\\EU_NUTS2"
 val_path_settings = Path(str(LCOH_config_general.wd_l1)+"//Data//01Input//Settings.xls")
@@ -70,6 +78,18 @@ df_data = df_data.stack().reset_index(name='Value')
 df_data = df_data.rename(columns={'level_3':'Year'})
 df_data = df_data[df_data['Year'].isin(lst_year)]
 df_data['Sensitivity'] = 'Default'
+
+val_cost_water = df_data['Value'][(df_data['Data_category1']=='Other')&(df_data['Data_category2']=='Water')&(df_data['Data_category3']=='Vom')].mean()
+
+# Cell area
+df_data_cells = pd.read_excel(val_path_data_general, sheet_name = 'Cell_information')
+df_data_cells = df_data_cells.drop(['Unit'], axis=1)
+val_land_availability_general = 0.15
+val_land_dedication_general = 0.067
+df_data_cells['Area_available'] = df_data_cells['Area']*val_land_availability_general
+df_data_cells['Area_utilizable'] = df_data_cells['Area_available']*val_land_dedication_general
+df_data_cells = df_data_cells.set_index(['Id_cell'])
+
 
 ### Initiate Sensitivity
 df_sensitivity = pd.read_excel(val_path_settings, sheet_name = 'Sensitivity')
