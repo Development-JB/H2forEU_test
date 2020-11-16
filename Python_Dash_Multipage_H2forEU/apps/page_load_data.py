@@ -1,7 +1,10 @@
-
+import gdxpds
 import pandas as pd
 import numpy as np
 import json
+
+path_gdx = "C:\\Users\\Johannes\\Documents\\PhD\\06Research\\Paper2\\Tools\\SupplyChain_Optimization\\GAMS\\gdx\\"
+df_gdx_results = gdxpds.to_dataframes(path_gdx + "00_results.gdx")
 
 
 def fct_load_json_file():
@@ -81,3 +84,78 @@ def fct_load_res_information():
     df_colorscale_load_factor['Rgb'] = 'rgb('+df_colorscale_load_factor['Red'].astype(str)+','+df_colorscale_load_factor['Green'].astype(str)+','+df_colorscale_load_factor['Blue'].astype(str)+')'
 
     return df_res_information, df_colorscale_load_factor
+
+
+def fct_load_results_supply():
+
+    ### Supply
+    df_supply = df_gdx_results['r_Supply']
+    df_supply.columns = ['Year','H2_system','Path','Country','Source','Technology','Node_production','Transport_national','Node_export','Transport_international','Node_import','Volume']
+    df_supply['Volume'] = df_supply['Volume']/1000000
+
+    ### Lcoh
+    df_lcoh = gdxpds.to_dataframes(path_gdx + "p_production_cost.gdx")
+    df_lcoh = df_lcoh["p_production_cost"]
+    df_lcoh.columns = ['Year','H2_system','Lcoh']
+    df_results = pd.merge(df_supply,df_lcoh, how='left', on=['Year','H2_system'])
+
+    ### Transport national
+    df_transport_national_cost_fixed =  gdxpds.to_dataframes(path_gdx + "p_transport_national_cost_fixed.gdx")
+    df_transport_national_cost_fixed = df_transport_national_cost_fixed["p_transport_national_cost_fixed"]
+    df_transport_national_cost_fixed.columns = ['Year','Transport_national','Transport_national_cost_fixed']
+    df_results = pd.merge(df_results,df_transport_national_cost_fixed, how='left', on=['Year','Transport_national'])
+
+    df_transport_national_cost_variable =  gdxpds.to_dataframes(path_gdx + "p_transport_national_cost_variable.gdx")
+    df_transport_national_cost_variable = df_transport_national_cost_variable["p_transport_national_cost_variable"]
+    df_transport_national_cost_variable.columns = ['Year','Transport_national','Transport_national_cost_variable']
+    df_results = pd.merge(df_results,df_transport_national_cost_variable, how='left', on=['Year','Transport_national'])
+
+    df_transport_national_distance = gdxpds.to_dataframes(path_gdx + "p_transport_national_distance.gdx")
+    df_transport_national_distance = df_transport_national_distance["p_transport_national_distance"]
+    df_transport_national_distance.columns = ['Node_production','Node_export','Transport_national','Transport_national_distance']
+    df_results = pd.merge(df_results,df_transport_national_distance, how='left', on=['Node_production','Node_export','Transport_national'])
+
+    df_results['Transport_national_cost'] = df_results['Transport_national_cost_variable']+df_results['Transport_national_cost_fixed']*df_results['Transport_national_distance']
+
+    ### Transport international
+    df_transport_international_cost_fixed =  gdxpds.to_dataframes(path_gdx + "p_transport_international_cost_fixed.gdx")
+    df_transport_international_cost_fixed = df_transport_international_cost_fixed["p_transport_international_cost_fixed"]
+    df_transport_international_cost_fixed.columns = ['Year','Transport_international','Transport_international_cost_fixed']
+    df_results = pd.merge(df_results,df_transport_international_cost_fixed, how='left', on=['Year','Transport_international'])
+
+    df_transport_international_cost_variable =  gdxpds.to_dataframes(path_gdx + "p_transport_international_cost_variable.gdx")
+    df_transport_international_cost_variable = df_transport_international_cost_variable["p_transport_international_cost_variable"]
+    df_transport_international_cost_variable.columns = ['Year','Transport_international','Transport_international_cost_variable']
+    df_results = pd.merge(df_results,df_transport_international_cost_variable, how='left', on=['Year','Transport_international'])
+
+    df_transport_international_distance = gdxpds.to_dataframes(path_gdx + "p_transport_international_distance.gdx")
+    df_transport_international_distance = df_transport_international_distance["p_transport_international_distance"]
+    df_transport_international_distance.columns = ['Node_export','Node_import','Transport_international','Transport_international_distance']
+    df_results = pd.merge(df_results,df_transport_international_distance, how='left', on=['Node_export','Node_import','Transport_international'])
+
+    df_results['Transport_international_cost'] = df_results['Transport_international_cost_variable']+df_results['Transport_international_cost_fixed']*df_results['Transport_international_distance']
+
+
+    ### Transport conversion cost
+    df_transport_conversion_cost = gdxpds.to_dataframes(path_gdx + "p_transport_conversion_cost.gdx")
+    df_transport_conversion_cost = df_transport_conversion_cost["p_transport_conversion_cost"]
+    df_transport_conversion_cost.columns = ['Year','Transport_conversion','Transport_conversion_cost']
+
+    df_link_path_conversion = gdxpds.to_dataframes(path_gdx + "LINK_PATH_CONVERSION.gdx")
+    df_link_path_conversion = df_link_path_conversion["LINK_PATH_CONVERSION"]
+    df_link_path_conversion.columns = ['Path','Transport_conversion','Value']
+    df_link_path_conversion = df_link_path_conversion.drop(['Value'], axis=1)
+
+    df_transport_conversion_cost = pd.merge(df_link_path_conversion,df_transport_conversion_cost, how='left', on=['Transport_conversion'])
+    df_transport_conversion_cost = df_transport_conversion_cost.groupby(['Year','Path']).agg({'Transport_conversion_cost':'sum'}).reset_index()
+
+    df_results = pd.merge(df_results, df_transport_conversion_cost, how='left', on=['Year','Path'])
+
+    ### Total cost per kg H2
+    df_results['Lcoh_fob'] = df_results['Lcoh']+df_results['Transport_national_cost']+df_results['Transport_conversion_cost']
+    df_results['Lcoh_cif'] = df_results['Lcoh_fob']+df_results['Transport_international_cost']+df_results['Transport_conversion_cost']
+
+    df_results['Year'] = df_results['Year'].astype(int)
+
+    return df_results
+

@@ -12,6 +12,8 @@ lst_dashboards = [
                     'page_lcoh',
                     'page_system',
                     'page_res_profiles',
+                    'page_map_source_results',
+                    'page_merit_curve',
                     'marco_dummy'
                    ]
 
@@ -25,9 +27,11 @@ app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
 
     dbc.Nav([
-                dbc.NavItem(dbc.NavLink('LCOH', href='/apps/page_lcoh')),
-                dbc.NavItem(dbc.NavLink('RES system', href='/apps/page_system')),
-                dbc.NavItem(dbc.NavLink('RES profiles', href='/apps/page_res_profiles')),
+                dbc.NavItem(dbc.NavLink('Map LCOH', href='/apps/page_lcoh')),
+                dbc.NavItem(dbc.NavLink('Map RES system', href='/apps/page_system')),
+                dbc.NavItem(dbc.NavLink('Map RES profiles', href='/apps/page_res_profiles')),
+                dbc.NavItem(dbc.NavLink('Map source results', href='/apps/page_map_source_results')),
+                dbc.NavItem(dbc.NavLink('Merit curve', href='/apps/page_merit_curve')),
             ]),
 
     html.Div(id='page-content', children=[]),
@@ -47,6 +51,10 @@ def display_page\
        return page_system.layout
    elif ('page_res_profiles' in lst_dashboards) and (pathname == '/apps/page_res_profiles'):
        return page_res_profiles.layout
+   elif ('page_map_source_results' in lst_dashboards) and (pathname == '/apps/page_map_source_results'):
+       return page_map_source_results.layout
+   elif ('page_merit_curve' in lst_dashboards) and (pathname == '/apps/page_merit_curve'):
+       return page_merit_curve.layout
    else:
        return "404 Page Error! Please choose a link"
 
