@@ -1,0 +1,11 @@
+B 2 C o m p i l a t i o n
+B 252 Include File Summary
+B 308 E x e c u t i o n
+I 309 ENERGY_TYPE
+I 315 COUNTRY
+I 320 YEAR
+I 325 p_production_limit_node
+I 333 p_production_energy_density
+I 338 p_production_land_dedication
+I 343 H2_SYSTEM
+I 350 p_production_capacities
