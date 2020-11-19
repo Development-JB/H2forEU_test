@@ -1,0 +1,1262 @@
+GAMS 25.1.3  r4e34d435fbd Released Oct 30, 2018 WEX-WEI x86 64bit/MS Windows - 11/20/20 00:06:55 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   1  **********************************
+   2  *** MODEL SETTINGS
+   3  **********************************
+      $TITLE    REDUCED OUTPUT 
+      $inlinecom /* */
+       
+      /* Turn off the listing of the input file */
+      $offlisting
+       
+      /* Turn off the listing and cross-reference of the symbols used */
+      $offsymxref offsymlist
+       
+      option
+          limrow = 0,     
+          limcol = 0, 
+          solprint = off,    
+          sysout = off; 
+  20   
+  21   
+  22  **********************************
+  23  *** LOAD FILES and MODEL
+  24  **********************************
+INCLUDE    C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\H2forEU_SupplyChain_setup.gms
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/ITERATION.gdx
+  27  SET ITERATION;
+--- LOAD  ITERATION = 1:ITERATION
+  29  *display ITERATION
+  30   
+  31  *SET ITERATION /1/
+  32   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/YEAR.gdx
+  34  SET YEAR;
+--- LOAD  YEAR = 1:YEAR
+  36  *display YEAR
+  37   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/COUNTRY.gdx
+  39  SET COUNTRY;
+--- LOAD  COUNTRY = 1:COUNTRY
+  41  *display COUNTRY
+  42   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/COUNTRY_EXPORT.gdx
+  44  SET COUNTRY_EXPORT(COUNTRY);
+--- LOAD  COUNTRY_EXPORT = 1:COUNTRY_EXPORT
+  46  *display COUNTRY_EXPORT
+  47   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/COUNTRY_IMPORT.gdx
+  49  SET COUNTRY_IMPORT(COUNTRY);
+--- LOAD  COUNTRY_IMPORT = 1:COUNTRY_IMPORT
+  51  *display COUNTRY_IMPORT
+  52   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/NODE_PRODUCTION.gdx
+  54  SET NODE_PRODUCTION;
+--- LOAD  NODE_PRODUCTION = 1:NODE_PRODUCTION
+  56  *display NODE_PRODUCTION
+  57   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/NODE_EXPORT.gdx
+  59  SET NODE_EXPORT;
+--- LOAD  NODE_EXPORT = 1:NODE_EXPORT
+  61  *display NODE_EXPORT
+  62   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/NODE_IMPORT.gdx
+  64  SET NODE_IMPORT;
+--- LOAD  NODE_IMPORT = 1:NODE_IMPORT
+  66  *display NODE_IMPORT
+  67   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/PATH.gdx
+  69  SET PATH;
+--- LOAD  PATH = 1:PATH
+  71  *display PATH
+  72   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/TRANSPORT_NATIONAL.gdx
+  74  SET TRANSPORT_NATIONAL;
+--- LOAD  TRANSPORT_NATIONAL = 1:TRANSPORT_NATIONAL
+  76  *display TRANSPORT_NATIONAL
+  77   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/TRANSPORT_INTERNATIONAL.gdx
+  79  SET TRANSPORT_INTERNATIONAL;
+--- LOAD  TRANSPORT_INTERNATIONAL = 1:TRANSPORT_INTERNATIONAL
+  81  *display TRANSPORT_INTERNATIONAL
+  82   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/TRANSPORT_CONVERSION.gdx
+  84  SET TRANSPORT_CONVERSION;
+--- LOAD  TRANSPORT_CONVERSION = 1:TRANSPORT_CONVERSION
+  86  *display TRANSPORT_CONVERSION
+  87   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/SOURCE.gdx
+  89  SET SOURCE;
+--- LOAD  SOURCE = 1:SOURCE
+  91  *display SOURCE
+  92   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/SOURCE_VRES.gdx
+  94  SET SOURCE_VRES(SOURCE);
+--- LOAD  SOURCE_VRES = 1:SOURCE_VRES
+  96  *display SOURCE_VRES
+  97   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/SOURCE_NON_VRES.gdx
+  99  SET SOURCE_NON_VRES(SOURCE);
+--- LOAD  SOURCE_NON_VRES = 1:SOURCE_NON_VRES
+ 101  *display SOURCE_NON_VRES
+ 102   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/TECHNOLOGY.gdx
+ 104  SET TECHNOLOGY;
+--- LOAD  TECHNOLOGY = 1:TECHNOLOGY
+ 106  *display TECHNOLOGY
+ 107   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/ENERGY_TYPE.gdx
+ 109  SET ENERGY_TYPE;
+--- LOAD  ENERGY_TYPE = 1:ENERGY_TYPE
+ 111  *display ENERGY_TYPE
+ 112   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/H2_SYSTEM.gdx
+ 114  SET H2_SYSTEM;
+--- LOAD  H2_SYSTEM = 1:H2_SYSTEM
+ 116  *display H2_SYSTEM
+ 117   
+ 118   
+ 119  ***** LINKS
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_ITERATION_YEAR.gdx
+ 121  SET LINK_ITERATION_YEAR(ITERATION,YEAR);
+--- LOAD  LINK_ITERATION_YEAR = 1:LINK_ITERATION_YEAR
+ 123  *display LINK_ITERATION_YEAR
+ 124   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_SOURCE_ENERGY_TYPE.gdx
+ 126  SET LINK_SOURCE_ENERGY_TYPE(SOURCE,ENERGY_TYPE);
+--- LOAD  LINK_SOURCE_ENERGY_TYPE = 1:LINK_SOURCE_ENERGY_TYPE
+ 128  *display LINK_SOURCE_ENERGY_TYPE
+ 129   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_SOURCE_TECHNOLOGY.gdx
+ 131  SET LINK_SOURCE_TECHNOLOGY(SOURCE,TECHNOLOGY);
+--- LOAD  LINK_SOURCE_TECHNOLOGY = 1:LINK_SOURCE_TECHNOLOGY
+ 133  *display LINK_SOURCE_TECHNOLOGY
+ 134   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_COUNTRY_NODE_PRODUCTION.gdx
+ 136  SET LINK_COUNTRY_NODE_PRODUCTION(COUNTRY,NODE_PRODUCTION);
+--- LOAD  LINK_COUNTRY_NODE_PRODUCTION = 1:LINK_COUNTRY_NODE_PRODUCTION
+ 138  *display LINK_COUNTRY_NODE_PRODUCTION
+ 139   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_NODE_PRODUCTION.gdx
+ 141  SET LINK_PATH_NODE_PRODUCTION(PATH,NODE_PRODUCTION);
+--- LOAD  LINK_PATH_NODE_PRODUCTION = 1:LINK_PATH_NODE_PRODUCTION
+ 143  *display LINK_PATH_NODE_PRODUCTION
+ 144   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_NODE_EXPORT.gdx
+ 146  SET LINK_PATH_NODE_EXPORT(PATH,NODE_EXPORT);
+--- LOAD  LINK_PATH_NODE_EXPORT = 1:LINK_PATH_NODE_EXPORT
+ 148  *display LINK_PATH_NODE_EXPORT
+ 149   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_NODE_IMPORT.gdx
+ 151  SET LINK_PATH_NODE_IMPORT(PATH,NODE_IMPORT);
+--- LOAD  LINK_PATH_NODE_IMPORT = 1:LINK_PATH_NODE_IMPORT
+ 153  *display LINK_PATH_NODE_IMPORT
+ 154   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_TRANSPORT_NATIONAL.gdx
+ 156  SET LINK_PATH_TRANSPORT_NATIONAL(PATH,TRANSPORT_NATIONAL);
+--- LOAD  LINK_PATH_TRANSPORT_NATIONAL = 1:LINK_PATH_TRANSPORT_NATIONAL
+ 158  *display LINK_PATH_TRANSPORT_NATIONAL
+ 159   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_TRANSPORT_INTERNATIONAL.gdx
+ 161  SET LINK_PATH_TRANSPORT_INTERNATIONAL(PATH,TRANSPORT_INTERNATIONAL);
+--- LOAD  LINK_PATH_TRANSPORT_INTERNATIONAL = 1:LINK_PATH_TRANSPORT_INTERNATIONAL
+ 163  *display LINK_PATH_TRANSPORT_INTERNATIONAL
+ 164   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_CONVERSION.gdx
+ 166  SET LINK_PATH_CONVERSION(PATH,TRANSPORT_CONVERSION);
+--- LOAD  LINK_PATH_CONVERSION = 1:LINK_PATH_CONVERSION
+ 168  *display LINK_PATH_CONVERSION
+ 169   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_H2_SYSTEM_ENERGY_TYPE.gdx
+ 171  SET LINK_H2_SYSTEM_ENERGY_TYPE(H2_SYSTEM,ENERGY_TYPE);
+--- LOAD  LINK_H2_SYSTEM_ENERGY_TYPE = 1:LINK_H2_SYSTEM_ENERGY_TYPE
+ 173  *display LINK_H2_SYSTEM_ENERGY_TYPE
+ 174   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_H2_SYSTEM_SOURCE.gdx
+ 176  SET LINK_H2_SYSTEM_SOURCE(H2_SYSTEM,SOURCE);
+--- LOAD  LINK_H2_SYSTEM_SOURCE = 1:LINK_H2_SYSTEM_SOURCE
+ 178  *display LINK_H2_SYSTEM_SOURCE
+ 179   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_H2_SYSTEM_TECHNOLOGY.gdx
+ 181  SET LINK_H2_SYSTEM_TECHNOLOGY(H2_SYSTEM,TECHNOLOGY);
+--- LOAD  LINK_H2_SYSTEM_TECHNOLOGY = 1:LINK_H2_SYSTEM_TECHNOLOGY
+ 183  *display LINK_H2_SYSTEM_TECHNOLOGY
+ 184   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_H2_SYSTEM_COUNTRY.gdx
+ 186  SET LINK_H2_SYSTEM_COUNTRY(H2_SYSTEM,COUNTRY);
+--- LOAD  LINK_H2_SYSTEM_COUNTRY = 1:LINK_H2_SYSTEM_COUNTRY
+ 188  *display LINK_H2_SYSTEM_COUNTRY
+ 189   
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_H2_SYSTEM_NODE_PRODUCTION.gdx
+ 191  SET LINK_H2_SYSTEM_NODE_PRODUCTION(H2_SYSTEM,NODE_PRODUCTION);
+--- LOAD  LINK_H2_SYSTEM_NODE_PRODUCTION = 1:LINK_H2_SYSTEM_NODE_PRODUCTION
+ 193  *display LINK_H2_SYSTEM_NODE_PRODUCTION
+ 194   
+ 195   
+ 196  *** Temporal
+ 197  SET i_YEAR(YEAR);
+ 198   
+ 199   
+ 200  Parameter
+ 201  r_CostTotal(YEAR)
+ 202  r_CostTransport(YEAR)
+ 203  r_CostTransportNational(YEAR)
+ 204  r_CostTransportInternational(YEAR)
+ 205  r_CostTransportConversion(YEAR)
+ 206   
+ 207  r_CostProduction(YEAR)
+ 208  r_CostTotalDummy(YEAR)
+ 209  r_ProductionNode(YEAR, NODE_PRODUCTION)
+ 210  r_ProductionH2System(YEAR, H2_SYSTEM)
+ 211  r_ProductionDummy(YEAR, NODE_IMPORT)
+ 212   
+ 213  r_H2_system(YEAR, H2_SYSTEM, COUNTRY, NODE_PRODUCTION, SOURCE, ENERGY_TYPE, TECHNOLOGY)
+ 214  r_Path(YEAR, PATH, Node_PRODUCTION, TRANSPORT_NATIONAL, NODE_EXPORT, TRANSPORT_INTERNATIONAL, NODE_IMPORT)
+ 215  r_Supply(YEAR, H2_SYSTEM, PATH, COUNTRY, SOURCE, TECHNOLOGY, Node_PRODUCTION, TRANSPORT_NATIONAL, NODE_EXPORT, TRANSPORT_INTERNATIONAL, NODE_IMPORT)
+ 216  r_Supply_TotalCostProduction(YEAR, H2_SYSTEM, PATH, COUNTRY, SOURCE, ENERGY_TYPE, TECHNOLOGY, Node_PRODUCTION, TRANSPORT_NATIONAL, NODE_EXPORT, TRANSPORT_INTERNATIONAL, NODE_IMPORT, TRANSPORT_CONVERSION)
+ 217  r_Supply_TotalCostTransportNational(YEAR, H2_SYSTEM, PATH, COUNTRY, SOURCE, ENERGY_TYPE, TECHNOLOGY, Node_PRODUCTION, TRANSPORT_NATIONAL, NODE_EXPORT, TRANSPORT_INTERNATIONAL, NODE_IMPORT, TRANSPORT_CONVERSION)
+ 218  r_Supply_TotalCostTransportInternational(YEAR, H2_SYSTEM, PATH, COUNTRY, SOURCE, ENERGY_TYPE, TECHNOLOGY, Node_PRODUCTION, TRANSPORT_NATIONAL, NODE_EXPORT, TRANSPORT_INTERNATIONAL, NODE_IMPORT, TRANSPORT_CONVERSION)
+ 219  r_Supply_TotalCostTransportConversion(YEAR, H2_SYSTEM, PATH, COUNTRY, SOURCE, ENERGY_TYPE, TECHNOLOGY, Node_PRODUCTION, TRANSPORT_NATIONAL, NODE_EXPORT, TRANSPORT_INTERNATIONAL, NODE_IMPORT, TRANSPORT_CONVERSION)
+ 220  r_Supply_CostProduction(YEAR, H2_SYSTEM, PATH, COUNTRY, SOURCE, ENERGY_TYPE, TECHNOLOGY, Node_PRODUCTION, TRANSPORT_NATIONAL, NODE_EXPORT, TRANSPORT_INTERNATIONAL, NODE_IMPORT, TRANSPORT_CONVERSION)
+ 221  r_Supply_CostTransportNational(YEAR, H2_SYSTEM, PATH, COUNTRY, SOURCE, ENERGY_TYPE, TECHNOLOGY, Node_PRODUCTION, TRANSPORT_NATIONAL, NODE_EXPORT, TRANSPORT_INTERNATIONAL, NODE_IMPORT, TRANSPORT_CONVERSION)
+ 222  r_Supply_CostTransportInternational(YEAR, H2_SYSTEM, PATH, COUNTRY, SOURCE, ENERGY_TYPE, TECHNOLOGY, Node_PRODUCTION, TRANSPORT_NATIONAL, NODE_EXPORT, TRANSPORT_INTERNATIONAL, NODE_IMPORT, TRANSPORT_CONVERSION)
+ 223  r_Supply_CostTransportConversion(YEAR, H2_SYSTEM, PATH, COUNTRY, SOURCE, ENERGY_TYPE, TECHNOLOGY, Node_PRODUCTION, TRANSPORT_NATIONAL, NODE_EXPORT, TRANSPORT_INTERNATIONAL, NODE_IMPORT, TRANSPORT_CONVERSION)
+ 224   
+ 225  ;
+ 226   
+INCLUDE    C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\H2forEU_SupplyChain_data.gms
+ 228  *$INCLUDE H2forEU_SupplyChain_setup.gms
+ 229   
+ 230   
+ 231   
+ 232  Parameter p_production_limit_country(YEAR, COUNTRY, ENERGY_TYPE);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_limit_country.gdx
+--- LOAD  p_production_limit_country = 1:p_production_limit_country
+ 235  *$gdxin
+ 236   
+ 237   
+ 238  Parameter p_production_limit_volume_node(YEAR, NODE_PRODUCTION, ENERGY_TYPE);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_limit_volume_node.gdx
+--- LOAD  p_production_limit_volume_node = 1:p_production_limit_volume_node
+ 242  *display p_production_limit_volume_node
+ 243   
+ 244   
+ 245  Parameter p_production_limit_capacity_node(YEAR, NODE_PRODUCTION);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_limit_capacity_node.gdx
+--- LOAD  p_production_limit_capacity_node = 1:p_production_limit_capacity_node
+ 249  *display p_production_limit_capacity_node
+ 250   
+ 251   
+ 252  Parameter p_production_area_available_node(NODE_PRODUCTION);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_area_available_node.gdx
+--- LOAD  p_production_area_available_node = 1:p_production_area_available_node
+ 256  *display p_production_area_available_node
+ 257   
+ 258   
+ 259  Parameter p_production_energy_density(ENERGY_TYPE);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_energy_density.gdx
+--- LOAD  p_production_energy_density = 1:p_production_energy_density
+ 263  *display p_production_energy_density
+ 264   
+ 265   
+ 266  Parameter p_production_land_dedication(ENERGY_TYPE);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_land_dedication.gdx
+--- LOAD  p_production_land_dedication = 1:p_production_land_dedication
+ 270  *display p_production_land_dedication
+ 271   
+ 272   
+ 273   
+ 274  Parameter p_demand_eu(YEAR);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_demand_eu.gdx
+--- LOAD  p_demand_eu = 1:p_demand_eu
+ 278   
+ 279   
+ 280  Parameter p_production_volume(YEAR, H2_SYSTEM);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_volume.gdx
+--- LOAD  p_production_volume = 1:p_production_volume
+ 284   
+ 285   
+ 286  Parameter p_production_capacities(YEAR, H2_SYSTEM, ENERGY_TYPE);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_capacities.gdx
+--- LOAD  p_production_capacities = 1:p_production_capacities
+ 290  display p_production_capacities
+ 291   
+ 292   
+ 293  Parameter p_production_cost(YEAR, H2_SYSTEM);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_cost.gdx
+--- LOAD  p_production_cost = 1:p_production_cost
+ 297   
+ 298   
+ 299  Parameter p_transport_national_cost_fixed(YEAR, TRANSPORT_NATIONAL);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_national_cost_fixed.gdx
+--- LOAD  p_transport_national_cost_fixed = 1:p_transport_national_cost_fixed
+ 303   
+ 304   
+ 305  Parameter p_transport_national_cost_variable(YEAR, TRANSPORT_NATIONAL);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_national_cost_variable.gdx
+--- LOAD  p_transport_national_cost_variable = 1:p_transport_national_cost_variable
+ 309   
+ 310   
+ 311  Parameter p_transport_national_distance(NODE_PRODUCTION, NODE_EXPORT,TRANSPORT_NATIONAL);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_national_distance.gdx
+--- LOAD  p_transport_national_distance = 1:p_transport_national_distance
+ 315   
+ 316   
+ 317  Parameter p_transport_international_cost_fixed(YEAR, TRANSPORT_INTERNATIONAL);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_cost_fixed.gdx
+--- LOAD  p_transport_international_cost_fixed = 1:p_transport_international_cost_fixed
+ 321   
+ 322   
+ 323  Parameter p_transport_international_cost_variable(YEAR, TRANSPORT_INTERNATIONAL);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_cost_variable.gdx
+--- LOAD  p_transport_international_cost_variable = 1:p_transport_international_cost_variable
+ 327   
+ 328   
+ 329  Parameter p_transport_international_capacity(YEAR, NODE_EXPORT, NODE_IMPORT, TRANSPORT_INTERNATIONAL);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_capacity.gdx
+--- LOAD  p_transport_international_capacity = 1:p_transport_international_capacity
+ 333   
+ 334   
+ 335  Parameter p_transport_international_import_capacity(YEAR, NODE_IMPORT, TRANSPORT_INTERNATIONAL);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_import_capacity.gdx
+--- LOAD  p_transport_international_import_capacity = 1:p_transport_international_import_capacity
+ 339   
+ 340   
+ 341  Parameter p_transport_international_distance(NODE_EXPORT, NODE_IMPORT, TRANSPORT_INTERNATIONAL);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_distance.gdx
+--- LOAD  p_transport_international_distance = 1:p_transport_international_distance
+ 345   
+ 346   
+ 347  Parameter p_transport_conversion_cost(YEAR, TRANSPORT_CONVERSION);
+GDXIN   C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_conversion_cost.gdx
+--- LOAD  p_transport_conversion_cost = 1:p_transport_conversion_cost
+ 351   
+INCLUDE    C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\H2forEU_SupplyChain_model.gms
+ 353  **********************************
+ 354  *** Variables
+ 355  **********************************
+ 356  Variables
+ 357  v_CostSupply
+ 358  ;
+ 359   
+ 360  Positive Variables
+ 361  v_CostTotal(YEAR)
+ 362  v_CostTransport(YEAR)
+ 363  v_CostProduction(YEAR)
+ 364  v_CostTotalDummy(YEAR)
+ 365  v_Path(YEAR, PATH)
+ 366  v_ProductionNode(YEAR, NODE_PRODUCTION)
+ 367  v_ProductionH2System(YEAR, H2_SYSTEM)
+ 368  v_ProductionDummy(YEAR, NODE_IMPORT)
+ 369  v_ProductionDummyEU(YEAR)
+ 370   
+ 371  v_CostTransportNational(YEAR)
+ 372  v_CostTransportInternational(YEAR)
+ 373  v_CostTransportConversion(YEAR)
+ 374  ;
+ 375   
+ 376   
+ 377  **********************************
+ 378  *** Equation
+ 379  **********************************
+ 380  Equations
+ 381  e_Objective
+ 382  e_CostTotal(YEAR)
+ 383  e_CostProduction(YEAR)
+ 384  e_CostDummy(YEAR)
+ 385  e_CostTransport(YEAR)
+ 386   
+ 387  e_CostTransportNational(YEAR)
+ 388  e_CostTransportInternational(YEAR)
+ 389  e_CostTransportConversion(YEAR)
+ 390   
+ 391  e_Demand(YEAR, NODE_IMPORT)
+ 392  e_Demand_EU(YEAR)
+ 393   
+ 394  e_LinkNodeProductionPath(YEAR, NODE_PRODUCTION)
+ 395  e_LinkH2SystemNodeProduction(YEAR, NODE_PRODUCTION)
+ 396   
+ 397  *e_Production(YEAR, NODE_PRODUCTION)
+ 398  e_ProductionLimitVolumesNode(YEAR, NODE_PRODUCTION, ENERGY_TYPE)
+ 399  e_ProductionLimitCapacityNode(YEAR, NODE_PRODUCTION)
+ 400  e_ProductionLimitAreaNode(YEAR, NODE_PRODUCTION)
+ 401  e_ProductionLimitCountry(YEAR, COUNTRY, ENERGY_TYPE)
+ 402   
+ 403  *e_Transport(YEAR)
+ 404  e_TransportLimitImport(YEAR, NODE_IMPORT, TRANSPORT_INTERNATIONAL)
+ 405  e_TransportLimitInternational(YEAR, NODE_EXPORT, NODE_IMPORT, TRANSPORT_INTERNATIONAL)
+ 406   
+ 407  ;
+ 408   
+ 409   
+ 410  **********************************
+ 411  *** OBJECTIVE & COSTS
+ 412  **********************************
+ 413  e_Objective..
+ 414      v_CostSupply
+ 415      =e=
+ 416      sum((i_YEAR(YEAR)), v_CostTotal(YEAR))
+ 417  ;
+ 418   
+ 419  *** Cost functions
+ 420  e_CostTotal(i_YEAR(YEAR))..
+ 421      v_CostTotal(YEAR)
+ 422      =e=
+ 423      + v_CostTransport(YEAR)
+ 424      + v_CostProduction(YEAR)
+ 425      + v_CostTotalDummy(YEAR)
+ 426  ;
+ 427   
+ 428  e_CostDummy(i_YEAR(YEAR))..
+ 429      v_CostTotalDummy(YEAR)
+ 430      =e=
+ 431      v_ProductionDummyEU(YEAR) * 1000000
+ 432      + sum((NODE_IMPORT), v_ProductionDummy(YEAR, NODE_IMPORT)*1000000)
+ 433  ;
+ 434   
+ 435  e_CostProduction(i_YEAR(YEAR))..
+ 436      v_CostProduction(YEAR)
+ 437      =e=
+ 438      sum((H2_SYSTEM), v_ProductionH2System(YEAR, H2_SYSTEM) * p_production_volume(YEAR, H2_SYSTEM) * p_production_cost(YEAR, H2_SYSTEM))
+ 439  ;
+ 440   
+ 441  e_CostTransport(i_YEAR(YEAR))..
+ 442      v_CostTransport(YEAR)
+ 443      =e=
+ 444      + v_CostTransportNational(YEAR)
+ 445      + v_CostTransportInternational(YEAR)
+ 446      + v_CostTransportConversion(YEAR)
+ 447  ;
+ 448   
+ 449  e_CostTransportNational(i_YEAR(YEAR))..
+ 450      v_CostTransportNational(YEAR)
+ 451      =e=
+ 452      + sum((PATH, NODE_PRODUCTION, TRANSPORT_NATIONAL, NODE_EXPORT)
+ 453      $(LINK_PATH_NODE_PRODUCTION(PATH,NODE_PRODUCTION) and LINK_PATH_TRANSPORT_NATIONAL(PATH,TRANSPORT_NATIONAL) and LINK_PATH_NODE_EXPORT(PATH,NODE_EXPORT)),
+ 454      v_Path(YEAR, PATH)*(p_transport_national_cost_variable(YEAR, TRANSPORT_NATIONAL)+p_transport_national_distance(NODE_PRODUCTION, NODE_EXPORT,TRANSPORT_NATIONAL)*p_transport_national_cost_fixed(YEAR, TRANSPORT_NATIONAL)))
+ 455  ;
+ 456   
+ 457  e_CostTransportInternational(i_YEAR(YEAR))..
+ 458      v_CostTransportInternational(YEAR)
+ 459      =e=
+ 460      + sum((PATH, NODE_EXPORT, TRANSPORT_INTERNATIONAL, NODE_IMPORT)
+ 461      $(LINK_PATH_NODE_EXPORT(PATH,NODE_EXPORT)and LINK_PATH_TRANSPORT_INTERNATIONAL(PATH,TRANSPORT_INTERNATIONAL)and LINK_PATH_NODE_IMPORT(PATH,NODE_IMPORT)),
+ 462      v_Path(YEAR, PATH)*(p_transport_international_cost_variable(YEAR, TRANSPORT_INTERNATIONAL)+p_transport_international_distance(NODE_EXPORT, NODE_IMPORT,TRANSPORT_INTERNATIONAL)*p_transport_international_cost_fixed(YEAR, TRANSPORT_INTERNATIONAL)))
+ 463  ;
+ 464   
+ 465  e_CostTransportConversion(i_YEAR(YEAR))..
+ 466      v_CostTransportConversion(YEAR)
+ 467      =e=
+ 468      + sum((PATH, TRANSPORT_CONVERSION)
+ 469      $(LINK_PATH_CONVERSION(PATH,TRANSPORT_CONVERSION)),
+ 470      v_Path(YEAR, PATH)*p_transport_conversion_cost(YEAR, TRANSPORT_CONVERSION))
+ 471  ;
+ 472   
+ 473  *** General
+ 474  e_Demand(i_YEAR(YEAR), NODE_IMPORT)..
+ 475      sum((TRANSPORT_INTERNATIONAL),p_transport_international_import_capacity(YEAR, NODE_IMPORT, TRANSPORT_INTERNATIONAL))
+ 476      =e=
+ 477      v_ProductionDummy(YEAR, NODE_IMPORT)
+ 478      + sum((PATH)$LINK_PATH_NODE_IMPORT(PATH,NODE_IMPORT),v_Path(YEAR, PATH))
+ 479  ;
+ 480   
+ 481  e_Demand_EU(i_YEAR(YEAR))..
+ 482      p_demand_eu(YEAR)
+ 483      =e=
+ 484      v_ProductionDummyEU(YEAR)
+ 485      + sum((PATH),v_Path(YEAR, PATH))
+ 486  ;
+ 487   
+ 488  e_LinkNodeProductionPath(i_YEAR(YEAR), NODE_PRODUCTION)..
+ 489      v_ProductionNode(YEAR, NODE_PRODUCTION)
+ 490      =e=
+ 491      sum((PATH)$(LINK_PATH_NODE_PRODUCTION(PATH,NODE_PRODUCTION)),v_Path(YEAR, PATH))
+ 492   
+ 493  ;
+ 494   
+ 495  e_LinkH2SystemNodeProduction(i_YEAR(YEAR), NODE_PRODUCTION)..
+ 496      v_ProductionNode(YEAR, NODE_PRODUCTION)
+ 497      =e=
+ 498      sum((H2_SYSTEM)$(LINK_H2_SYSTEM_NODE_PRODUCTION(H2_SYSTEM,NODE_PRODUCTION) and p_production_cost(YEAR, H2_SYSTEM)>0),v_ProductionH2System(YEAR, H2_SYSTEM)*p_production_volume(YEAR, H2_SYSTEM))
+ 499  ;
+ 500   
+ 501  *** Transport constraints
+ 502  e_TransportLimitImport(i_YEAR(YEAR), NODE_IMPORT, TRANSPORT_INTERNATIONAL)..
+ 503      p_transport_international_import_capacity(YEAR, NODE_IMPORT, TRANSPORT_INTERNATIONAL)
+ 504      =g=
+ 505      sum((PATH)$(LINK_PATH_NODE_IMPORT(PATH,NODE_IMPORT) and LINK_PATH_TRANSPORT_INTERNATIONAL(PATH,TRANSPORT_INTERNATIONAL)),v_Path(YEAR, PATH))
+ 506  ;
+ 507   
+ 508  e_TransportLimitInternational(i_YEAR(YEAR), NODE_EXPORT, NODE_IMPORT, TRANSPORT_INTERNATIONAL)..
+ 509      p_transport_international_capacity(YEAR, NODE_EXPORT, NODE_IMPORT, TRANSPORT_INTERNATIONAL)
+ 510      =g=
+ 511      sum((PATH)$(LINK_PATH_NODE_EXPORT(PATH,NODE_EXPORT) and LINK_PATH_TRANSPORT_INTERNATIONAL(PATH,TRANSPORT_INTERNATIONAL) and LINK_PATH_NODE_IMPORT(PATH,NODE_IMPORT)),v_Path(YEAR, PATH))
+ 512  ;
+ 513   
+ 514  *** Production constraints
+ 515  e_ProductionLimitVolumesNode(i_YEAR(YEAR), NODE_PRODUCTION, ENERGY_TYPE)..
+ 516      p_production_limit_volume_node(YEAR, NODE_PRODUCTION, ENERGY_TYPE)
+ 517      =g=
+ 518      sum((H2_SYSTEM, SOURCE_NON_VRES)$(LINK_H2_SYSTEM_SOURCE(H2_SYSTEM, SOURCE_NON_VRES) and LINK_H2_SYSTEM_NODE_PRODUCTION(H2_SYSTEM,NODE_PRODUCTION) and LINK_H2_SYSTEM_ENERGY_TYPE(H2_SYSTEM,ENERGY_TYPE)), v_ProductionH2System(YEAR, H2_SYSTEM)*p_pro
+      duction_capacities(YEAR, H2_SYSTEM, ENERGY_TYPE))
+ 519  ;
+ 520   
+ 521  e_ProductionLimitCapacityNode(i_YEAR(YEAR), NODE_PRODUCTION)..
+ 522      p_production_limit_capacity_node(YEAR, NODE_PRODUCTION)
+ 523      =g=
+ 524      sum((H2_SYSTEM, ENERGY_TYPE, SOURCE_VRES)$(LINK_H2_SYSTEM_SOURCE(H2_SYSTEM, SOURCE_VRES)and LINK_H2_SYSTEM_NODE_PRODUCTION(H2_SYSTEM,NODE_PRODUCTION) and LINK_H2_SYSTEM_ENERGY_TYPE(H2_SYSTEM,ENERGY_TYPE)), v_ProductionH2System(YEAR, H2_SYSTEM)*p
+      _production_capacities(YEAR, H2_SYSTEM, ENERGY_TYPE))
+ 525  ;
+ 526   
+ 527  e_ProductionLimitAreaNode(i_YEAR(YEAR), NODE_PRODUCTION)..
+ 528      p_production_area_available_node(NODE_PRODUCTION)
+ 529      =g=
+ 530      sum((H2_SYSTEM, ENERGY_TYPE, SOURCE_VRES)$(LINK_H2_SYSTEM_SOURCE(H2_SYSTEM, SOURCE_VRES)and LINK_H2_SYSTEM_NODE_PRODUCTION(H2_SYSTEM,NODE_PRODUCTION) and LINK_H2_SYSTEM_ENERGY_TYPE(H2_SYSTEM,ENERGY_TYPE)), v_ProductionH2System(YEAR, H2_SYSTEM)*p
+      _production_capacities(YEAR, H2_SYSTEM, ENERGY_TYPE)*p_production_energy_density(ENERGY_TYPE)*p_production_land_dedication(ENERGY_TYPE))
+ 531  ;
+ 532   
+ 533  e_ProductionLimitCountry(i_YEAR(YEAR), COUNTRY_IMPORT, ENERGY_TYPE)..
+ 534      p_production_limit_country(YEAR, COUNTRY_IMPORT, ENERGY_TYPE)
+ 535      =g=
+ 536      sum((H2_SYSTEM)$(LINK_H2_SYSTEM_COUNTRY(H2_SYSTEM,COUNTRY_IMPORT) and LINK_H2_SYSTEM_ENERGY_TYPE(H2_SYSTEM,ENERGY_TYPE)), v_ProductionH2System(YEAR, H2_SYSTEM)*p_production_capacities(YEAR, H2_SYSTEM, ENERGY_TYPE))
+ 537  ;
+ 538   
+ 539   
+ 540   
+ 541  **********************************
+ 542  *** Model Definition
+ 543  **********************************
+ 544  model H2forEU_SupplyChain /
+ 545  *** Objective
+ 546                  e_Objective,
+ 547  *** Cost
+ 548                  e_CostTotal,
+ 549                  e_CostProduction,
+ 550                  e_CostDummy,
+ 551                  e_CostTransport,
+ 552                      e_CostTransportNational,
+ 553                      e_CostTransportInternational,
+ 554                      e_CostTransportConversion,
+ 555   
+ 556  *** Demand balance
+ 557  *                e_Demand,
+ 558                  e_Demand_EU,
+ 559   
+ 560  *** Constraints production
+ 561                  e_LinkNodeProductionPath,
+ 562                  e_LinkH2SystemNodeProduction,
+ 563                  e_ProductionLimitCountry,
+ 564                  e_ProductionLimitVolumesNode,
+ 565                  e_ProductionLimitCapacityNode
+ 566  *                e_ProductionLimitAreaNode,
+ 567   
+ 568  *** Constraints transportation
+ 569                  e_TransportLimitImport,
+ 570                  e_TransportLimitInternational
+ 571              /;
+ 572   
+ 573   
+ 574  loop(ITERATION,
+ 575   
+ 576      i_YEAR(YEAR)$LINK_ITERATION_YEAR(ITERATION,YEAR) = yes;
+ 577      i_YEAR(YEAR)$(NOT LINK_ITERATION_YEAR(ITERATION,YEAR)) = no;
+ 578   
+ 579   
+ 580      display i_YEAR
+ 581   
+ 582      solve H2forEU_SupplyChain using lp minimizing v_CostSupply;
+ 583   
+ 584      r_CostTotal(i_YEAR) = v_CostTotal.l(i_YEAR);
+ 585      r_CostTransport(i_YEAR) = v_CostTransport.l(i_YEAR);
+ 586      r_CostTransportNational(i_YEAR) = v_CostTransportNational.l(i_YEAR);
+ 587      r_CostTransportInternational(i_YEAR) = v_CostTransportInternational.l(i_YEAR);
+ 588      r_CostTransportConversion(i_YEAR)= v_CostTransportConversion.l(i_YEAR);
+ 589      r_CostProduction(i_YEAR) = v_CostProduction.l(i_YEAR);
+ 590      r_CostTotalDummy(i_YEAR) = v_CostTotalDummy.l(i_YEAR);
+ 591      r_ProductionNode(i_YEAR, NODE_PRODUCTION) = v_ProductionNode.l(i_YEAR, NODE_PRODUCTION);
+ 592      r_ProductionH2System(i_YEAR, H2_SYSTEM) = v_ProductionH2System.l(i_YEAR, H2_SYSTEM);
+ 593      r_ProductionDummy(i_YEAR, NODE_IMPORT) = v_ProductionDummy.l(i_YEAR, NODE_IMPORT);
+ 594   
+ 595      r_H2_system(i_YEAR, H2_SYSTEM, COUNTRY, NODE_PRODUCTION, SOURCE, ENERGY_TYPE, TECHNOLOGY)
+ 596                                            $(LINK_H2_SYSTEM_COUNTRY(H2_SYSTEM,COUNTRY)
+ 597                                          and LINK_H2_SYSTEM_NODE_PRODUCTION(H2_SYSTEM,NODE_PRODUCTION)
+ 598                                          and LINK_H2_SYSTEM_COUNTRY(H2_SYSTEM,COUNTRY)
+ 599                                          and LINK_H2_SYSTEM_TECHNOLOGY(H2_SYSTEM,TECHNOLOGY)
+ 600                                          and LINK_H2_SYSTEM_SOURCE(H2_SYSTEM,SOURCE)
+ 601                                          and LINK_H2_SYSTEM_ENERGY_TYPE(H2_SYSTEM,ENERGY_TYPE))
+ 602                                          = v_ProductionH2System.l(i_YEAR, H2_SYSTEM);
+ 603   
+ 604      r_Path(i_YEAR, PATH, Node_PRODUCTION, TRANSPORT_NATIONAL, NODE_EXPORT, TRANSPORT_INTERNATIONAL, NODE_IMPORT)
+ 605                                            $(LINK_PATH_NODE_PRODUCTION(PATH,NODE_PRODUCTION)
+ 606                                          and LINK_PATH_TRANSPORT_NATIONAL(PATH,TRANSPORT_NATIONAL)
+ 607                                          and LINK_PATH_NODE_EXPORT(PATH,NODE_EXPORT)
+ 608                                          and LINK_PATH_TRANSPORT_INTERNATIONAL(PATH,TRANSPORT_INTERNATIONAL)
+ 609                                          and LINK_PATH_NODE_IMPORT(PATH,NODE_IMPORT))
+ 610                                          = v_Path.l(i_YEAR, PATH);
+ 611   
+ 612      r_Supply(i_YEAR, H2_SYSTEM, PATH, COUNTRY, SOURCE, TECHNOLOGY, Node_PRODUCTION, TRANSPORT_NATIONAL, NODE_EXPORT, TRANSPORT_INTERNATIONAL, NODE_IMPORT)
+ 613                                            $(LINK_H2_SYSTEM_COUNTRY(H2_SYSTEM,COUNTRY)
+ 614                                          and LINK_H2_SYSTEM_NODE_PRODUCTION(H2_SYSTEM,NODE_PRODUCTION)
+ 615                                          and LINK_H2_SYSTEM_COUNTRY(H2_SYSTEM,COUNTRY)
+ 616                                          and LINK_H2_SYSTEM_TECHNOLOGY(H2_SYSTEM,TECHNOLOGY)
+ 617                                          and LINK_H2_SYSTEM_SOURCE(H2_SYSTEM,SOURCE)
+ 618                                          and LINK_PATH_NODE_PRODUCTION(PATH,NODE_PRODUCTION)
+ 619                                          and LINK_PATH_TRANSPORT_NATIONAL(PATH,TRANSPORT_NATIONAL)
+ 620                                          and LINK_PATH_NODE_EXPORT(PATH,NODE_EXPORT)
+ 621                                          and LINK_PATH_TRANSPORT_INTERNATIONAL(PATH,TRANSPORT_INTERNATIONAL)
+ 622                                          and LINK_PATH_NODE_IMPORT(PATH,NODE_IMPORT)
+ 623                                          and v_ProductionNode.l(i_YEAR, NODE_PRODUCTION)>0)
+ 624                                          = v_Path.l(i_YEAR, PATH)/v_ProductionNode.l(i_YEAR, NODE_PRODUCTION)*v_ProductionH2System.l(i_YEAR, H2_SYSTEM)*p_production_volume(i_YEAR, H2_SYSTEM);
+ 625   
+ 626  )
+ 627   
+ 628   
+INCLUDE    C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\H2forEU_SupplyChain_output.gms
+ 630   
+ 631  execute_unload 'gdx/00_results.gdx'
+ 632  r_CostTotal,
+ 633  r_CostTransport,
+ 634  r_CostTransportNational,
+ 635  r_CostTransportInternational,
+ 636  r_CostTransportConversion,
+ 637  r_CostProduction,
+ 638  r_CostTotalDummy,
+ 639  r_Path,
+ 640  r_ProductionNode,
+ 641  r_ProductionH2System,
+ 642  r_ProductionDummy,
+ 643  r_H2_system,
+ 644  r_Supply,
+ 645  r_Supply_TotalCostProduction,
+ 646  r_Supply_TotalCostTransportNational,
+ 647  r_Supply_TotalCostTransportInternational,
+ 648  r_Supply_TotalCostTransportConversion,
+ 649  r_Supply_CostProduction,
+ 650  r_Supply_CostTransportNational,
+ 651  r_Supply_CostTransportInternational,
+ 652  r_Supply_CostTransportConversion
+ 653  ;
+ 654   
+GAMS 25.1.3  r4e34d435fbd Released Oct 30, 2018 WEX-WEI x86 64bit/MS Windows - 11/20/20 00:06:55 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Include File Summary
+
+
+   SEQ   GLOBAL TYPE      PARENT   LOCAL  FILENAME
+
+     1        1 INPUT          0       0  C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\H2forEU_SupplyChain_main.gms
+     2       25 INCLUDE        1      25  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\H2forEU_SupplyChain_setup.gms
+     3       26 GDXIN          2       1  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/ITERATION.gdx
+     4       33 GDXIN          2       8  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/YEAR.gdx
+     5       38 GDXIN          2      13  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/COUNTRY.gdx
+     6       43 GDXIN          2      18  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/COUNTRY_EXPORT.gdx
+     7       48 GDXIN          2      23  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/COUNTRY_IMPORT.gdx
+     8       53 GDXIN          2      28  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/NODE_PRODUCTION.gdx
+     9       58 GDXIN          2      33  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/NODE_EXPORT.gdx
+    10       63 GDXIN          2      38  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/NODE_IMPORT.gdx
+    11       68 GDXIN          2      43  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/PATH.gdx
+    12       73 GDXIN          2      48  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/TRANSPORT_NATIONAL.gdx
+    13       78 GDXIN          2      53  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/TRANSPORT_INTERNATIONAL.gdx
+    14       83 GDXIN          2      58  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/TRANSPORT_CONVERSION.gdx
+    15       88 GDXIN          2      63  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/SOURCE.gdx
+    16       93 GDXIN          2      68  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/SOURCE_VRES.gdx
+    17       98 GDXIN          2      73  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/SOURCE_NON_VRES.gdx
+    18      103 GDXIN          2      78  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/TECHNOLOGY.gdx
+    19      108 GDXIN          2      83  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/ENERGY_TYPE.gdx
+    20      113 GDXIN          2      88  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/H2_SYSTEM.gdx
+    21      120 GDXIN          2      95  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_ITERATION_YEAR.gdx
+    22      125 GDXIN          2     100  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_SOURCE_ENERGY_TYPE.gdx
+    23      130 GDXIN          2     105  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_SOURCE_TECHNOLOGY.gdx
+    24      135 GDXIN          2     110  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_COUNTRY_NODE_PRODUCTION.gdx
+    25      140 GDXIN          2     115  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_NODE_PRODUCTION.gdx
+    26      145 GDXIN          2     120  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_NODE_EXPORT.gdx
+    27      150 GDXIN          2     125  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_NODE_IMPORT.gdx
+    28      155 GDXIN          2     130  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_TRANSPORT_NATIONAL.gdx
+    29      160 GDXIN          2     135  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_TRANSPORT_INTERNATIONAL.gdx
+    30      165 GDXIN          2     140  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_CONVERSION.gdx
+    31      170 GDXIN          2     145  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_H2_SYSTEM_ENERGY_TYPE.gdx
+    32      175 GDXIN          2     150  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_H2_SYSTEM_SOURCE.gdx
+    33      180 GDXIN          2     155  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_H2_SYSTEM_TECHNOLOGY.gdx
+    34      185 GDXIN          2     160  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_H2_SYSTEM_COUNTRY.gdx
+    35      190 GDXIN          2     165  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_H2_SYSTEM_NODE_PRODUCTION.gdx
+    36      227 INCLUDE        1      26  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\H2forEU_SupplyChain_data.gms
+    37      233 GDXIN         36       6  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_limit_country.gdx
+    38      239 GDXIN         36      12  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_limit_volume_node.gdx
+    39      246 GDXIN         36      19  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_limit_capacity_node.gdx
+    40      253 GDXIN         36      26  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_area_available_node.gdx
+    41      260 GDXIN         36      33  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_energy_density.gdx
+    42      267 GDXIN         36      40  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_land_dedication.gdx
+    43      275 GDXIN         36      48  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_demand_eu.gdx
+    44      281 GDXIN         36      54  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_volume.gdx
+    45      287 GDXIN         36      60  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_capacities.gdx
+    46      294 GDXIN         36      67  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_cost.gdx
+    47      300 GDXIN         36      73  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_national_cost_fixed.gdx
+    48      306 GDXIN         36      79  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_national_cost_variable.gdx
+    49      312 GDXIN         36      85  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_national_distance.gdx
+    50      318 GDXIN         36      91  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_cost_fixed.gdx
+    51      324 GDXIN         36      97  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_cost_variable.gdx
+    52      330 GDXIN         36     103  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_capacity.gdx
+    53      336 GDXIN         36     109  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_import_capacity.gdx
+    54      342 GDXIN         36     115  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_distance.gdx
+    55      348 GDXIN         36     121  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_conversion_cost.gdx
+    56      352 INCLUDE        1      27  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\H2forEU_SupplyChain_model.gms
+    57      629 INCLUDE        1      85  .C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\H2forEU_SupplyChain_output.gms
+
+
+COMPILATION TIME     =        0.016 SECONDS      3 MB  25.1.3 r4e34d435fbd WEX-WEI
+GAMS 25.1.3  r4e34d435fbd Released Oct 30, 2018 WEX-WEI x86 64bit/MS Windows - 11/20/20 00:06:55 Page 3
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+E x e c u t i o n
+
+
+----    290 PARAMETER p_production_capacities  
+
+                                                       PV     Onshore
+
+2020.MAR_C00018-Hybrid-Alkaline_electrolyser        0.600       1.500
+2020.MAR_C00018-PV-Alkaline_electrolyser            1.500
+2020.MAR_C00018-Onshore-Alkaline_electrolyser                   1.500
+2020.MAR_C00017-Hybrid-Alkaline_electrolyser        0.600       1.500
+2020.MAR_C00017-PV-Alkaline_electrolyser            1.500
+2020.MAR_C00017-Onshore-Alkaline_electrolyser                   1.500
+
+
+----    580 SET i_YEAR  
+
+2020
+
+GAMS 25.1.3  r4e34d435fbd Released Oct 30, 2018 WEX-WEI x86 64bit/MS Windows - 11/20/20 00:06:55 Page 4
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Equation Listing    SOLVE H2forEU_SupplyChain Using LP From line 582
+
+
+---- e_Objective  =E=  
+
+e_Objective..  v_CostSupply - v_CostTotal(2020) =E= 0 ; (LHS = 0)
+     
+
+---- e_CostTotal  =E=  
+
+e_CostTotal(2020)..  v_CostTotal(2020) - v_CostTransport(2020) - v_CostProduction(2020) - v_CostTotalDummy(2020) =E= 0 ; (LHS = 0)
+     
+
+---- e_CostProduction  =E=  
+
+e_CostProduction(2020)..  v_CostProduction(2020) - 9*v_ProductionH2System(2020,MAR_C00018-Hybrid-Alkaline_electrolyser) - 10*v_ProductionH2System(2020,MAR_C00018-PV-Alkaline_electrolyser)
+     
+      - 11*v_ProductionH2System(2020,MAR_C00018-Onshore-Alkaline_electrolyser) - 9*v_ProductionH2System(2020,MAR_C00017-Hybrid-Alkaline_electrolyser) - 10*v_ProductionH2System(2020,MAR_C00017-PV-Alkaline_electrolyser)
+     
+      - 11*v_ProductionH2System(2020,MAR_C00017-Onshore-Alkaline_electrolyser) =E= 0 ; (LHS = 0)
+     
+
+---- e_CostDummy  =E=  
+
+e_CostDummy(2020)..  v_CostTotalDummy(2020) - 1000000*v_ProductionDummy(2020,ESP01) - 1000000*v_ProductionDummyEU(2020) =E= 0 ; (LHS = 0)
+     
+
+---- e_CostTransport  =E=  
+
+e_CostTransport(2020)..  v_CostTransport(2020) - v_CostTransportNational(2020) - v_CostTransportInternational(2020) - v_CostTransportConversion(2020) =E= 0 ; (LHS = 0)
+     
+
+---- e_CostTransportNational  =E=  
+
+e_CostTransportNational(2020)..  - 0.3758585*v_Path(2020,MAR_C00017-Road_NH3-MAR01-Pipeline-ESP01) - 0.3758585*v_Path(2020,MAR_C00017-Road_NH3-MAR01-LH2-ESP01) - 0.3758585*v_Path(2020,MAR_C00017-Road_NH3-MAR01-Maritime_ammonia-ESP01)
+     
+      - 0.2431151*v_Path(2020,MAR_C00018-Road_NH3-MAR01-Pipeline-ESP01) - 0.2431151*v_Path(2020,MAR_C00018-Road_NH3-MAR01-LH2-ESP01) - 0.2431151*v_Path(2020,MAR_C00018-Road_NH3-MAR01-Maritime_ammonia-ESP01) + v_CostTransportNational(2020) =E= 0 ;
+     
+      (LHS = 0)
+     
+
+---- e_CostTransportInternational  =E=  
+
+e_CostTransportInternational(2020)..  - 0.62997*v_Path(2020,MAR_C00017-Road_NH3-MAR01-Pipeline-ESP01) - 0.94049*v_Path(2020,MAR_C00017-Road_NH3-MAR01-LH2-ESP01) - 0.2624996*v_Path(2020,MAR_C00017-Road_NH3-MAR01-Maritime_ammonia-ESP01)
+     
+      - 0.62997*v_Path(2020,MAR_C00018-Road_NH3-MAR01-Pipeline-ESP01) - 0.94049*v_Path(2020,MAR_C00018-Road_NH3-MAR01-LH2-ESP01) - 0.2624996*v_Path(2020,MAR_C00018-Road_NH3-MAR01-Maritime_ammonia-ESP01) + v_CostTransportInternational(2020) =E= 0 ;
+     
+      (LHS = 0)
+     
+
+---- e_CostTransportConversion  =E=  
+
+e_CostTransportConversion(2020)..  - 3.329692*v_Path(2020,MAR_C00017-Road_NH3-MAR01-Pipeline-ESP01) - 6.659692*v_Path(2020,MAR_C00017-Road_NH3-MAR01-LH2-ESP01) - 3.329692*v_Path(2020,MAR_C00017-Road_NH3-MAR01-Maritime_ammonia-ESP01)
+     
+      - 3.329692*v_Path(2020,MAR_C00018-Road_NH3-MAR01-Pipeline-ESP01) - 6.659692*v_Path(2020,MAR_C00018-Road_NH3-MAR01-LH2-ESP01) - 3.329692*v_Path(2020,MAR_C00018-Road_NH3-MAR01-Maritime_ammonia-ESP01) + v_CostTransportConversion(2020) =E= 0 ; (LHS = 0)
+     
+
+---- e_Demand_EU  =E=  
+
+e_Demand_EU(2020)..  - v_Path(2020,MAR_C00017-Road_NH3-MAR01-Pipeline-ESP01) - v_Path(2020,MAR_C00017-Road_NH3-MAR01-LH2-ESP01) - v_Path(2020,MAR_C00017-Road_NH3-MAR01-Maritime_ammonia-ESP01) - v_Path(2020,MAR_C00018-Road_NH3-MAR01-Pipeline-ESP01)
+     
+      - v_Path(2020,MAR_C00018-Road_NH3-MAR01-LH2-ESP01) - v_Path(2020,MAR_C00018-Road_NH3-MAR01-Maritime_ammonia-ESP01) - v_ProductionDummyEU(2020) =E= -150015001500.15 ; (LHS = 0, INFES = 150015001500.15 ****)
+     
+
+---- e_LinkNodeProductionPath  =E=  
+
+e_LinkNodeProductionPath(2020,MAR_C00018)..  - v_Path(2020,MAR_C00018-Road_NH3-MAR01-Pipeline-ESP01) - v_Path(2020,MAR_C00018-Road_NH3-MAR01-LH2-ESP01) - v_Path(2020,MAR_C00018-Road_NH3-MAR01-Maritime_ammonia-ESP01) + v_ProductionNode(2020,MAR_C00018)
+      =E= 0 ; (LHS = 0)
+     
+e_LinkNodeProductionPath(2020,MAR_C00017)..  - v_Path(2020,MAR_C00017-Road_NH3-MAR01-Pipeline-ESP01) - v_Path(2020,MAR_C00017-Road_NH3-MAR01-LH2-ESP01) - v_Path(2020,MAR_C00017-Road_NH3-MAR01-Maritime_ammonia-ESP01) + v_ProductionNode(2020,MAR_C00017)
+      =E= 0 ; (LHS = 0)
+     
+
+---- e_LinkH2SystemNodeProduction  =E=  
+
+e_LinkH2SystemNodeProduction(2020,MAR_C00018)..  v_ProductionNode(2020,MAR_C00018) - v_ProductionH2System(2020,MAR_C00018-Hybrid-Alkaline_electrolyser) - v_ProductionH2System(2020,MAR_C00018-PV-Alkaline_electrolyser)
+     
+      - v_ProductionH2System(2020,MAR_C00018-Onshore-Alkaline_electrolyser) =E= 0 ; (LHS = 0)
+     
+e_LinkH2SystemNodeProduction(2020,MAR_C00017)..  v_ProductionNode(2020,MAR_C00017) - v_ProductionH2System(2020,MAR_C00017-Hybrid-Alkaline_electrolyser) - v_ProductionH2System(2020,MAR_C00017-PV-Alkaline_electrolyser)
+     
+      - v_ProductionH2System(2020,MAR_C00017-Onshore-Alkaline_electrolyser) =E= 0 ; (LHS = 0)
+     
+
+---- e_ProductionLimitCountry  =G=  
+
+                NONE
+
+
+---- e_ProductionLimitVolumesNode  =G=  
+
+                NONE
+
+
+---- e_ProductionLimitCapacityNode  =G=  
+
+e_ProductionLimitCapacityNode(2020,MAR_C00018)..  - 2.1*v_ProductionH2System(2020,MAR_C00018-Hybrid-Alkaline_electrolyser) - 1.5*v_ProductionH2System(2020,MAR_C00018-PV-Alkaline_electrolyser)
+     
+      - 1.5*v_ProductionH2System(2020,MAR_C00018-Onshore-Alkaline_electrolyser) =G= -5000 ; (LHS = 0)
+     
+e_ProductionLimitCapacityNode(2020,MAR_C00017)..  - 2.1*v_ProductionH2System(2020,MAR_C00017-Hybrid-Alkaline_electrolyser) - 1.5*v_ProductionH2System(2020,MAR_C00017-PV-Alkaline_electrolyser)
+     
+      - 1.5*v_ProductionH2System(2020,MAR_C00017-Onshore-Alkaline_electrolyser) =G= -5000 ; (LHS = 0)
+     
+
+---- e_TransportLimitImport  =G=  
+
+e_TransportLimitImport(2020,ESP01,Pipeline)..  - v_Path(2020,MAR_C00017-Road_NH3-MAR01-Pipeline-ESP01) - v_Path(2020,MAR_C00018-Road_NH3-MAR01-Pipeline-ESP01) =G= -5000 ; (LHS = 0)
+     
+e_TransportLimitImport(2020,ESP01,LH2)..  - v_Path(2020,MAR_C00017-Road_NH3-MAR01-LH2-ESP01) - v_Path(2020,MAR_C00018-Road_NH3-MAR01-LH2-ESP01) =G= -2000 ; (LHS = 0)
+     
+e_TransportLimitImport(2020,ESP01,Maritime_ammonia)..  - v_Path(2020,MAR_C00017-Road_NH3-MAR01-Maritime_ammonia-ESP01) - v_Path(2020,MAR_C00018-Road_NH3-MAR01-Maritime_ammonia-ESP01) =G= 0 ; (LHS = 0)
+     
+
+---- e_TransportLimitInternational  =G=  
+
+e_TransportLimitInternational(2020,MAR01,ESP01,Pipeline)..  - v_Path(2020,MAR_C00017-Road_NH3-MAR01-Pipeline-ESP01) - v_Path(2020,MAR_C00018-Road_NH3-MAR01-Pipeline-ESP01) =G= -5000 ; (LHS = 0)
+     
+e_TransportLimitInternational(2020,MAR01,ESP01,LH2)..  - v_Path(2020,MAR_C00017-Road_NH3-MAR01-LH2-ESP01) - v_Path(2020,MAR_C00018-Road_NH3-MAR01-LH2-ESP01) =G= -2000 ; (LHS = 0)
+     
+e_TransportLimitInternational(2020,MAR01,ESP01,Maritime_ammonia)..  - v_Path(2020,MAR_C00017-Road_NH3-MAR01-Maritime_ammonia-ESP01) - v_Path(2020,MAR_C00018-Road_NH3-MAR01-Maritime_ammonia-ESP01) =G= 0 ; (LHS = 0)
+     
+GAMS 25.1.3  r4e34d435fbd Released Oct 30, 2018 WEX-WEI x86 64bit/MS Windows - 11/20/20 00:06:55 Page 5
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Column Listing      SOLVE H2forEU_SupplyChain Using LP From line 582
+
+
+---- v_CostSupply  
+
+v_CostSupply
+                (.LO, .L, .UP, .M = -INF, 0, +INF, 0)
+        1       e_Objective
+
+
+---- v_CostTotal  
+
+v_CostTotal(2020)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -1       e_Objective
+        1       e_CostTotal(2020)
+
+
+---- v_CostTransport  
+
+v_CostTransport(2020)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -1       e_CostTotal(2020)
+        1       e_CostTransport(2020)
+
+
+---- v_CostProduction  
+
+v_CostProduction(2020)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -1       e_CostTotal(2020)
+        1       e_CostProduction(2020)
+
+
+---- v_CostTotalDummy  
+
+v_CostTotalDummy(2020)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -1       e_CostTotal(2020)
+        1       e_CostDummy(2020)
+
+
+---- v_Path  
+
+v_Path(2020,MAR_C00017-Road_NH3-MAR01-Pipeline-ESP01)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -0.3759  e_CostTransportNational(2020)
+       -0.63    e_CostTransportInternational(2020)
+       -3.3297  e_CostTransportConversion(2020)
+       -1       e_Demand_EU(2020)
+       -1       e_LinkNodeProductionPath(2020,MAR_C00017)
+       -1       e_TransportLimitImport(2020,ESP01,Pipeline)
+       -1       e_TransportLimitInternational(2020,MAR01,ESP01,Pipeline)
+
+v_Path(2020,MAR_C00017-Road_NH3-MAR01-LH2-ESP01)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -0.3759  e_CostTransportNational(2020)
+       -0.9405  e_CostTransportInternational(2020)
+       -6.6597  e_CostTransportConversion(2020)
+       -1       e_Demand_EU(2020)
+       -1       e_LinkNodeProductionPath(2020,MAR_C00017)
+       -1       e_TransportLimitImport(2020,ESP01,LH2)
+       -1       e_TransportLimitInternational(2020,MAR01,ESP01,LH2)
+
+v_Path(2020,MAR_C00017-Road_NH3-MAR01-Maritime_ammonia-ESP01)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -0.3759  e_CostTransportNational(2020)
+       -0.2625  e_CostTransportInternational(2020)
+       -3.3297  e_CostTransportConversion(2020)
+       -1       e_Demand_EU(2020)
+       -1       e_LinkNodeProductionPath(2020,MAR_C00017)
+       -1       e_TransportLimitImport(2020,ESP01,Maritime_ammonia)
+       -1       e_TransportLimitInternational(2020,MAR01,ESP01,Maritime_ammonia)
+
+REMAINING 3 ENTRIES SKIPPED
+
+---- v_ProductionNode  
+
+v_ProductionNode(2020,MAR_C00018)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+        1       e_LinkNodeProductionPath(2020,MAR_C00018)
+        1       e_LinkH2SystemNodeProduction(2020,MAR_C00018)
+
+v_ProductionNode(2020,MAR_C00017)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+        1       e_LinkNodeProductionPath(2020,MAR_C00017)
+        1       e_LinkH2SystemNodeProduction(2020,MAR_C00017)
+
+
+---- v_ProductionH2System  
+
+v_ProductionH2System(2020,MAR_C00018-Hybrid-Alkaline_electrolyser)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -9       e_CostProduction(2020)
+       -1       e_LinkH2SystemNodeProduction(2020,MAR_C00018)
+       -2.1     e_ProductionLimitCapacityNode(2020,MAR_C00018)
+
+v_ProductionH2System(2020,MAR_C00018-PV-Alkaline_electrolyser)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+      -10       e_CostProduction(2020)
+       -1       e_LinkH2SystemNodeProduction(2020,MAR_C00018)
+       -1.5     e_ProductionLimitCapacityNode(2020,MAR_C00018)
+
+v_ProductionH2System(2020,MAR_C00018-Onshore-Alkaline_electrolyser)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+      -11       e_CostProduction(2020)
+       -1       e_LinkH2SystemNodeProduction(2020,MAR_C00018)
+       -1.5     e_ProductionLimitCapacityNode(2020,MAR_C00018)
+
+REMAINING 3 ENTRIES SKIPPED
+
+---- v_ProductionDummy  
+
+v_ProductionDummy(2020,ESP01)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+  -1.000000E+6  e_CostDummy(2020)
+
+
+---- v_ProductionDummyEU  
+
+v_ProductionDummyEU(2020)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+  -1.000000E+6  e_CostDummy(2020)
+       -1       e_Demand_EU(2020)
+
+
+---- v_CostTransportNational  
+
+v_CostTransportNational(2020)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -1       e_CostTransport(2020)
+        1       e_CostTransportNational(2020)
+
+
+---- v_CostTransportInternational  
+
+v_CostTransportInternational(2020)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -1       e_CostTransport(2020)
+        1       e_CostTransportInternational(2020)
+
+
+---- v_CostTransportConversion  
+
+v_CostTransportConversion(2020)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -1       e_CostTransport(2020)
+        1       e_CostTransportConversion(2020)
+
+GAMS 25.1.3  r4e34d435fbd Released Oct 30, 2018 WEX-WEI x86 64bit/MS Windows - 11/20/20 00:06:55 Page 6
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Model Statistics    SOLVE H2forEU_SupplyChain Using LP From line 582
+
+
+LOOPS                            ITERATION   1
+
+
+MODEL STATISTICS
+
+BLOCKS OF EQUATIONS          16     SINGLE EQUATIONS           21
+BLOCKS OF VARIABLES          13     SINGLE VARIABLES           24
+NON ZERO ELEMENTS            82
+
+
+GENERATION TIME      =        0.047 SECONDS      4 MB  25.1.3 r4e34d435fbd WEX-WEI
+
+
+EXECUTION TIME       =        0.047 SECONDS      4 MB  25.1.3 r4e34d435fbd WEX-WEI
+               L O O P S          ITERATION 1
+
+GAMS 25.1.3  r4e34d435fbd Released Oct 30, 2018 WEX-WEI x86 64bit/MS Windows - 11/20/20 00:06:55 Page 7
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Solution Report     SOLVE H2forEU_SupplyChain Using LP From line 582
+
+
+               S O L V E      S U M M A R Y
+
+     MODEL   H2forEU_SupplyChain   OBJECTIVE  v_CostSupply
+     TYPE    LP                    DIRECTION  MINIMIZE
+     SOLVER  CPLEX                 FROM LINE  582
+
+**** SOLVER STATUS     1 Normal Completion         
+**** MODEL STATUS      1 Optimal                   
+**** OBJECTIVE VALUE   150014994833584544.0000
+
+ RESOURCE USAGE, LIMIT          0.079      1000.000
+ ITERATION COUNT, LIMIT        11    2000000000
+
+IBM ILOG CPLEX   28.2.0 r750fa45 Released Aug 19, 2019 WEI x86 64bit/MS Window
+Cplex 12.9.0.0
+
+Space for names approximately 0.00 Mb
+Use option 'names no' to turn use of names off
+LP status(1): optimal
+Cplex Time: 0.02sec (det. 0.04 ticks)
+Optimal solution found.
+Objective : 150014994833584544.000000
+
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- EQU e_Objecti~          .              .              .             1.0000      
+
+---- EQU e_CostTotal  
+
+            LOWER          LEVEL          UPPER         MARGINAL
+
+2020          .              .              .             1.0000      
+
+---- EQU e_CostProduction  
+
+            LOWER          LEVEL          UPPER         MARGINAL
+
+2020          .              .              .             1.0000      
+
+---- EQU e_CostDummy  
+
+            LOWER          LEVEL          UPPER         MARGINAL
+
+2020          .              .              .             1.0000      
+
+---- EQU e_CostTransport  
+
+            LOWER          LEVEL          UPPER         MARGINAL
+
+2020          .              .              .             1.0000      
+
+---- EQU e_CostTransportNational  
+
+            LOWER          LEVEL          UPPER         MARGINAL
+
+2020          .              .              .             1.0000      
+
+---- EQU e_CostTransportInternational  
+
+            LOWER          LEVEL          UPPER         MARGINAL
+
+2020          .              .              .             1.0000      
+
+---- EQU e_CostTransportConversion  
+
+            LOWER          LEVEL          UPPER         MARGINAL
+
+2020          .              .              .             1.0000      
+
+---- EQU e_Demand_EU  
+
+            LOWER          LEVEL          UPPER         MARGINAL
+
+2020   -1.50015E+11   -1.50015E+11   -1.50015E+11   -1.000000E+6      
+
+---- EQU e_LinkNodeProductionPath  
+
+                       LOWER          LEVEL          UPPER         MARGINAL
+
+2020.MAR_C00018          .              .              .        999992.1567      
+2020.MAR_C00017          .              .              .        999992.0240      
+
+---- EQU e_LinkH2SystemNodeProduction  
+
+                       LOWER          LEVEL          UPPER         MARGINAL
+
+2020.MAR_C00018          .              .              .       -999992.1567      
+2020.MAR_C00017          .              .              .       -999992.0240      
+
+---- EQU e_ProductionLimitCountry  
+
+                NONE
+
+
+---- EQU e_ProductionLimitVolumesNode  
+
+                NONE
+
+
+---- EQU e_ProductionLimitCapacityNode  
+
+                       LOWER          LEVEL          UPPER         MARGINAL
+
+2020.MAR_C00018     -5000.0000     -5000.0000        +INF       666654.7711      
+2020.MAR_C00017     -5000.0000     -5000.0000        +INF       666654.6826      
+
+---- EQU e_TransportLimitImport  
+
+                                   LOWER          LEVEL          UPPER         MARGINAL
+
+2020.ESP01.Pipeline             -5000.0000     -5000.0000        +INF            3.6405      
+2020.ESP01.LH2                  -2000.0000     -1666.6667        +INF             .          
+2020.ESP01.Maritime_ammonia          .              .            +INF            4.0080      
+
+---- EQU e_TransportLimitInternational  
+
+                                         LOWER          LEVEL          UPPER         MARGINAL
+
+2020.MAR01.ESP01.Pipeline             -5000.0000     -5000.0000        +INF             .          
+2020.MAR01.ESP01.LH2                  -2000.0000     -1666.6667        +INF             .          
+2020.MAR01.ESP01.Maritime_ammonia          .              .            +INF             .          
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- VAR v_CostSup~        -INF      1.500150E+17        +INF             .          
+
+---- VAR v_CostTotal  
+
+            LOWER          LEVEL          UPPER         MARGINAL
+
+2020          .       1.500150E+17        +INF             .          
+
+---- VAR v_CostTransport  
+
+            LOWER          LEVEL          UPPER         MARGINAL
+
+2020          .         34528.5253        +INF             .          
+
+---- VAR v_CostProduction  
+
+            LOWER          LEVEL          UPPER         MARGINAL
+
+2020          .         66666.6667        +INF             .          
+
+---- VAR v_CostTotalDummy  
+
+            LOWER          LEVEL          UPPER         MARGINAL
+
+2020          .       1.500150E+17        +INF             .          
+
+---- VAR v_Path  
+
+                                                             LOWER          LEVEL          UPPER         MARGINAL
+
+2020.MAR_C00017-Road_NH3-MAR01-Pipeline-ESP01                  .          1666.6667        +INF             .          
+2020.MAR_C00017-Road_NH3-MAR01-LH2-ESP01                       .          1666.6667        +INF             .          
+2020.MAR_C00017-Road_NH3-MAR01-Maritime_ammonia-ESP01          .              .            +INF            EPS         
+2020.MAR_C00018-Road_NH3-MAR01-Pipeline-ESP01                  .          3333.3333        +INF             .          
+2020.MAR_C00018-Road_NH3-MAR01-LH2-ESP01                       .              .            +INF      1.164153E-10      
+2020.MAR_C00018-Road_NH3-MAR01-Maritime_ammonia-ESP01          .              .            +INF             .          
+
+---- VAR v_ProductionNode  
+
+                       LOWER          LEVEL          UPPER         MARGINAL
+
+2020.MAR_C00018          .          3333.3333        +INF             .          
+2020.MAR_C00017          .          3333.3333        +INF             .          
+
+---- VAR v_ProductionH2System  
+
+                                                     LOWER          LEVEL          UPPER         MARGINAL
+
+2020.MAR_C00018-Hybrid-Alkaline_electrolyser           .              .            +INF       399991.8627      
+2020.MAR_C00018-PV-Alkaline_electrolyser               .          3333.3333        +INF             .          
+2020.MAR_C00018-Onshore-Alkaline_electrolyser          .              .            +INF            1.0000      
+2020.MAR_C00017-Hybrid-Alkaline_electrolyser           .              .            +INF       399991.8096      
+2020.MAR_C00017-PV-Alkaline_electrolyser               .          3333.3333        +INF             .          
+2020.MAR_C00017-Onshore-Alkaline_electrolyser          .              .            +INF            1.0000      
+
+---- VAR v_ProductionDummy  
+
+                  LOWER          LEVEL          UPPER         MARGINAL
+
+2020.ESP01          .              .            +INF      1000000.0000      
+
+---- VAR v_ProductionDummyEU  
+
+            LOWER          LEVEL          UPPER         MARGINAL
+
+2020          .       1.500150E+11        +INF             .          
+
+---- VAR v_CostTransportNational  
+
+            LOWER          LEVEL          UPPER         MARGINAL
+
+2020          .          2063.2453        +INF             .          
+
+---- VAR v_CostTransportInternational  
+
+            LOWER          LEVEL          UPPER         MARGINAL
+
+2020          .          4717.3333        +INF             .          
+
+---- VAR v_CostTransportConversion  
+
+            LOWER          LEVEL          UPPER         MARGINAL
+
+2020          .         27747.9467        +INF             .          
+
+
+**** REPORT SUMMARY :        0     NONOPT
+                             0 INFEASIBLE
+                             0  UNBOUNDED
+GAMS 25.1.3  r4e34d435fbd Released Oct 30, 2018 WEX-WEI x86 64bit/MS Windows - 11/20/20 00:06:55 Page 8
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+E x e c u t i o n
+
+
+EXECUTION TIME       =        0.015 SECONDS      3 MB  25.1.3 r4e34d435fbd WEX-WEI
+
+
+USER: CS 635 Spring 2014                             G140121/0001AO-GEN
+      Prof. Michael Ferris, University of Wisconsin-Madison      DC2937
+      License for teaching and research at degree granting institutions
+
+
+**** FILE SUMMARY
+
+Input      C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\H2forEU_SupplyChain_main.gms
+Output     C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\H2forEU_SupplyChain_main.lst

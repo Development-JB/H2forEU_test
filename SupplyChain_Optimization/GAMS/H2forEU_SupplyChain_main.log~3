@@ -1,0 +1,215 @@
+--- Job H2forEU_SupplyChain_main.gms Start 11/20/20 00:05:21 25.1.3 r4e34d435fbd WEX-WEI x86 64bit/MS Windows
+GAMS 25.1.3   Copyright (C) 1987-2018 GAMS Development. All rights reserved
+Licensee: CS 635 Spring 2014                             G140121/0001AO-GEN
+          Prof. Michael Ferris, University of Wisconsin-Madison      DC2937
+          License for teaching and research at degree granting institutions
+--- Starting compilation
+--- H2forEU_SupplyChain_main.gms(25) 2 Mb
+--- . H2forEU_SupplyChain_setup.gms(1) 2 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/ITERATION.gdx
+--- . H2forEU_SupplyChain_setup.gms(8) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/YEAR.gdx
+--- . H2forEU_SupplyChain_setup.gms(13) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/COUNTRY.gdx
+--- . H2forEU_SupplyChain_setup.gms(18) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/COUNTRY_EXPORT.gdx
+--- . H2forEU_SupplyChain_setup.gms(23) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/COUNTRY_IMPORT.gdx
+--- . H2forEU_SupplyChain_setup.gms(28) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/NODE_PRODUCTION.gdx
+--- . H2forEU_SupplyChain_setup.gms(33) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/NODE_EXPORT.gdx
+--- . H2forEU_SupplyChain_setup.gms(38) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/NODE_IMPORT.gdx
+--- . H2forEU_SupplyChain_setup.gms(43) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/PATH.gdx
+--- . H2forEU_SupplyChain_setup.gms(48) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/TRANSPORT_NATIONAL.gdx
+--- . H2forEU_SupplyChain_setup.gms(53) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/TRANSPORT_INTERNATIONAL.gdx
+--- . H2forEU_SupplyChain_setup.gms(58) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/TRANSPORT_CONVERSION.gdx
+--- . H2forEU_SupplyChain_setup.gms(63) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/SOURCE.gdx
+--- . H2forEU_SupplyChain_setup.gms(68) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/SOURCE_VRES.gdx
+--- . H2forEU_SupplyChain_setup.gms(73) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/SOURCE_NON_VRES.gdx
+--- . H2forEU_SupplyChain_setup.gms(78) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/TECHNOLOGY.gdx
+--- . H2forEU_SupplyChain_setup.gms(83) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/ENERGY_TYPE.gdx
+--- . H2forEU_SupplyChain_setup.gms(88) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/H2_SYSTEM.gdx
+--- . H2forEU_SupplyChain_setup.gms(95) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_ITERATION_YEAR.gdx
+--- . H2forEU_SupplyChain_setup.gms(100) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_SOURCE_ENERGY_TYPE.gdx
+--- . H2forEU_SupplyChain_setup.gms(101) 3 Mb
+--- . H2forEU_SupplyChain_setup.gms(105) 3 Mb
+
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_SOURCE_TECHNOLOGY.gdx
+--- . H2forEU_SupplyChain_setup.gms(110) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_COUNTRY_NODE_PRODUCTION.gdx
+--- . H2forEU_SupplyChain_setup.gms(115) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_NODE_PRODUCTION.gdx
+--- . H2forEU_SupplyChain_setup.gms(120) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_NODE_EXPORT.gdx
+--- . H2forEU_SupplyChain_setup.gms(125) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_NODE_IMPORT.gdx
+--- . H2forEU_SupplyChain_setup.gms(130) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_TRANSPORT_NATIONAL.gdx
+--- . H2forEU_SupplyChain_setup.gms(135) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_TRANSPORT_INTERNATIONAL.gdx
+--- . H2forEU_SupplyChain_setup.gms(140) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_CONVERSION.gdx
+--- . H2forEU_SupplyChain_setup.gms(145) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_H2_SYSTEM_ENERGY_TYPE.gdx
+--- . H2forEU_SupplyChain_setup.gms(150) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_H2_SYSTEM_SOURCE.gdx
+--- . H2forEU_SupplyChain_setup.gms(155) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_H2_SYSTEM_TECHNOLOGY.gdx
+--- . H2forEU_SupplyChain_setup.gms(160) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_H2_SYSTEM_COUNTRY.gdx
+--- . H2forEU_SupplyChain_setup.gms(165) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_H2_SYSTEM_NODE_PRODUCTION.gdx
+--- . H2forEU_SupplyChain_setup.gms(201) 3 Mb
+--- H2forEU_SupplyChain_main.gms(26) 3 Mb
+--- . H2forEU_SupplyChain_data.gms(6) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_limit_country.gdx
+--- . H2forEU_SupplyChain_data.gms(12) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_limit_node.gdx
+--- . H2forEU_SupplyChain_data.gms(13) 3 Mb 1 Error
+*** Error 140 in C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\H2forEU_SupplyChain_data.gms
+    Unknown symbol
+--- . H2forEU_SupplyChain_data.gms(19) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_limit_capacity_node.gdx
+--- . H2forEU_SupplyChain_data.gms(26) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_area_available_node.gdx
+--- . H2forEU_SupplyChain_data.gms(33) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_energy_density.gdx
+--- . H2forEU_SupplyChain_data.gms(40) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_land_dedication.gdx
+--- . H2forEU_SupplyChain_data.gms(48) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_demand_eu.gdx
+--- . H2forEU_SupplyChain_data.gms(54) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_volume.gdx
+--- . H2forEU_SupplyChain_data.gms(60) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_capacities.gdx
+--- . H2forEU_SupplyChain_data.gms(67) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_cost.gdx
+--- . H2forEU_SupplyChain_data.gms(73) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_national_cost_fixed.gdx
+--- . H2forEU_SupplyChain_data.gms(79) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_national_cost_variable.gdx
+--- . H2forEU_SupplyChain_data.gms(85) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_national_distance.gdx
+--- . H2forEU_SupplyChain_data.gms(91) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_cost_fixed.gdx
+--- . H2forEU_SupplyChain_data.gms(97) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_cost_variable.gdx
+--- . H2forEU_SupplyChain_data.gms(103) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_capacity.gdx
+--- . H2forEU_SupplyChain_data.gms(109) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_import_capacity.gdx
+--- . H2forEU_SupplyChain_data.gms(115) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_international_distance.gdx
+--- . H2forEU_SupplyChain_data.gms(121) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_conversion_cost.gdx
+--- . H2forEU_SupplyChain_data.gms(124) 3 Mb
+--- H2forEU_SupplyChain_main.gms(27) 3 Mb
+--- . H2forEU_SupplyChain_model.gms(133) 3 Mb 2 Errors
+*** Error 149 in C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\H2forEU_SupplyChain_model.gms
+    Uncontrolled set entered as constant
+--- . H2forEU_SupplyChain_model.gms(182) 3 Mb 3 Errors
+*** Error 149 in C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\H2forEU_SupplyChain_model.gms
+    Uncontrolled set entered as constant
+--- . H2forEU_SupplyChain_model.gms(184) 3 Mb 4 Errors
+*** Error 149 in C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\H2forEU_SupplyChain_model.gms
+    Uncontrolled set entered as constant
+--- . H2forEU_SupplyChain_model.gms(219) 3 Mb
+--- H2forEU_SupplyChain_main.gms(38) 3 Mb 5 Errors
+*** Error 257 in C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\H2forEU_SupplyChain_main.gms
+    Solve statement not checked because of previous errors
+--- H2forEU_SupplyChain_main.gms(40) 3 Mb 6 Errors
+*** Error 141 in C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\H2forEU_SupplyChain_main.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+--- H2forEU_SupplyChain_main.gms(41) 3 Mb 7 Errors
+*** Error 141 in C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\H2forEU_SupplyChain_main.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+--- H2forEU_SupplyChain_main.gms(42) 3 Mb 8 Errors
+*** Error 141 in C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\H2forEU_SupplyChain_main.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+--- H2forEU_SupplyChain_main.gms(43) 3 Mb 9 Errors
+*** Error 141 in C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\H2forEU_SupplyChain_main.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+--- H2forEU_SupplyChain_main.gms(44) 3 Mb 10 Errors
+*** Error 141 in C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\H2forEU_SupplyChain_main.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+--- H2forEU_SupplyChain_main.gms(45) 3 Mb 11 Errors
+*** Error 141 in C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\H2forEU_SupplyChain_main.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+--- H2forEU_SupplyChain_main.gms(46) 3 Mb 12 Errors
+*** Error 141 in C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\H2forEU_SupplyChain_main.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+--- H2forEU_SupplyChain_main.gms(47) 3 Mb 13 Errors
+*** Error 141 in C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\H2forEU_SupplyChain_main.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+--- H2forEU_SupplyChain_main.gms(48) 3 Mb 14 Errors
+*** Error 141 in C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\H2forEU_SupplyChain_main.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+--- H2forEU_SupplyChain_main.gms(49) 3 Mb 15 Errors
+*** Error 141 in C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\H2forEU_SupplyChain_main.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+--- H2forEU_SupplyChain_main.gms(66) 3 Mb 16 Errors
+*** Error 141 in C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\H2forEU_SupplyChain_main.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+--- H2forEU_SupplyChain_main.gms(85) 3 Mb
+--- . H2forEU_SupplyChain_output.gms(24) 3 Mb
+--- H2forEU_SupplyChain_main.gms(86) 3 Mb 16 Errors
+*** Status: Compilation error(s)
+--- Job H2forEU_SupplyChain_main.gms Stop 11/20/20 00:05:22 elapsed 0:00:00.455
