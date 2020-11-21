@@ -47,7 +47,10 @@ loop(ITERATION,
     r_ProductionNode(i_YEAR, NODE_PRODUCTION) = v_ProductionNode.l(i_YEAR, NODE_PRODUCTION);
     r_ProductionH2System(i_YEAR, H2_SYSTEM) = v_ProductionH2System.l(i_YEAR, H2_SYSTEM);
     r_ProductionDummy(i_YEAR, NODE_IMPORT) = v_ProductionDummy.l(i_YEAR, NODE_IMPORT);
-    
+    r_ProductionDummyEU(i_YEAR) = v_ProductionDummyEU.l(i_YEAR);
+
+  
+$ontext  
     r_H2_system(i_YEAR, H2_SYSTEM, COUNTRY, NODE_PRODUCTION, SOURCE, ENERGY_TYPE, TECHNOLOGY)
                                           $(LINK_H2_SYSTEM_COUNTRY(H2_SYSTEM,COUNTRY)
                                         and LINK_H2_SYSTEM_NODE_PRODUCTION(H2_SYSTEM,NODE_PRODUCTION)
@@ -78,7 +81,7 @@ loop(ITERATION,
                                         and LINK_PATH_NODE_IMPORT(PATH,NODE_IMPORT)
                                         and v_ProductionNode.l(i_YEAR, NODE_PRODUCTION)>0)
                                         = v_Path.l(i_YEAR, PATH)/v_ProductionNode.l(i_YEAR, NODE_PRODUCTION)*v_ProductionH2System.l(i_YEAR, H2_SYSTEM)*p_production_volume(i_YEAR, H2_SYSTEM);    
-
+$offtext
 )
 
 

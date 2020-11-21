@@ -56,11 +56,11 @@ $load p_production_volume = p_production_volume
 $gdxin
 
 
-Parameter p_production_capacities(YEAR, H2_SYSTEM, ENERGY_TYPE);
-$gdxin gdx/p_production_capacities.gdx
-$load p_production_capacities = p_production_capacities
+Parameter p_production_capacity(YEAR, H2_SYSTEM, ENERGY_TYPE);
+$gdxin gdx/p_production_capacity.gdx
+$load p_production_capacity = p_production_capacity
 $gdxin
-display p_production_capacities
+display p_production_capacity
 
 
 Parameter p_production_cost(YEAR, H2_SYSTEM);

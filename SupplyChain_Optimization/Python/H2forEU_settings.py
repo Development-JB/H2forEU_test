@@ -18,6 +18,7 @@ val_path_gdx_output = Path(str(H2forEU_config_general.wd_l1)+"//GAMS//gdx//")
 
 var_transport_national_distance_threshold = 1
 val_demand_scenario = 'Ambitious'
+val_demand_import_share = 0.5
 
 df_set = pd.read_excel(val_path_settings, sheet_name='Sets')
 

@@ -4,9 +4,6 @@ import pandas as pd
 import numpy as np
 
 
-
-
-
 import dash_core_components as dcc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
@@ -15,17 +12,16 @@ from dash.exceptions import PreventUpdate
 import plotly.express as px
 import plotly.graph_objects as go
 from app import app
-from apps import page_load_data
+from apps import load_data
 
 
 # ------------------------------------------------------------------------------
 # Load data
 
-
 lst_res_selection = ['PV load factor','Onshore load factor','Correlation']
 
-json_nuts2 = page_load_data.fct_load_json_file()
-[df_res_information, df_colorscale_load_factor] = page_load_data.fct_load_res_information()
+json_nuts2 = load_data.fct_load_json_file()
+[df_res_information, df_colorscale_load_factor] = load_data.fct_load_res_information()
 
 # ------------------------------------------------------------------------------
 # App layout

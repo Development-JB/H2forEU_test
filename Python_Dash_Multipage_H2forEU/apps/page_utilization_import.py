@@ -8,19 +8,19 @@ from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
 import plotly.express as px
 from app import app
-from apps import page_load_data
+from apps import load_data
 
 
 # ------------------------------------------------------------------------------
 # Load data
 
-lst_transport_international = ['Pipeline','NH3']
-lst_node_import = ['ESP01','ESP02','ITA01']
-lst_year = [2020, 2030, 2040]
+lst_transport_international = load_data.lst_transport_international
+lst_node_import = load_data.lst_node_import
+lst_year = load_data.lst_year
 
-json_nuts2 = page_load_data.fct_load_json_file()
-df_results = page_load_data.fct_load_results_supply()
-df_import_capacity = page_load_data.fct_load_import_capacity()
+json_nuts2 = load_data.fct_load_json_file()
+df_results = load_data.fct_load_results_supply()
+df_import_capacity = load_data.fct_load_import_capacity()
 
 # ------------------------------------------------------------------------------
 # App layout
@@ -93,8 +93,6 @@ layout = html.Div([
      Input(component_id='page_utilization_import_drop_transport_international', component_property='value')],
 )
 def page_utilization_import_update_graph(slct_year, slct_node_import, slct_transport_international):
-
-    #print(slct_year)
 
     #slct_node_import = ['ESP01','ESP02','ITA01']
     #slct_transport_international = ['Pipeline','NH3']

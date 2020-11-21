@@ -13,25 +13,19 @@ from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
 import plotly.express as px
 from app import app
-from apps import page_load_data
+from apps import load_data
 
 
 # ------------------------------------------------------------------------------
-# MARCO Data
+# Load data
 
-# Import gdx pre-load
-#from apps import marco_load_gdx
-
-# gdx preparation
-#df_gdx_load = marco_load_gdx.fct_load_gdx_load()
-
-lst_system = ['PV','Onshore','Hybrid','Best']
-lst_electrolyser = ['PEM','Alkaline']
-lst_year = [2020,2030,2040]
+lst_system = load_data.lst_source_vres + ['Best']
+lst_electrolyser = load_data.lst_technology
+lst_year = load_data.lst_year
 
 
-json_nuts2 = page_load_data.fct_load_json_file()
-df_lcoh = page_load_data.fct_load_lcoh_result()
+json_nuts2 = load_data.fct_load_json_file()
+df_lcoh = load_data.fct_load_lcoh_result()
 
 # ------------------------------------------------------------------------------
 # App layout

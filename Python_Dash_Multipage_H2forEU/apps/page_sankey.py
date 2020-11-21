@@ -5,7 +5,7 @@ import dash_html_components as html
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State
 from app import app
-from apps import page_load_data
+from apps import load_data
 import plotly.graph_objects as go
 
 from apps import functions
@@ -14,10 +14,10 @@ from apps import functions
 # ------------------------------------------------------------------------------
 # Load data
 
-lst_selection = ['Region_export','Region_import','Country_import','Country_export']
-lst_year = [2020,2030,2040,2050]
+lst_selection = ['Region_export','Region_import','Country_import','Country_export','Transport_international','Transport_national']
+lst_year = load_data.lst_year
 
-df_data = page_load_data.fct_load_results_supply()
+df_data = load_data.fct_load_results_supply()
 
 # ------------------------------------------------------------------------------
 # App layout
@@ -49,7 +49,7 @@ layout = html.Div([
             dbc.Col(dcc.Dropdown(id="page_sankey_drop_selection",
                                  options=[{'label': i_lst, 'value': i_lst} for i_lst in lst_selection],
                                  multi=True,
-                                 value=lst_selection[:1],
+                                 value=['Region_export','Region_import'],
                                  style={'width': "100%"}
                                  ),
                     width={'size': 4, 'offset': 2},
@@ -78,13 +78,16 @@ layout = html.Div([
 )
 def page_sankey_update_graph(slct_selection, slct_year):
 
+    print(slct_selection)
+    print(slct_year)
+
+    #slct_year = int(slct_year)
+
     #slct_year = 2020
     #slct_selection = ['Region_export','Country_export','Region_import']
 
     df_slct = df_data.copy()
     df_slct = df_slct[df_slct['Year']==slct_year]
-
-    #df_slct.loc[1,'Country_export'] = 'TUN'
 
     [data, layout] = functions.genSankey(df_slct, cat_cols=slct_selection, value_cols='Volume', title='Sankey Diagram')
 

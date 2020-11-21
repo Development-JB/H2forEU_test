@@ -15,26 +15,20 @@ from dash.exceptions import PreventUpdate
 import plotly.express as px
 import plotly.graph_objs as go
 from app import app
-from apps import page_load_data
+from apps import load_data
 
 
 # ------------------------------------------------------------------------------
-# MARCO Data
+# Load data
 
-# Import gdx pre-load
-#from apps import marco_load_gdx
 
-# gdx preparation
-#df_gdx_load = marco_load_gdx.fct_load_gdx_load()
-
-lst_system = ['PV','Onshore','Hybrid']
+lst_source_vres = load_data.lst_source_vres
 lst_optimization = ['Lcoh','Volume','Profit']
-lst_electrolyser = ['PEM','Alkaline']
-lst_year = [2020,2030,2040]
+lst_electrolyser = load_data.lst_technology
+lst_year = load_data.lst_year
 
-
-json_nuts2 = page_load_data.fct_load_json_file()
-df_system = page_load_data.fct_load_system_result()
+json_nuts2 = load_data.fct_load_json_file()
+df_system = load_data.fct_load_system_result()
 df_colorbar = pd.read_csv("C:\\Users\\Johannes\\Documents\\PhD\\07GeneralData\\Color_scheme\\Colorbar_HybridSystem.csv")
 
 # ------------------------------------------------------------------------------

@@ -46,7 +46,7 @@ lst_gdx = [
             'p_production_land_dedication',
             'p_production_volume',
             'p_production_cost',
-            'p_production_capacities',
+            'p_production_capacity',
             'p_transport_national_cost_fixed',
             'p_transport_national_cost_variable',
             'p_transport_national_distance',

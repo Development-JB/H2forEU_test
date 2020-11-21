@@ -746,6 +746,7 @@ def p_demand_eu():
     df_gdx = df_gdx.reset_index(name='Value')
     df_gdx = df_gdx.rename(columns={'level_2':'Year'})
     df_gdx['Value'] = df_gdx['Value']*1000*1000*1000/33.33
+    df_gdx['Value'] = df_gdx['Value']*H2forEU_settings.val_demand_import_share
     df_gdx = df_gdx[df_gdx['Year'].isin(H2forEU_settings.lst_year)]
     df_gdx = df_gdx.drop(['Scenario','Unit'], axis=1)
 
@@ -936,7 +937,7 @@ def p_production_cost():
     return gdx_name, gdx_dimensions, gdx_data
 
 
-def p_production_capacities():
+def p_production_capacity():
 
     # Import packages
     import pandas as pd
@@ -955,7 +956,7 @@ def p_production_capacities():
     df_gdx = df_gdx[['Year','H2_system','Energy_type','Value']]
     df_gdx.columns = ['YEAR','H2_SYSTEM','ENERGY_TYPE','Value']
 
-    gdx_name = 'p_production_capacities'
+    gdx_name = 'p_production_capacity'
     gdx_dimensions = df_gdx.columns[: -1].tolist()
     gdx_data = df_gdx
 
@@ -1176,7 +1177,7 @@ def p_transport_international_import_capacity():
     # Import files
     import H2forEU_settings
 
-    df_gdx = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Trans_international_capacity_import')
+    df_gdx = pd.read_excel(H2forEU_settings.val_path_data_general, sheet_name='Trans_international_capacity_im')
     df_gdx = df_gdx.drop(['Unit'], axis=1)
     df_gdx = df_gdx.set_index(['Node_export','Transport_international'])
     df_gdx = df_gdx.interpolate(axis=1)
