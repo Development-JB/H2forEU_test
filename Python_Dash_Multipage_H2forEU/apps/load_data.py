@@ -245,38 +245,25 @@ del df_gdx
 df_path = df_gdx_results['r_Path']
 df_path.columns = ['Year', 'Path', 'Node_production', 'Transport_national', 'Node_export', 'Transport_international',
                    'Node_import', 'Volume_transport']
+df_path['Year'] = df_path['Year'].astype(int)
 
 # Production at node
 df_production_node = df_gdx_results['r_ProductionNode']
 df_production_node.columns = ['Year', 'Node_production', 'Volume_production_node']
+df_production_node['Year'] = df_production_node['Year'].astype(int)
 
 # H2_system
 # df_h2_system = df_gdx_results['r_H2_system']
 # df_h2_system.columns = ['Year', 'H2_system', 'Country', 'Node_production', 'Source', 'Energy_type', 'Technology',
 #                         'Volume_production_system']
 
-# Production H2_system
-df_production_h2_system = df_gdx_results['r_ProductionH2System']
-df_production_h2_system.columns = ['Year', 'H2_system','Volume_production_system']
-df_production_h2_system = pd.merge(df_production_h2_system, df_link_h2_system_node_production, how='left', on=['H2_system'])
-df_production_h2_system = pd.merge(df_production_h2_system, df_link_h2_system_source, how='left', on=['H2_system'])
-df_production_h2_system = pd.merge(df_production_h2_system, df_link_h2_technology, how='left', on=['H2_system'])
-
-
-df_supply = pd.merge(df_production_h2_system, df_production_node, how='left', on=['Year', 'Node_production'])
-df_supply = pd.merge(df_supply, df_path, how='left', on=['Year', 'Node_production'])
-
-df_supply['Volume'] = df_supply['Volume_production_system'] / df_supply['Volume_production_node'] * df_supply[
-    'Volume_transport']
-
-df_supply = df_supply[['Year', 'H2_system', 'Path', 'Source', 'Technology', 'Node_production',
-                       'Transport_national', 'Node_export', 'Transport_international', 'Node_import', 'Volume']]
 
 ### p_demand_eu
 df_gdx = gdxpds.to_dataframes(path_gdx + "p_demand_eu.gdx")
 df_gdx = df_gdx["p_demand_eu"]
 df_gdx.columns = ['Year', 'Demand_eu']
-p_demand_eu = df_gdx
+df_gdx['Year'] = df_gdx['Year'].astype(int)
+df_demand_eu = df_gdx
 del df_gdx
 
 ### p_production_area_available_node
@@ -290,6 +277,7 @@ del df_gdx
 df_gdx = gdxpds.to_dataframes(path_gdx + "p_production_capacity.gdx")
 df_gdx = df_gdx["p_production_capacity"]
 df_gdx.columns = ['Year', 'H2_system', 'Energy_type', 'Production_capacity']
+df_gdx['Year'] = df_gdx['Year'].astype(int)
 df_production_capacity = df_gdx
 del df_gdx
 
@@ -297,6 +285,7 @@ del df_gdx
 df_gdx = gdxpds.to_dataframes(path_gdx + "p_production_cost.gdx")
 df_gdx = df_gdx["p_production_cost"]
 df_gdx.columns = ['Year', 'H2_system', 'Production_cost']
+df_gdx['Year'] = df_gdx['Year'].astype(int)
 df_production_cost = df_gdx
 del df_gdx
 
@@ -318,6 +307,7 @@ del df_gdx
 df_gdx = gdxpds.to_dataframes(path_gdx + "p_production_limit_capacity_node.gdx")
 df_gdx = df_gdx["p_production_limit_capacity_node"]
 df_gdx.columns = ['Year', 'Node_production', 'Production_limit_capacity_node']
+df_gdx['Year'] = df_gdx['Year'].astype(int)
 df_production_limit_capacity_node = df_gdx
 del df_gdx
 
@@ -325,6 +315,7 @@ del df_gdx
 df_gdx = gdxpds.to_dataframes(path_gdx + "p_production_limit_country.gdx")
 df_gdx = df_gdx["p_production_limit_country"]
 df_gdx.columns = ['Year', 'Country', 'Energy_type', 'Production_limit_country']
+df_gdx['Year'] = df_gdx['Year'].astype(int)
 df_production_limit_country = df_gdx
 del df_gdx
 
@@ -332,6 +323,7 @@ del df_gdx
 df_gdx = gdxpds.to_dataframes(path_gdx + "p_production_limit_node.gdx")
 df_gdx = df_gdx["p_production_limit_node"]
 df_gdx.columns = ['Year', 'Country', 'Energy_type', 'Production_limit_node']
+df_gdx['Year'] = df_gdx['Year'].astype(int)
 df_production_limit_node = df_gdx
 del df_gdx
 
@@ -339,6 +331,7 @@ del df_gdx
 df_gdx = gdxpds.to_dataframes(path_gdx + "p_production_limit_volume_node.gdx")
 df_gdx = df_gdx["p_production_limit_volume_node"]
 df_gdx.columns = ['Year', 'Country', 'Energy_type', 'Production_limit_volume_node']
+df_gdx['Year'] = df_gdx['Year'].astype(int)
 df_production_limit_volume_node = df_gdx
 del df_gdx
 
@@ -346,6 +339,7 @@ del df_gdx
 df_gdx = gdxpds.to_dataframes(path_gdx + "p_production_volume.gdx")
 df_gdx = df_gdx["p_production_volume"]
 df_gdx.columns = ['Year', 'H2_system', 'Production_volume']
+df_gdx['Year'] = df_gdx['Year'].astype(int)
 df_production_volume = df_gdx
 del df_gdx
 
@@ -353,6 +347,7 @@ del df_gdx
 df_gdx = gdxpds.to_dataframes(path_gdx + "p_transport_conversion_cost.gdx")
 df_gdx = df_gdx["p_transport_conversion_cost"]
 df_gdx.columns = ['Year', 'Transport_conversion', 'Transport_conversion_cost']
+df_gdx['Year'] = df_gdx['Year'].astype(int)
 df_transport_conversion_cost = df_gdx
 del df_gdx
 
@@ -360,6 +355,7 @@ del df_gdx
 df_gdx = gdxpds.to_dataframes(path_gdx + "p_transport_international_capacity.gdx")
 df_gdx = df_gdx["p_transport_international_capacity"]
 df_gdx.columns = ['Year', 'Node_export', 'Node_import', 'Transport_international', 'Transport_international_capacity']
+df_gdx['Year'] = df_gdx['Year'].astype(int)
 df_transport_international_capacity = df_gdx
 del df_gdx
 
@@ -367,6 +363,7 @@ del df_gdx
 df_gdx = gdxpds.to_dataframes(path_gdx + "p_transport_international_cost_fixed.gdx")
 df_gdx = df_gdx["p_transport_international_cost_fixed"]
 df_gdx.columns = ['Year', 'Transport_international', 'Transport_international_cost_fixed']
+df_gdx['Year'] = df_gdx['Year'].astype(int)
 df_transport_international_cost_fixed = df_gdx
 del df_gdx
 
@@ -374,6 +371,7 @@ del df_gdx
 df_gdx = gdxpds.to_dataframes(path_gdx + "p_transport_international_cost_variable.gdx")
 df_gdx = df_gdx["p_transport_international_cost_variable"]
 df_gdx.columns = ['Year', 'Transport_international', 'Transport_international_cost_variable']
+df_gdx['Year'] = df_gdx['Year'].astype(int)
 df_transport_international_cost_variable = df_gdx
 del df_gdx
 
@@ -388,6 +386,7 @@ del df_gdx
 df_gdx = gdxpds.to_dataframes(path_gdx + "p_transport_international_import_capacity.gdx")
 df_gdx = df_gdx["p_transport_international_import_capacity"]
 df_gdx.columns = ['Year', 'Node_Export', 'Transport_international', 'Transport_international_import_capacity']
+df_gdx['Year'] = df_gdx['Year'].astype(int)
 df_transport_international_import_capacity = df_gdx
 del df_gdx
 
@@ -395,6 +394,7 @@ del df_gdx
 df_gdx = gdxpds.to_dataframes(path_gdx + "p_transport_national_cost_fixed.gdx")
 df_gdx = df_gdx["p_transport_national_cost_fixed"]
 df_gdx.columns = ['Year', 'Transport_national', 'Transport_national_cost_fixed']
+df_gdx['Year'] = df_gdx['Year'].astype(int)
 df_transport_national_cost_fixed = df_gdx
 del df_gdx
 
@@ -402,6 +402,7 @@ del df_gdx
 df_gdx = gdxpds.to_dataframes(path_gdx + "p_transport_national_cost_variable.gdx")
 df_gdx = df_gdx["p_transport_national_cost_variable"]
 df_gdx.columns = ['Year', 'Transport_national', 'Transport_national_cost_variable']
+df_gdx['Year'] = df_gdx['Year'].astype(int)
 df_transport_national_cost_variable = df_gdx
 del df_gdx
 
@@ -412,3 +413,22 @@ df_gdx.columns = ['Node_production', 'Node_export', 'Transport_national', 'Trans
 df_transport_national_distance = df_gdx
 del df_gdx
 
+
+# Production H2_system
+df_production_h2_system = df_gdx_results['r_ProductionH2System']
+df_production_h2_system.columns = ['Year', 'H2_system','Production_system']
+df_production_h2_system['Year'] = df_production_h2_system['Year'].astype(int)
+df_production_h2_system = pd.merge(df_production_h2_system, df_link_h2_system_node_production, how='left', on=['H2_system'])
+df_production_h2_system = pd.merge(df_production_h2_system, df_production_volume, how='left', on=['Year','H2_system'])
+df_production_h2_system = pd.merge(df_production_h2_system, df_link_h2_system_source, how='left', on=['H2_system'])
+df_production_h2_system = pd.merge(df_production_h2_system, df_link_h2_technology, how='left', on=['H2_system'])
+
+
+df_supply = pd.merge(df_production_h2_system, df_production_node, how='left', on=['Year', 'Node_production'])
+df_supply = pd.merge(df_supply, df_path, how='left', on=['Year', 'Node_production'])
+
+df_supply['Volume'] = df_supply['Production_system'] * df_supply['Production_volume'] / df_supply['Volume_production_node'] * df_supply[
+    'Volume_transport']
+
+df_supply = df_supply[['Year', 'H2_system', 'Path', 'Source', 'Technology', 'Node_production',
+                       'Transport_national', 'Node_export', 'Transport_international', 'Node_import', 'Volume']]

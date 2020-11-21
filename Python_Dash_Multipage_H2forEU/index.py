@@ -15,6 +15,7 @@ lst_dashboards = [
                     'page_map_source_results',
                     'page_merit_curve',
                     'page_utilization_import',
+                    'page_res_utilization',
                     'page_sankey',
                     'marco_dummy'
                    ]
@@ -34,6 +35,7 @@ app.layout = html.Div([
                 dbc.NavItem(dbc.NavLink('Map RES profiles', href='/apps/page_res_profiles')),
                 dbc.NavItem(dbc.NavLink('Map source results', href='/apps/page_map_source_results')),
                 dbc.NavItem(dbc.NavLink('Capacity utilization imports', href='/apps/page_utilization_import')),
+                dbc.NavItem(dbc.NavLink('RES capacity utilization', href='/apps/page_res_utilization')),
                 dbc.NavItem(dbc.NavLink('Merit curve', href='/apps/page_merit_curve')),
                 dbc.NavItem(dbc.NavLink('Sankey', href='/apps/page_sankey')),
             ]),
@@ -61,6 +63,8 @@ def display_page\
        return page_merit_curve.layout
    elif ('page_utilization_import' in lst_dashboards) and (pathname == '/apps/page_utilization_import'):
        return page_utilization_import.layout
+   elif ('page_res_utilization' in lst_dashboards) and (pathname == '/apps/page_res_utilization'):
+       return page_res_utilization.layout
    elif ('page_sankey' in lst_dashboards) and (pathname == '/apps/page_sankey'):
        return page_sankey.layout
    else:

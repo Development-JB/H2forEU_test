@@ -96,52 +96,56 @@ layout = html.Div([
 )
 def page_utilization_import_update_graph(slct_year, slct_node_import, slct_transport_international):
 
-    #slct_node_import = ['ESP01','ESP02','ITA01']
-    #slct_transport_international = ['Pipeline','NH3']
-    #slct_year = [2020, 2030]
+    # slct_node_import = ['ESP01','ESP02','ITA01']
+    # slct_transport_international = ['Pipeline','NH3']
+    # slct_year = [2020, 2030]
 
-    #df_slct_result = df_results.copy()
-    df_slct_result = pd.read_csv("C:\\Users\\Johannes\\Desktop\\Utilization.csv")
+    df_slct_result = df_results.copy()
+    #df_slct_result = pd.read_csv("C:\\Users\\Johannes\\Desktop\\Utilization.csv")
     df_slct_result = df_slct_result[['Year','Node_import','Transport_international','Volume']].groupby(['Year','Transport_international','Node_import']).agg({'Volume':'sum'}).reset_index()
     df_slct_result = df_slct_result[df_slct_result['Year'].isin(slct_year)]
     df_slct_result = df_slct_result[df_slct_result['Node_import'].isin(slct_node_import)]
     df_slct_result = df_slct_result[df_slct_result['Transport_international'].isin(slct_transport_international)]
     #df_slct_result['Volume'] = df_slct_result['Volume']*1000000
 
-    #df_slct_import_capacity = df_import_capacity.copy()
-    df_slct_import_capacity = pd.read_csv("C:\\Users\\Johannes\\Desktop\\Capacity.csv")
+    df_slct_import_capacity = df_import_capacity.copy()
+    #df_slct_import_capacity = pd.read_csv("C:\\Users\\Johannes\\Desktop\\Capacity.csv")
     df_slct_import_capacity = df_slct_import_capacity[['Year','Node_import','Transport_international','Transport_international_import_capacity']].groupby(['Year','Node_import','Transport_international']).agg({'Transport_international_import_capacity':'sum'}).reset_index()
     df_slct_import_capacity = df_slct_import_capacity[df_slct_import_capacity['Year'].isin(slct_year)]
     df_slct_import_capacity = df_slct_import_capacity[df_slct_import_capacity['Node_import'].isin(slct_node_import)]
     df_slct_import_capacity = df_slct_import_capacity[df_slct_import_capacity['Transport_international'].isin(slct_transport_international)]
-
+    df_slct_import_capacity = df_slct_import_capacity.sort_values(['Year','Transport_international','Node_import'])
 
     fig = go.Figure()
 
     counter = 0
-    for i_node_import in df_slct_import_capacity['Node_import'].drop_duplicates().tolist():
-        print(i_node_import)
-        counter += 1
+    for i_transport_international in lst_transport_international:
+        #print(i_transport_international)
 
-        arr_y_utilized = df_slct_result['Volume'][df_slct_result['Node_import'] == i_node_import].to_numpy().T
-        arr_y_capacity = df_slct_import_capacity['Transport_international_import_capacity'][df_slct_import_capacity['Node_import'] == i_node_import].to_numpy().T
-        arr_x = df_slct_import_capacity[['Year','Transport_international']][df_slct_import_capacity['Node_import'] == i_node_import].to_numpy().T
 
-        fig.add_trace(go.Bar(y=arr_y_capacity,
-                             x=arr_x,
-                             offsetgroup=counter,
-                             marker_color='rgb(150,0,0)',
-                             showlegend=False,
-                             text=i_node_import,
-                             textposition='outside',
-                             name='Available'))
+        for i_node_import in df_slct_import_capacity['Node_import'].drop_duplicates().tolist():
+            #print(i_node_import)
+            counter += 1
 
-        fig.add_trace(go.Bar(y=arr_y_utilized,
-                             x=arr_x,
-                             offsetgroup=counter,
-                             marker_color='rgb(0,0,150)',
-                             showlegend=False,
-                             name='Utilized'))
+            arr_y_utilized = df_slct_result['Volume'][(df_slct_result['Transport_international'] == i_transport_international)&(df_slct_result['Node_import'] == i_node_import)].to_numpy().T
+            arr_y_capacity = df_slct_import_capacity['Transport_international_import_capacity'][(df_slct_result['Transport_international'] == i_transport_international)&(df_slct_import_capacity['Node_import'] == i_node_import)].to_numpy().T
+            arr_x = df_slct_import_capacity[['Year','Transport_international']][(df_slct_result['Transport_international'] == i_transport_international)&(df_slct_import_capacity['Node_import'] == i_node_import)].to_numpy().T
+
+            fig.add_trace(go.Bar(y=arr_y_capacity,
+                                 x=arr_x,
+                                 offsetgroup=counter,
+                                 marker_color='rgb(150,0,0)',
+                                 showlegend = True if counter == 1 else False,
+                                 text=i_node_import,
+                                 textposition='outside',
+                                 name='Available'))
+
+            fig.add_trace(go.Bar(y=arr_y_utilized,
+                                 x=arr_x,
+                                 offsetgroup=counter,
+                                 marker_color='rgb(0,0,150)',
+                                 showlegend = True if counter == 1 else False,
+                                 name='Utilized'))
 
     fig.update_layout(
                             boxmode='group'  # group together boxes of the different traces for each value of x
@@ -151,3 +155,37 @@ def page_utilization_import_update_graph(slct_year, slct_node_import, slct_trans
 
 
     return fig
+
+
+    # fig = go.Figure()
+    #
+    # counter = 0
+    # for i_node_import in df_slct_import_capacity['Node_import'].drop_duplicates().tolist():
+    #     print(i_node_import)
+    #     counter += 1
+    #
+    #     arr_y_utilized = df_slct_result['Volume'][df_slct_result['Node_import'] == i_node_import].to_numpy().T
+    #     arr_y_capacity = df_slct_import_capacity['Transport_international_import_capacity'][df_slct_import_capacity['Node_import'] == i_node_import].to_numpy().T
+    #     arr_x = df_slct_import_capacity[['Year','Transport_international']][df_slct_import_capacity['Node_import'] == i_node_import].to_numpy().T
+    #
+    #     fig.add_trace(go.Bar(y=arr_y_capacity,
+    #                          x=arr_x,
+    #                          offsetgroup=counter,
+    #                          marker_color='rgb(150,0,0)',
+    #                          showlegend=False,
+    #                          text=i_node_import,
+    #                          textposition='outside',
+    #                          name='Available'))
+    #
+    #     fig.add_trace(go.Bar(y=arr_y_utilized,
+    #                          x=arr_x,
+    #                          offsetgroup=counter,
+    #                          marker_color='rgb(0,0,150)',
+    #                          showlegend=False,
+    #                          name='Utilized'))
+    #
+    # fig.update_layout(
+    #                         boxmode='group'  # group together boxes of the different traces for each value of x
+    #                     )
+    #
+    # #fig.show()

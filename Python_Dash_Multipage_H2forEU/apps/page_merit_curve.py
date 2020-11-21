@@ -81,8 +81,14 @@ layout = html.Div([
 )
 def page_merit_curve_update_graph(slct_color, slct_year):
 
-    #slct_year = 2020
-    #slct_color = 'Region_export'
+    slct_year = 2020
+    slct_color = 'Region_export'
+
+    df_demand_eu = load_data.df_demand_eu[['Demand_eu']]
+    df_demand_eu['Demand_eu'] = df_demand_eu['Demand_eu']/1000/1000/1000
+    val_demand_max = df_demand_eu['Demand_eu'].max()
+    val_demand_year = df_demand_eu['Demand_eu'][df_demand_eu['Year'] == slct_year].mean()
+
 
     df_slct = df_data.copy()
     df_slct = df_slct[df_slct['Year']==slct_year]
@@ -109,6 +115,7 @@ def page_merit_curve_update_graph(slct_color, slct_year):
         df_color_region_import = pd.DataFrame([['Southern_europe', 'rgb(150,0,0)'],
                                                ['Southestern_europe', 'rgb(150,50,0)'],
                                                ['Central_europe', 'rgb(0,150,0)'],
+                                               ['Western_europe', 'rgb(150,0,150)'],
                                                ['Eastern_europe', 'rgb(0,150,150)'],
                                                ['Northern_europe', 'rgb(0,0,150)']],
                                                columns=['Region_import', 'Rgb_code'])
@@ -133,6 +140,7 @@ def page_merit_curve_update_graph(slct_color, slct_year):
 
 
     df_slct = df_slct[['Category','Volume','Lcoh_cif','Rgb_code']].sort_values(['Lcoh_cif'])
+    df_slct['Volume'] = df_slct['Volume']/1000/1000/1000
 
     fig = go.Figure()
 
@@ -159,7 +167,15 @@ def page_merit_curve_update_graph(slct_color, slct_year):
 
         df_trigger_legend.loc[df_slct.loc[i_entry,'Rgb_code'], 'Trigger'] = 1
 
-    fig.update_layout(xaxis=dict(range=[0,30000]),
+    fig.add_trace(go.Scatter(x=[val_demand_year, val_demand_year],
+                             y=[0, 30],
+                             mode='lines',
+                             line=dict(color='rgb(100,100,100)'),
+                             showlegend=True,
+                             name='Demand'
+                             ))
+
+    fig.update_layout(xaxis=dict(range=[0,val_demand_max*1.1]),
                       yaxis=dict(range=[0,30]),
                       height=400,
                       width=1200,
