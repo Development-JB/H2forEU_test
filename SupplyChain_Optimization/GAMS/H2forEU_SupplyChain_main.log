@@ -1,4 +1,4 @@
---- Job H2forEU_SupplyChain_main.gms Start 11/20/20 00:06:55 25.1.3 r4e34d435fbd WEX-WEI x86 64bit/MS Windows
+--- Job H2forEU_SupplyChain_main.gms Start 11/21/20 16:38:39 25.1.3 r4e34d435fbd WEX-WEI x86 64bit/MS Windows
 GAMS 25.1.3   Copyright (C) 1987-2018 GAMS Development. All rights reserved
 Licensee: CS 635 Spring 2014                             G140121/0001AO-GEN
           Prof. Michael Ferris, University of Wisconsin-Madison      DC2937
@@ -62,16 +62,20 @@ Licensee: CS 635 Spring 2014                             G140121/0001AO-GEN
 --- . H2forEU_SupplyChain_setup.gms(140) 3 Mb
 --- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_CONVERSION.gdx
 --- . H2forEU_SupplyChain_setup.gms(145) 3 Mb
---- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_H2_SYSTEM_ENERGY_TYPE.gdx
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_CONVERSION_NATIONAL.gdx
 --- . H2forEU_SupplyChain_setup.gms(150) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_PATH_CONVERSION_INTERNATIONAL.gdx
+--- . H2forEU_SupplyChain_setup.gms(156) 3 Mb
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_H2_SYSTEM_ENERGY_TYPE.gdx
+--- . H2forEU_SupplyChain_setup.gms(161) 3 Mb
 --- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_H2_SYSTEM_SOURCE.gdx
---- . H2forEU_SupplyChain_setup.gms(155) 3 Mb
+--- . H2forEU_SupplyChain_setup.gms(166) 3 Mb
 --- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_H2_SYSTEM_TECHNOLOGY.gdx
---- . H2forEU_SupplyChain_setup.gms(160) 3 Mb
+--- . H2forEU_SupplyChain_setup.gms(171) 3 Mb
 --- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_H2_SYSTEM_COUNTRY.gdx
---- . H2forEU_SupplyChain_setup.gms(165) 3 Mb
+--- . H2forEU_SupplyChain_setup.gms(176) 3 Mb
 --- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/LINK_H2_SYSTEM_NODE_PRODUCTION.gdx
---- . H2forEU_SupplyChain_setup.gms(201) 3 Mb
+--- . H2forEU_SupplyChain_setup.gms(206) 3 Mb
 --- H2forEU_SupplyChain_main.gms(26) 3 Mb
 --- . H2forEU_SupplyChain_data.gms(6) 3 Mb
 --- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_limit_country.gdx
@@ -90,7 +94,7 @@ Licensee: CS 635 Spring 2014                             G140121/0001AO-GEN
 --- . H2forEU_SupplyChain_data.gms(54) 3 Mb
 --- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_volume.gdx
 --- . H2forEU_SupplyChain_data.gms(60) 3 Mb
---- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_capacities.gdx
+--- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_capacity.gdx
 --- . H2forEU_SupplyChain_data.gms(67) 3 Mb
 --- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_production_cost.gdx
 --- . H2forEU_SupplyChain_data.gms(73) 3 Mb
@@ -113,17 +117,17 @@ Licensee: CS 635 Spring 2014                             G140121/0001AO-GEN
 --- GDXin=C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/p_transport_conversion_cost.gdx
 --- . H2forEU_SupplyChain_data.gms(124) 3 Mb
 --- H2forEU_SupplyChain_main.gms(27) 3 Mb
---- . H2forEU_SupplyChain_model.gms(219) 3 Mb
---- H2forEU_SupplyChain_main.gms(85) 3 Mb
---- . H2forEU_SupplyChain_output.gms(24) 3 Mb
---- H2forEU_SupplyChain_main.gms(86) 3 Mb
+--- . H2forEU_SupplyChain_model.gms(225) 3 Mb
+--- H2forEU_SupplyChain_main.gms(89) 3 Mb
+--- . H2forEU_SupplyChain_output.gms(18) 3 Mb
+--- H2forEU_SupplyChain_main.gms(90) 3 Mb
 --- Starting execution: elapsed 0:00:00.039
---- H2forEU_SupplyChain_main.gms(574) 4 Mb
+--- H2forEU_SupplyChain_main.gms(585) 4 Mb
 --- Generating LP model H2forEU_SupplyChain
---- H2forEU_SupplyChain_main.gms(582) 4 Mb
+--- H2forEU_SupplyChain_main.gms(593) 4 Mb
 --- LOOPS ITERATION = 1
 ---   21 rows  24 columns  82 non-zeroes
---- Executing CPLEX: elapsed 0:00:00.088
+--- Executing CPLEX: elapsed 0:00:00.084
 
 IBM ILOG CPLEX   28.2.0 r750fa45 Released Aug 19, 2019 WEI x86 64bit/MS Window
 Cplex 12.9.0.0
@@ -146,28 +150,28 @@ Reduced LP has 7 rows, 9 columns, and 21 nonzeros.
 Presolve time = 0.00 sec. (0.02 ticks)
 
 Iteration      Dual Objective            In Variable           Out Variable
-     1           6.304796e+11v_Path(2020.MAR_C00018-e_Demand_EU(2020) artif
-     2           6.503931e+11v_Path(2020.MAR_C00017-e_LinkH2SystemNod artif
-     3           1.196526e+12v_Path(2020.MAR_C00017-e_TransportLimitI slack
-     4           2.526747e+12v_ProductionH2System(20e_LinkH2SystemNod artif
-     5           2.526747e+12v_Path(2020.MAR_C00018-v_Path(2020.MAR_C00017-
-     6           1.500150e+17v_ProductionDummyEU(202e_TransportLimitI slack
-     7           1.500150e+17v_ProductionH2System(20e_ProductionLimit slack
-     8           1.500150e+17v_Path(2020.MAR_C00017-v_Path(2020.MAR_C00018-
-     9           1.500150e+17v_ProductionH2System(20e_ProductionLimit slack
-    10           1.500150e+17v_ProductionH2System(20v_ProductionH2System(20
-    11           1.500150e+17e_TransportLimitI slackv_ProductionH2System(20
+     1           3.152398e+11v_Path(2020.MAR_C00018-e_Demand_EU(2020) artif
+     2           3.251966e+11v_Path(2020.MAR_C00017-e_LinkH2SystemNod artif
+     3           5.982628e+11v_Path(2020.MAR_C00017-e_TransportLimitI slack
+     4           1.263374e+12v_ProductionH2System(20e_LinkH2SystemNod artif
+     5           1.263374e+12v_Path(2020.MAR_C00018-v_Path(2020.MAR_C00017-
+     6           7.500749e+16v_ProductionDummyEU(202e_TransportLimitI slack
+     7           7.500749e+16v_ProductionH2System(20e_ProductionLimit slack
+     8           7.500749e+16v_Path(2020.MAR_C00017-v_Path(2020.MAR_C00018-
+     9           7.500749e+16v_ProductionH2System(20e_ProductionLimit slack
+    10           7.500749e+16v_ProductionH2System(20v_ProductionH2System(20
+    11           7.500749e+16e_TransportLimitI slackv_ProductionH2System(20
 LP status(1): optimal
-Cplex Time: 0.02sec (det. 0.04 ticks)
+Cplex Time: 0.00sec (det. 0.04 ticks)
 
 Optimal solution found.
-Objective : 150014994833584544.000000
+Objective : 75007494083509536.000000
 
 --- Restarting execution
---- H2forEU_SupplyChain_main.gms(582) 2 Mb
+--- H2forEU_SupplyChain_main.gms(593) 2 Mb
 --- Reading solution for model H2forEU_SupplyChain
---- Executing after solve: elapsed 0:00:01.264
---- H2forEU_SupplyChain_main.gms(631) 3 Mb
+--- Executing after solve: elapsed 0:00:01.315
+--- H2forEU_SupplyChain_main.gms(646) 3 Mb
 --- GDX File C:\Users\Johannes\Documents\PhD\06Research\Paper2\Tools\SupplyChain_Optimization\GAMS\gdx/00_results.gdx
 *** Status: Normal completion
---- Job H2forEU_SupplyChain_main.gms Stop 11/20/20 00:06:56 elapsed 0:00:01.289
+--- Job H2forEU_SupplyChain_main.gms Stop 11/21/20 16:38:41 elapsed 0:00:01.346

@@ -8,7 +8,9 @@ from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
 import plotly.express as px
 from app import app
+
 from apps import load_data
+from apps import functions
 
 
 # ------------------------------------------------------------------------------
@@ -18,9 +20,9 @@ lst_transport_international = load_data.lst_transport_international
 lst_node_import = load_data.lst_node_import
 lst_year = load_data.lst_year
 
-json_nuts2 = load_data.fct_load_json_file()
-df_results = load_data.fct_load_results_supply()
-df_import_capacity = load_data.fct_load_import_capacity()
+json_nuts2 = functions.fct_load_json_file()
+df_results = functions.fct_load_results_supply()
+df_import_capacity = functions.fct_load_import_capacity()
 
 # ------------------------------------------------------------------------------
 # App layout

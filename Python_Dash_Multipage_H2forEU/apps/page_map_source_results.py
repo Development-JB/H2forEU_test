@@ -9,9 +9,10 @@ import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
 from app import app
-from apps import load_data
 import plotly.graph_objects as go
 
+from apps import load_data
+from apps import functions
 
 # ------------------------------------------------------------------------------
 # Load data
@@ -20,8 +21,8 @@ lst_source = load_data.lst_source
 lst_year = load_data.lst_year
 
 
-json_map = load_data.fct_load_json_file()
-df_data = load_data.fct_load_results_supply()
+json_map = functions.fct_load_json_file()
+df_data = functions.fct_load_results_supply()
 
 # ------------------------------------------------------------------------------
 # App layout

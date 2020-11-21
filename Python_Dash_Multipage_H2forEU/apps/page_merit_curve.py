@@ -9,17 +9,18 @@ import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
 from app import app
-from apps import load_data
 import plotly.graph_objects as go
 
+from apps import load_data
+from apps import functions
 
 # ------------------------------------------------------------------------------
 # Load data
 
 lst_color = ['Region_export','Region_import','H2_color','Transport_international','Transport_national']
-lst_year = [2020,2030,2040,2050]
+lst_year = load_data.lst_year
 
-df_data = load_data.fct_load_results_supply()
+df_data = functions.fct_load_results_supply()
 
 # ------------------------------------------------------------------------------
 # App layout

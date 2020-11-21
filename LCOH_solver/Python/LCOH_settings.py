@@ -44,6 +44,7 @@ val_land_dedication_pv = 0.03
 val_energy_density_onshore = 5
 val_land_dedication_onshore = 1
 val_h2_selling_price = 20
+val_overnight = 'Yes'
 
 
 

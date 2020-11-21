@@ -49,7 +49,14 @@ loop(ITERATION,
     r_ProductionDummy(i_YEAR, NODE_IMPORT) = v_ProductionDummy.l(i_YEAR, NODE_IMPORT);
     r_ProductionDummyEU(i_YEAR) = v_ProductionDummyEU.l(i_YEAR);
 
-  
+    r_Path(i_YEAR, PATH, Node_PRODUCTION, TRANSPORT_NATIONAL, NODE_EXPORT, TRANSPORT_INTERNATIONAL, NODE_IMPORT)
+                                          $(LINK_PATH_NODE_PRODUCTION(PATH,NODE_PRODUCTION)
+                                        and LINK_PATH_TRANSPORT_NATIONAL(PATH,TRANSPORT_NATIONAL)
+                                        and LINK_PATH_NODE_EXPORT(PATH,NODE_EXPORT)
+                                        and LINK_PATH_TRANSPORT_INTERNATIONAL(PATH,TRANSPORT_INTERNATIONAL)
+                                        and LINK_PATH_NODE_IMPORT(PATH,NODE_IMPORT))
+                                        = v_Path.l(i_YEAR, PATH);
+
 $ontext  
     r_H2_system(i_YEAR, H2_SYSTEM, COUNTRY, NODE_PRODUCTION, SOURCE, ENERGY_TYPE, TECHNOLOGY)
                                           $(LINK_H2_SYSTEM_COUNTRY(H2_SYSTEM,COUNTRY)
@@ -60,13 +67,7 @@ $ontext
                                         and LINK_H2_SYSTEM_ENERGY_TYPE(H2_SYSTEM,ENERGY_TYPE))
                                         = v_ProductionH2System.l(i_YEAR, H2_SYSTEM);
   
-    r_Path(i_YEAR, PATH, Node_PRODUCTION, TRANSPORT_NATIONAL, NODE_EXPORT, TRANSPORT_INTERNATIONAL, NODE_IMPORT)
-                                          $(LINK_PATH_NODE_PRODUCTION(PATH,NODE_PRODUCTION)
-                                        and LINK_PATH_TRANSPORT_NATIONAL(PATH,TRANSPORT_NATIONAL)
-                                        and LINK_PATH_NODE_EXPORT(PATH,NODE_EXPORT)
-                                        and LINK_PATH_TRANSPORT_INTERNATIONAL(PATH,TRANSPORT_INTERNATIONAL)
-                                        and LINK_PATH_NODE_IMPORT(PATH,NODE_IMPORT))
-                                        = v_Path.l(i_YEAR, PATH);
+
     
     r_Supply(i_YEAR, H2_SYSTEM, PATH, COUNTRY, SOURCE, TECHNOLOGY, Node_PRODUCTION, TRANSPORT_NATIONAL, NODE_EXPORT, TRANSPORT_INTERNATIONAL, NODE_IMPORT)
                                           $(LINK_H2_SYSTEM_COUNTRY(H2_SYSTEM,COUNTRY)

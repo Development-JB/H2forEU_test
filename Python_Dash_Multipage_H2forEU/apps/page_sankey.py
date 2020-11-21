@@ -9,6 +9,7 @@ from apps import load_data
 import plotly.graph_objects as go
 
 from apps import functions
+from apps import load_data
 
 
 # ------------------------------------------------------------------------------
@@ -17,7 +18,7 @@ from apps import functions
 lst_selection = ['Region_export','Region_import','Country_import','Country_export','Transport_international','Transport_national']
 lst_year = load_data.lst_year
 
-df_data = load_data.fct_load_results_supply()
+df_data = functions.fct_load_results_supply()
 
 # ------------------------------------------------------------------------------
 # App layout

@@ -15,20 +15,21 @@ from dash.exceptions import PreventUpdate
 import plotly.express as px
 import plotly.graph_objs as go
 from app import app
+
 from apps import load_data
+from apps import functions
 
 
 # ------------------------------------------------------------------------------
 # Load data
-
 
 lst_source_vres = load_data.lst_source_vres
 lst_optimization = ['Lcoh','Volume','Profit']
 lst_electrolyser = load_data.lst_technology
 lst_year = load_data.lst_year
 
-json_nuts2 = load_data.fct_load_json_file()
-df_system = load_data.fct_load_system_result()
+json_nuts2 = functions.fct_load_json_file()
+df_system = functions.fct_load_system_result()
 df_colorbar = pd.read_csv("C:\\Users\\Johannes\\Documents\\PhD\\07GeneralData\\Color_scheme\\Colorbar_HybridSystem.csv")
 
 # ------------------------------------------------------------------------------

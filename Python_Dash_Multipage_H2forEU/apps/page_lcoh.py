@@ -13,6 +13,7 @@ from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
 import plotly.express as px
 from app import app
+from apps import functions
 from apps import load_data
 
 
@@ -24,8 +25,8 @@ lst_electrolyser = load_data.lst_technology
 lst_year = load_data.lst_year
 
 
-json_nuts2 = load_data.fct_load_json_file()
-df_lcoh = load_data.fct_load_lcoh_result()
+json_nuts2 = functions.fct_load_json_file()
+df_lcoh = functions.fct_load_lcoh_result()
 
 # ------------------------------------------------------------------------------
 # App layout

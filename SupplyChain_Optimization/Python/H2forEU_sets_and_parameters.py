@@ -710,6 +710,52 @@ def LINK_PATH_CONVERSION():
     return gdx_name, gdx_dimensions, gdx_data
 
 
+def LINK_PATH_CONVERSION_NATIONAL():
+
+    # Import packages
+    import pandas as pd
+
+    # Import files
+    import H2forEU_settings
+
+    df_gdx = H2forEU_settings.df_transport_path
+    df_gdx = df_gdx[['Transport_path']+H2forEU_settings.lst_transport_conversion]
+    df_gdx = df_gdx.set_index('Transport_path').stack().reset_index(name='Value')
+    df_gdx = df_gdx.drop(['Value'], axis=1)
+    df_gdx = df_gdx.rename(columns={'level_1':'Conversion'})
+    df_gdx = df_gdx[~df_gdx['Conversion'].str.contains('international')]
+    df_gdx.columns = ['PATH','CONVERSION']
+
+    gdx_name = 'LINK_PATH_CONVERSION_NATIONAL'
+    gdx_dimensions = df_gdx.columns.tolist()
+    gdx_data = df_gdx
+
+    return gdx_name, gdx_dimensions, gdx_data
+
+
+def LINK_PATH_CONVERSION_INTERNATIONAL():
+
+    # Import packages
+    import pandas as pd
+
+    # Import files
+    import H2forEU_settings
+
+    df_gdx = H2forEU_settings.df_transport_path
+    df_gdx = df_gdx[['Transport_path']+H2forEU_settings.lst_transport_conversion]
+    df_gdx = df_gdx.set_index('Transport_path').stack().reset_index(name='Value')
+    df_gdx = df_gdx.drop(['Value'], axis=1)
+    df_gdx = df_gdx.rename(columns={'level_1':'Conversion'})
+    df_gdx = df_gdx[df_gdx['Conversion'].str.contains('international')]
+    df_gdx.columns = ['PATH','CONVERSION']
+
+    gdx_name = 'LINK_PATH_CONVERSION_INTERNATIONAL'
+    gdx_dimensions = df_gdx.columns.tolist()
+    gdx_data = df_gdx
+
+    return gdx_name, gdx_dimensions, gdx_data
+
+
 def p_production_limit_country():
 
     # Import packages

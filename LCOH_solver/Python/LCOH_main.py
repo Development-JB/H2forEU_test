@@ -12,7 +12,7 @@ time_start = time.time()
 
 
 df_result = pd.DataFrame([])
-for i_country in LCOH_settings.lst_country[:]:
+for i_country in LCOH_settings.lst_country[:1]:
     #print(i_country)
 
     lst_cell_country = [x for x in LCOH_settings.lst_cell if i_country in x]
@@ -35,7 +35,7 @@ for i_country in LCOH_settings.lst_country[:]:
                 for i_sensitivity in LCOH_settings.lst_sensitivity[:]:
                     #print(i_sensitivity)
 
-                    for i_year in LCOH_settings.lst_year[:1]:
+                    for i_year in LCOH_settings.lst_year[-1:]:
                         #print(i_year)
 
                         #lst_optimization = ['Lcoh', 'Volume','Profit']

@@ -12,7 +12,9 @@ from dash.exceptions import PreventUpdate
 import plotly.express as px
 import plotly.graph_objects as go
 from app import app
+
 from apps import load_data
+from apps import functions
 
 
 # ------------------------------------------------------------------------------
@@ -20,8 +22,8 @@ from apps import load_data
 
 lst_res_selection = ['PV load factor','Onshore load factor','Correlation']
 
-json_nuts2 = load_data.fct_load_json_file()
-[df_res_information, df_colorscale_load_factor] = load_data.fct_load_res_information()
+json_nuts2 = functions.fct_load_json_file()
+[df_res_information, df_colorscale_load_factor] = functions.fct_load_res_information()
 
 # ------------------------------------------------------------------------------
 # App layout

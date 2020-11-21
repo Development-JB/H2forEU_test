@@ -48,7 +48,10 @@ def fct_prepare_input_data(i_senitivity, i_country, i_system, i_electrolyser, i_
 
     # Create series with discount factors
     df_discount = pd.DataFrame([])
-    df_discount['Year'] = range(1, val_system_lifetime + 1, 1)
+    if LCOH_settings.val_overnight == 'Yes':
+        df_discount['Year'] = range(0, val_system_lifetime, 1)
+    elif LCOH_settings.val_overnight == 'NO':
+        df_discount['Year'] = range(1, val_system_lifetime + 1, 1)
     df_discount['Value'] = (1 + val_wacc) ** df_discount['Year']
     df_discount = df_discount.set_index(['Year'])
     dict_discount = df_discount.to_dict()
