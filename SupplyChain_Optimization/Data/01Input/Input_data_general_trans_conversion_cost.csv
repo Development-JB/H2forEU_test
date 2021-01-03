@@ -1,0 +1,9 @@
+﻿Transport_conversion,Transport_conversion_mode,Transport_conversion_cost_parameter,Unit,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031,2032,2033,2034,2035,2036,2037,2038,2039,2040,2041,2042,2043,2044,2045,2046,2047,2048,2049,2050
+LH2,Conversion,Varibable,,2.03,,,,,,,,,,1.53,,,,,,,,,,,,,,,,,,,,
+LH2,Reconversion,Varibable,,1.3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+NH3,Conversion,Varibable,,1.529342,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+NH3,Reconversion,Varibable,,1.80035,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CH2,Conversion,Varibable,,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CH2,Reconversion,Varibable,,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Pip,Conversion,Varibable,,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Pip,Reconversion,Varibable,,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

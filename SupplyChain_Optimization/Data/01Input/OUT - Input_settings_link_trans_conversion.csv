@@ -1,0 +1,7 @@
+Transport_national,Transport_international,Liquification_national,Regasification_national,NH3_synthesis_national,NH3_catalytic_cracking_national,Liquification_international,Regasification_international,NH3_synthesis_international,NH3_catalytic_cracking_international
+CH2,Pip,,,,,,,,
+CH2,LH2,,,,,1,1,,
+CH2,NH3,,,,,,,1,1
+NH3,Pip,,,1,1,,,,
+NH3,LH2,,,1,1,1,1,,
+NH3,NH3,,,1,,,,,1

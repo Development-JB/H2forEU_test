@@ -1,0 +1,5 @@
+﻿Energy_type,Category,Unit,Value
+PV,Energy_density,[MW/km2],170
+Onshore,Energy_density,[MW/km2],5
+PV,Land_dedication,[%/100],0.03
+Onshore,Land_dedication,[%/100],1

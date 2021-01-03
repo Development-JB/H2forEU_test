@@ -1,0 +1,12 @@
+Source,Technology
+Hybrid,Alkaline
+Hybrid,PEM
+PV,Alkaline
+PV,PEM
+Onshore,Alkaline
+Onshore,PEM
+Natural_gas,SMR_CCS
+Natural_gas,ATR_CCS
+Natural_gas,GHR_CCS
+Natural_gas,Pyrolysis
+Biomass,Gasification_biomass
